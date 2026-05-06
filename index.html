@@ -140,12 +140,13 @@
             if (btn) {
                 $(btn).addClass('active');
             } else {
-                // Si no hay botón (carga inicial), buscamos el que coincida con el id
                 $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
             }
 
-            // 3. Actualizar la URL sin recargar la página
-            window.location.hash = id;
+            // 3. CAMBIO: URL limpia sin el numeral (#)
+            // Esto cambia la URL a /almacen, /deudores, etc.
+            const nuevaUrl = window.location.origin + window.location.pathname + id;
+            window.history.pushState({ seccion: id }, "", id);
         }
 
         // --- TU FUNCIÓN CARGAR DATOS ORIGINAL (ALMACÉN)[cite: 4] ---
@@ -267,22 +268,29 @@
         }
 
         $(document).ready(function() {
-            // Carga de datos de las APIs
             cargarDatos();
             cargarReparto();
             cargarActividad();
             cargarDeudores();
 
-            // Lógica de navegación por URL
-            const seccionInicial = window.location.hash.replace('#', '');
+            // Detectar la sección desde la URL limpia
+            // Obtenemos la última palabra de la ruta (ej: "deudores")
+            const path = window.location.pathname.split("/").pop();
             const seccionesValidas = ['almacen', 'reparto', 'actividad', 'deudores'];
 
-            if (seccionesValidas.includes(seccionInicial)) {
-                verSeccion(seccionInicial);
+            if (seccionesValidas.includes(path)) {
+                verSeccion(path);
             } else {
-                // Si la URL no tiene hash o es inválido, mostramos almacén por defecto
+                // Por defecto si la URL está limpia o es "/"
                 verSeccion('almacen');
             }
+
+            // Manejar cuando el usuario usa las flechas de "Atrás/Adelante" del navegador
+            window.onpopstate = function(event) {
+                if (event.state && event.state.seccion) {
+                    verSeccion(event.state.seccion);
+                }
+            };
         });
     </script>
 </body>
