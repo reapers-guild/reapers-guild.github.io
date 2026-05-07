@@ -71,7 +71,7 @@
         <button class="btn-tab active" onclick="verSeccion('almacen', this)">ALMACÉN</button>
         <button class="btn-tab" onclick="verSeccion('reparto', this)">REPARTO</button>
         <button class="btn-tab" onclick="verSeccion('actividad', this)">RANKING ACTIVIDAD</button>
-        <button class="btn-tab" onclick="verSeccion('deudores', this)">PUNTOS</button>
+        <button class="btn-tab" onclick="verSeccion('reaperspoints', this)">REAPERS POINTS</button>
     </nav>
 
     <div class="main-container">
@@ -113,7 +113,7 @@
         </div>
 
         <!-- SECCIÓN ACTIVIDAD -->
-        <div id="sec-actividad" class="content-section">
+        <div id="sec-reaperspoints" class="content-section">
             <div class="logo-header"><h1>RANKING ACTIVIDAD</h1></div>
             <div id="listaActividad"></div>
         </div>
@@ -305,7 +305,7 @@
             const pathParts = window.location.pathname.split("/");
             const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
             
-            const seccionesValidas = ['almacen', 'reparto', 'actividad', 'deudores'];
+            const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints'];
 
             if (seccionesValidas.includes(lastPart)) {
                 verSeccion(lastPart);
