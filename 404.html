@@ -487,13 +487,12 @@
                 }
             };
         });
-        // 1. Definición del audio con el link de GitHub (usa el dominio raw.githubusercontent.com)
         const audioClick = new Audio('iCreateWindow.wav');
 
-                function reproducirSonido() {
-                    audioClick.currentTime = 0;
-                    audioClick.play().catch(e => console.log("Esperando interacción..."));
-                }
+            function reproducirSonido() {
+                audioClick.currentTime = 0;
+                audioClick.play().catch(e => console.log("El sonido espera interacción del usuario o el archivo no existe."));
+        }
     </script>
 </body>
 </html>
