@@ -9,6 +9,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+
+        /* Agrega esto a tus estilos actuales */
+.main-container, .tabs-nav {
+    display: none !important;
+}
+
+/* Esta clase se usará para mostrar el contenido tras el login */
+.auth-ready {
+    display: block !important;
+}
+
+/* Asegúrate de que el login siempre sea visible al inicio */
+#login-overlay {
+    display: flex !important;
+}
         /* Bloqueo inicial para el login */
 #login-overlay {
     position: fixed;
@@ -260,34 +275,42 @@
 
     <script>
 
-        // Configura aquí tus credenciales
         const LOGIN_DATA = {
-            user: "reapers",
-            pass: "reapers"
+            user: "reapers", // Cambia esto
+            pass: "reapers" // Cambia esto
         };
+
+        function verificarSesion() {
+            if (localStorage.getItem('reapers_auth') === 'true') {
+                // Quitamos el overlay de login
+                document.getElementById('login-overlay').style.setProperty('display', 'none', 'important');
+                
+                // Mostramos el contenido de la web
+                $('.main-container').addClass('auth-ready');
+                $('.tabs-nav').css('display', 'grid'); // Usamos grid por tu diseño mobile
+                return true;
+            }
+            return false;
+        }
 
         function intentarLogin() {
             const u = document.getElementById('user').value;
             const p = document.getElementById('pass').value;
 
             if (u === LOGIN_DATA.user && p === LOGIN_DATA.pass) {
-                // Guardamos en el "caché" del navegador (LocalStorage)
                 localStorage.setItem('reapers_auth', 'true');
-                document.getElementById('login-overlay').style.display = 'none';
+                location.reload(); // Recargamos para aplicar todos los cambios limpiamente
             } else {
                 document.getElementById('error-login').classList.remove('hidden');
             }
         }
 
-        // Comprobación automática al cargar la página
-        function verificarSesion() {
-            if (localStorage.getItem('reapers_auth') === 'true') {
-                document.getElementById('login-overlay').style.display = 'none';
-            }
-        }
-
-        // Ejecutar verificación de inmediato
+        // EJECUCIÓN INMEDIATA
+        // Esto debe ir fuera de $(document).ready para que actúe antes de que cargue el resto
         verificarSesion();
+
+
+
                 const i18n = {
             es: {
                 tab_almacen: "ALMACÉN",
