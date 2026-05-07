@@ -81,6 +81,7 @@
             <option value="pt">PORTUGUÊS</option>
         </select>
     </div>
+
     <nav class="tabs-nav">
         <button class="btn-tab active" onclick="verSeccion('almacen', this)" data-key="tab_almacen">ALMACÉN</button>
         <button class="btn-tab" onclick="verSeccion('reparto', this)" data-key="tab_reparto">REPARTO</button>
@@ -97,9 +98,9 @@
             <table id="tablaReapers" class="display w-full">
                 <thead>
                     <tr>
-                        <th id="th-icon" class="text-center" style="width: 80px;" data-key="th_icon">ICONO</th>
-                        <th id="th-item" class="text-left" data-key="th_item">ARTÍCULO / ITEM</th>
-                        <th id="th-stock" class="text-right" data-key="th_stock">EXISTENCIA / STOCK</th>
+                        <th class="text-center" style="width: 80px;" data-key="th_icon">ICONO</th>
+                        <th class="text-left" data-key="th_item">ARTÍCULO / ITEM</th>
+                        <th class="text-right" data-key="th_stock">EXISTENCIA / STOCK</th>
                     </tr>
                 </thead>
                 <tbody id="cuerpoTabla"></tbody>
@@ -179,21 +180,26 @@
                 info_table: "Mostrando _TOTAL_ itens", zero_records: "Nenhum suprimento encontrado",
                 th_icon: "Ícone", th_item: "Artigo / Item", th_stock: "Estoque",
                 header_reparto: "DISTRIBUIÇÃO DE ITENS", header_actividad: "RANKING DE ATIVIDADE", header_puntos: "ESTADO DA CONTA",
-                sub_puntos: "Balanço de Pontos da Comunidade", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
+                sub_puntos: "Balanço de Pontos da Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
                 pts: "PTS"
             }
         };
 
+        // DICCIONARIO DE TRADUCCIÓN PARA ARTÍCULOS DEL EXCEL
         const itemsTraduccion = {
             "Diamantes": { en: "Diamonds", pt: "Diamantes" },
             "Hierro": { en: "Iron", pt: "Ferro" },
-            "Poción de Vida": { en: "Health Potion", pt: "Poção de Vida" }
+            "Poción de Vida": { en: "Health Potion", pt: "Poção de Vida" },
+            "Fragmento de diseño de armadura de Andvari": { en: "Andvari Armor Design Fragment", pt: "Fragmento de design de armadura de Andvari" }
         };
 
         let currentLang = 'es';
 
+        // Función para obtener el nombre traducido
         function obtenerNombreItem(nombreOriginal) {
-            const item = itemsTraduccion[nombreOriginal];
+            if (!nombreOriginal) return "";
+            const limpio = nombreOriginal.trim();
+            const item = itemsTraduccion[limpio];
             if (item && item[currentLang]) return item[currentLang];
             return nombreOriginal;
         }
@@ -204,6 +210,7 @@
                 const key = $(this).data('key');
                 if (i18n[lang][key]) $(this).text(i18n[lang][key]);
             });
+            // Recargamos los datos para aplicar la traducción a lo que viene del Excel
             cargarDatos();
             cargarReparto();
         }
@@ -226,14 +233,17 @@
                     let html = '';
                     const headerRowIdx = rows.findIndex(r => r.some(c => c && c.includes('Artículo')));
                     if (headerRowIdx !== -1) {
-                        const colItem = rows[headerRowIdx].findIndex(h => h.includes('Artículo'));
-                        const colStock = rows[headerRowIdx].findIndex(h => h.includes('Existencia'));
+                        const headers = rows[headerRowIdx];
+                        const colItem = headers.findIndex(h => h.includes('Artículo'));
+                        const colStock = headers.findIndex(h => h.includes('Existencia'));
                         rows.slice(headerRowIdx + 1).forEach(row => {
                             const original = row[colItem] ? row[colItem].trim() : '';
+                            const stock = row[colStock] ? row[colStock].trim() : '0';
+                            const imgPath = row[32] ? row[32].trim() : ''; 
                             if (original && original !== "" && !original.includes('Total de puntos')) {
-                                const nombre = obtenerNombreItem(original); // APLICAR TRADUCCIÓN AQUÍ
-                                const stock = row[colStock] ? row[colStock].trim() : '0';
-                                html += `<tr><td class="text-center"><img src="${row[32]}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombre}</td><td class="text-right stock-number">${stock}</td></tr>`;
+                                // AQUÍ TRADUCIMOS EL NOMBRE
+                                const nombreFinal = obtenerNombreItem(original);
+                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombreFinal}</td><td class="text-right stock-number">${stock}</td></tr>`;
                             }
                         });
                     }
@@ -271,7 +281,7 @@
                 const data = results.data;
                 let lista = [];
                 for (let i = 4; i < data.length; i++) {
-                    const nick = data[i][7]; const avg = data[i][16];
+                    const nick = data[i][7]; const avg = data[i][16]; 
                     if (nick && avg && nick !== "Nick") {
                         const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
                         lista.push({ nick, avg, valNum });
