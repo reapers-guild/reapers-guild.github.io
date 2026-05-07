@@ -341,6 +341,36 @@
             flex-wrap: wrap; /* Permite que el nombre y los puntos se acomoden en pantallas pequeñas */
         }
         .evil-gay img{position: absolute;right: 0;max-width: 250px;margin-right: -252px;top: 0;}
+        /* Contenedor opcional para centrar o ubicar la imagen */
+.levitate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta según necesites */
+    background: transparent; /* Mantiene el fondo limpio */
+}
+
+.floating-character {
+    width: 300px; /* Ajusta el tamaño a tu gusto */
+    height: auto;
+    /* Aplicamos la animación */
+    animation: float 4s ease-in-out infinite;
+    /* Un pequeño filtro de brillo o sombra puede ayudar al efecto místico */
+    filter: drop-shadow(0 5px 15px rgba(0, 255, 127, 0.3));
+}
+
+/* Definición de los movimientos */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px); /* Sube 20 pixeles */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
     </style>
 </head>
 <body>
@@ -383,6 +413,9 @@
     <div class="main-container">
         <!-- SECCIÓN ALMACÉN (IGUAL A TU ORIGINAL) -->
         <div id="sec-almacen" class="content-section active">
+            <div class="levitate-container" class="banin-flotating">
+                <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
+            </div>            
             <div class="logo-header">
                 <h1>REAPERS ALMACÉN</h1>
                 <p class="text-slate-400 uppercase tracking-widest text-xs">Registro Oficial de Suministros</p>
