@@ -27,14 +27,8 @@
         }
 
         .tabs-nav { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 8px; 
-            margin: 0 auto -100px; 
-            position: relative; 
-            z-index: 100; 
-            max-width: 900px;
-            padding: 0 10px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; 
+            margin: 0 auto -100px; position: relative; z-index: 100; max-width: 900px; padding: 0 10px;
         }
 
         @media (min-width: 768px) {
@@ -190,12 +184,13 @@
             }
         };
 
-        /* --- TRADUCCIÓN DE ITEMS DEL EXCEL --- */
         const itemsTraduccion = {
             "Diamantes": { en: "Diamonds", pt: "Diamantes" },
             "Hierro": { en: "Iron", pt: "Ferro" },
             "Poción de Vida": { en: "Health Potion", pt: "Poção de Vida" }
         };
+
+        let currentLang = 'es';
 
         function obtenerNombreItem(nombreOriginal) {
             const item = itemsTraduccion[nombreOriginal];
@@ -203,19 +198,12 @@
             return nombreOriginal;
         }
 
-        let currentLang = 'es';
-
         function changeLanguage(lang) {
             currentLang = lang;
-            
             $('[data-key]').each(function() {
                 const key = $(this).data('key');
-                if (i18n[lang][key]) {
-                    $(this).text(i18n[lang][key]);
-                }
+                if (i18n[lang][key]) $(this).text(i18n[lang][key]);
             });
-
-            // RECARGAR DATOS para que se ejecute la lógica de traducción de los ítems
             cargarDatos();
             cargarReparto();
         }
@@ -238,39 +226,26 @@
                     let html = '';
                     const headerRowIdx = rows.findIndex(r => r.some(c => c && c.includes('Artículo')));
                     if (headerRowIdx !== -1) {
-                        const headers = rows[headerRowIdx];
-                        const colItem = headers.findIndex(h => h.includes('Artículo'));
-                        const colStock = headers.findIndex(h => h.includes('Existencia'));
+                        const colItem = rows[headerRowIdx].findIndex(h => h.includes('Artículo'));
+                        const colStock = rows[headerRowIdx].findIndex(h => h.includes('Existencia'));
                         rows.slice(headerRowIdx + 1).forEach(row => {
-                            /* --- CAMBIO AQUÍ --- */
-                            const nombreOriginal = row[colItem] ? row[colItem].trim() : '';
-                            const nombreTraducido = obtenerNombreItem(nombreOriginal); 
-                            /* ------------------- */
-                            const stock = row[colStock] ? row[colStock].trim() : '0';
-                            const imgPath = row[32] ? row[32].trim() : ''; 
-                            if (nombreOriginal && nombreOriginal !== "" && !nombreOriginal.includes('Total de puntos')) {
-                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombreTraducido}</td><td class="text-right stock-number">${stock}</td></tr>`;
+                            const original = row[colItem] ? row[colItem].trim() : '';
+                            if (original && original !== "" && !original.includes('Total de puntos')) {
+                                const nombre = obtenerNombreItem(original); // APLICAR TRADUCCIÓN AQUÍ
+                                const stock = row[colStock] ? row[colStock].trim() : '0';
+                                html += `<tr><td class="text-center"><img src="${row[32]}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombre}</td><td class="text-right stock-number">${stock}</td></tr>`;
                             }
                         });
                     }
                     $('#cuerpoTabla').html(html);
-                    
-                    // Destruir tabla previa para aplicar nuevos textos de búsqueda
-                    if ($.fn.DataTable.isDataTable('#tablaReapers')) {
-                        $('#tablaReapers').DataTable().destroy();
-                    }
-
+                    if ($.fn.DataTable.isDataTable('#tablaReapers')) $('#tablaReapers').DataTable().destroy();
                     $('#tablaReapers').DataTable({
-                        pageLength: 50, 
-                        order: [[2, 'desc']],
+                        pageLength: 50, order: [[2, 'desc']],
                         language: { 
                             search: i18n[currentLang].search_label, 
                             info: i18n[currentLang].info_table, 
                             zeroRecords: i18n[currentLang].zero_records,
-                            paginate: { 
-                                next: currentLang === 'es' ? "Sig" : "Next", 
-                                previous: currentLang === 'es' ? "Ant" : "Prev" 
-                            } 
+                            paginate: { next: currentLang === 'es' ? "Sig" : "Next", previous: currentLang === 'es' ? "Ant" : "Prev" } 
                         }
                     });
                 }
@@ -282,7 +257,6 @@
             Papa.parse(urlReparto, { download: true, complete: function(results) {
                 let hD = '', hAdmin = '', hAH = '';
                 results.data.slice(4).forEach(r => {
-                    // Aplicando obtenerNombreItem a cada celda de nombre
                     if (r[1]) hD += `<tr><td><img src="${r[28]}" class="img-mini"></td><td>${obtenerNombreItem(r[1])}</td><td class="pts-orange">${r[3]}</td></tr>`;
                     if (r[4]) hAdmin += `<tr><td>${obtenerNombreItem(r[4])}</td><td class="pts-orange">${r[6]}</td></tr>`;
                     if (r[8]) hAH += `<tr><td><img src="${r[29]}" class="img-mini"></td><td>${obtenerNombreItem(r[8])}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
@@ -297,7 +271,7 @@
                 const data = results.data;
                 let lista = [];
                 for (let i = 4; i < data.length; i++) {
-                    const nick = data[i][7]; const avg = data[i][16]; 
+                    const nick = data[i][7]; const avg = data[i][16];
                     if (nick && avg && nick !== "Nick") {
                         const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
                         lista.push({ nick, avg, valNum });
@@ -326,8 +300,7 @@
                         else if (puntosVal > 0) positivos.push({ nombre, puntos: puntosVal });
                     }
                 }
-                positivos.sort((a, b) => b.puntos - a.puntos);
-                deudores.sort((a, b) => a.puntos - b.puntos);
+                positivos.sort((a, b) => b.puntos - a.puntos); deudores.sort((a, b) => a.puntos - b.puntos);
                 let htmlPos = '', htmlDeu = '';
                 positivos.forEach(p => {
                     htmlPos += `<div class="ranking-row" style="border-left: 4px solid #22c55e; margin-bottom: 5px; background: rgba(34, 197, 94, 0.05); padding: 8px 15px;"><div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${p.nombre}</div><div class="pct-high" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">${p.puntos} PTS</div></div>`;
@@ -347,7 +320,6 @@
             const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints'];
             if (seccionesValidas.includes(lastPart)) verSeccion(lastPart);
             else verSeccion('almacen');
-
             window.onpopstate = function(event) {
                 if (event.state && event.state.seccion) {
                     $('.content-section').removeClass('active');
