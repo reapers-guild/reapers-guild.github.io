@@ -309,6 +309,9 @@
         }
 
         function verSeccion(id, btn) {
+
+            reproducirSonido(); 
+
             // 1. Cambiar visibilidad de secciones
             $('.content-section').removeClass('active');
             $(`#sec-${id}`).addClass('active');
@@ -489,9 +492,15 @@
         });
         const audioClick = new Audio('iCreateWindow.wav');
 
-            function reproducirSonido() {
-                audioClick.currentTime = 0;
-                audioClick.play().catch(e => console.log("El sonido espera interacción del usuario o el archivo no existe."));
+        function reproducirSonido() {
+            // Esto ayuda a que el sonido se "resetee" si haces clics rápidos
+            audioClick.pause();
+            audioClick.currentTime = 0;
+            
+            // Intentar reproducir y capturar errores de permisos del navegador
+            audioClick.play().catch(error => {
+                console.warn("El audio no pudo reproducirse debido a políticas del navegador:", error);
+            });
         }
     </script>
 </body>
