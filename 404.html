@@ -10,6 +10,7 @@
     
     <style>
         .sticket-deudores img{margin: 0 auto;padding-top: 45px;position: absolute;bottom: -45px;transform: rotate(2deg);}
+        /* --- TUS ESTILOS ORIGINALES --- */
         #tablaReapers_length { margin-left: 15px; }
         #tablaReapers_filter { margin-right: 15px; }
         :root { --bg-dark: #0a0c10; --panel-dark: #161b22; --nordic-gold: #c5a059; --text-silver: #94a3b8; }
@@ -26,23 +27,48 @@
             backdrop-filter: blur(5px); border: 1px solid var(--nordic-gold); box-shadow: 0 0 50px rgba(0,0,0,0.9);
         }
 
-        .tabs-nav { 
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; 
-            margin: 0 auto -100px; position: relative; z-index: 100; max-width: 900px; padding: 0 10px;
-        }
+        /* --- TABS NAV --- */
+        /* --- TABS NAV ADAPTATIVO --- */
+.tabs-nav { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* Por defecto: 2 columnas (Mobile) */
+    gap: 8px; 
+    margin: 0 auto -100px; 
+    position: relative; 
+    z-index: 100; 
+    max-width: 900px;
+    padding: 0 10px;
+}
 
-        @media (min-width: 768px) {
-            .tabs-nav { display: flex; flex-direction: row; justify-content: center; gap: 10px; }
-            .btn-tab { font-size: 13px; padding: 12px 25px; }
-        }
+/* Solo si la pantalla es más grande que 768px (Desktop), vuelve a ser una fila */
+@media (min-width: 768px) {
+    .tabs-nav { 
+        display: flex; 
+        flex-direction: row;
+        justify-content: center; 
+        gap: 10px;
+    }
+    
+    .btn-tab {
+        font-size: 13px; /* Tamaño original para desktop */
+        padding: 12px 25px;
+    }
+}
 
-        @media (max-width: 767px) {
-            .sticket-deudores{margin-left: 25px;}
-            .evil-gay{display:none}
-            .sticket-deudores img{max-width: 250px;bottom: -28px;}
-            .btn-tab { font-size: 10px; padding: 10px 4px; display: flex; align-items: center; justify-content: center; min-height: 45px; }
-        }
-
+/* Ajuste extra para que los botones no se rompan en móviles muy pequeños */
+@media (max-width: 767px) {
+    .sticket-deudores{margin-left: 25px;}
+    .evil-gay{display:none}
+    .sticket-deudores img{max-width: 250px;bottom: -28px;}
+    .btn-tab {
+        font-size: 10px;
+        padding: 10px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 45px;
+    }
+}
         .btn-tab { padding: 12px 25px; border: 1px solid var(--nordic-gold); background: #161b22; color: var(--nordic-gold); font-family: 'Cinzel', serif; cursor: pointer; text-transform: uppercase; font-size: 13px; transition: 0.3s; }
         .btn-tab.active { background: var(--nordic-gold); color: black; }
         .content-section { display: none; }
@@ -51,11 +77,13 @@
         .logo-header { text-align: center; margin-bottom: 30px; padding: 30px 0 20px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
         h1 { font-family: 'Cinzel', serif; color: var(--nordic-gold); font-size: 2.5rem; letter-spacing: 4px; text-transform: uppercase; }
 
+        /* --- ESTILOS DE TABLA (ORIGINALES) --- */
         table.dataTable { border-collapse: collapse !important; border: none !important; margin-top: 20px !important; }
         table.dataTable thead th { font-family: 'Cinzel', serif; background-color: #0f172a !important; color: var(--nordic-gold) !important; text-transform: uppercase; font-size: 0.85rem; padding: 18px !important; border-bottom: 2px solid var(--nordic-gold) !important; letter-spacing: 1px; }
         .item-icon { width: 44px; height: 44px; object-fit: contain; border-radius: 4px; background: #000; border: 1px solid var(--nordic-gold); padding: 2px; }
         .stock-number { color: #4ade80; font-weight: 700; font-size: 1.2rem; }
 
+        /* --- REPARTO GRID --- */
         .reparto-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; padding: 15px; }
         @media (min-width: 769px) { .reparto-grid { grid-template-columns: repeat(3, 1fr); } }
         .reparto-col { border: 1px solid rgba(197, 160, 89, 0.3); background: rgba(0,0,0,0.4); }
@@ -65,11 +93,17 @@
         .img-mini { width: 32px; height: 32px; border: 1px solid var(--nordic-gold); background: #000; display: block; margin: 0 auto; }
         .pts-orange { color: #f59e0b; font-weight: bold; text-align: center; }
 
+        /* --- RANKING --- */
         .ranking-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid rgba(197,160,89,0.1); }
         .pct-high { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; }
         .pct-low { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
-        .grid > div { min-width: 0; }
-        .ranking-row { flex-wrap: wrap; }
+        /* Ajuste para que las columnas de deudores no se desborden */
+        .grid > div {
+            min-width: 0; 
+        }
+        .ranking-row {
+            flex-wrap: wrap; /* Permite que el nombre y los puntos se acomoden en pantallas pequeñas */
+        }
         .evil-gay img{position: absolute;right: 0;max-width: 250px;margin-right: -252px;top: 0;}
     </style>
 </head>
@@ -81,7 +115,6 @@
             <option value="pt">PORTUGUÊS</option>
         </select>
     </div>
-
     <nav class="tabs-nav">
         <button class="btn-tab active" onclick="verSeccion('almacen', this)" data-key="tab_almacen">ALMACÉN</button>
         <button class="btn-tab" onclick="verSeccion('reparto', this)" data-key="tab_reparto">REPARTO</button>
@@ -90,133 +123,154 @@
     </nav>
 
     <div class="main-container">
+        <!-- SECCIÓN ALMACÉN (IGUAL A TU ORIGINAL) -->
         <div id="sec-almacen" class="content-section active">
             <div class="logo-header">
-                <h1 data-key="header_almacen">REAPERS ALMACÉN</h1>
-                <p class="text-slate-400 uppercase tracking-widest text-xs" data-key="sub_almacen">Registro Oficial de Suministros</p>
+                <h1>REAPERS ALMACÉN</h1>
+                <p class="text-slate-400 uppercase tracking-widest text-xs">Registro Oficial de Suministros</p>
             </div>
             <table id="tablaReapers" class="display w-full">
                 <thead>
                     <tr>
-                        <th class="text-center" style="width: 80px;" data-key="th_icon">ICONO</th>
-                        <th class="text-left" data-key="th_item">ARTÍCULO / ITEM</th>
-                        <th class="text-right" data-key="th_stock">EXISTENCIA / STOCK</th>
+                        <th id="th-icon" class="text-center" style="width: 80px;" data-key="th_icon">ICONO</th>
+                        <th id="th-item" class="text-left" data-key="th_item">ARTÍCULO / ITEM</th>
+                        <th id="th-stock" class="text-right" data-key="th_stock">EXISTENCIA / STOCK</th>
                     </tr>
                 </thead>
                 <tbody id="cuerpoTabla"></tbody>
             </table>
         </div>
 
+        <!-- SECCIÓN REPARTO -->
         <div id="sec-reparto" class="content-section">
-            <div class="logo-header"><h1 data-key="header_reparto">REPARTO DE ITEMS</h1></div>
+            <div class="logo-header"><h1>REPARTO DE ITEMS</h1></div>
             <div class="reparto-grid">
                 <div class="reparto-col">
                     <div class="reparto-header">DISCORD</div>
-                    <table class="tab-reparto"><thead><tr><th colspan="2">ITEM</th><th data-key="pts">PTS</th></tr></thead><tbody id="listaDiscord"></tbody></table>
+                    <table class="tab-reparto"><thead><tr><th colspan="2">ITEM</th><th>PTS</th></tr></thead><tbody id="listaDiscord"></tbody></table>
                 </div>
                 <div class="reparto-col">
                     <div class="reparto-header">ADMINISTRACIÓN</div>
-                    <table class="tab-reparto"><thead><tr><th>ITEM</th><th data-key="pts">PTS</th></tr></thead><tbody id="listaAdmin"></tbody></table>
+                    <table class="tab-reparto"><thead><tr><th>ITEM</th><th>PTS</th></tr></thead><tbody id="listaAdmin"></tbody></table>
                 </div>
                 <div class="reparto-col">
                     <div class="reparto-header">ACTION HOUSE</div>
-                    <table class="tab-reparto"><thead><tr><th colspan="2">ITEM</th><th>STOCK</th><th data-key="pts">PTS</th></tr></thead><tbody id="listaAH"></tbody></table>
+                    <table class="tab-reparto"><thead><tr><th colspan="2">ITEM</th><th>STOCK</th><th>PTS</th></tr></thead><tbody id="listaAH"></tbody></table>
                 </div>
             </div>
         </div>
 
+        <!-- RANKING ACTIVIDAD -->
         <div id="sec-actividad" class="content-section">
-            <div class="logo-header"><h1 data-key="header_actividad">RANKING ACTIVIDAD</h1></div>
+            <div class="logo-header"><h1>RANKING ACTIVIDAD</h1></div>
             <div id="listaActividad"></div>
-            <div class="evil-gay"><img src="https://i.imgur.com/lqpTj11.png" alt=""></div>
+            <div class="evil-gay">
+                <img src="https://i.imgur.com/lqpTj11.png" alt="">
+            </div>
         </div>
 
         <div id="sec-reaperspoints" class="content-section">
             <div class="logo-header">
-                <h1 data-key="header_puntos">ESTADO DE CUENTA</h1>
-                <p class="text-slate-400 uppercase tracking-widest text-xs" data-key="sub_puntos">Balance de Puntos de la Comunidad</p>
+                <h1>ESTADO DE CUENTA</h1>
+                <p class="text-slate-400 uppercase tracking-widest text-xs">Balance de Puntos de la Comunidad</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
                 <div>
-                    <h2 class="font-['Cinzel'] text-green-400 text-center mb-4 text-sm tracking-widest" data-key="label_positivos">Saldos Positivos</h2>
+                    <h2 class="font-['Cinzel'] text-green-400 text-center mb-4 text-sm tracking-widest">Saldos Positivos</h2>
                     <div id="listaPositivos"></div>
                 </div>
+                
                 <div>
-                    <h2 class="font-['Cinzel'] text-red-400 text-center mb-4 text-sm tracking-widest" data-key="label_negativos">Saldos Negativos</h2>
+                    <h2 class="font-['Cinzel'] text-red-400 text-center mb-4 text-sm tracking-widest">Saldos Negativos</h2>
                     <div id="listaDeudores"></div>
-                    <div class="sticket-deudores"><img src="https://i.imgur.com/0uni79p.png" alt=""></div>
+                    <div class="sticket-deudores">
+                        <img src="https://i.imgur.com/0uni79p.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <script>
-        const i18n = {
+                const i18n = {
             es: {
-                tab_almacen: "ALMACÉN", tab_reparto: "REPARTO", tab_ranking: "RANKING ACTIVIDAD", tab_puntos: "REAPERS POINTS",
-                header_almacen: "REAPERS ALMACÉN", sub_almacen: "Registro Oficial de Suministros", search_label: "BUSCAR EN EL TESORO:",
-                info_table: "Mostrando _TOTAL_ artículos", zero_records: "No se han encontrado suministros",
-                th_icon: "Icono", th_item: "Artículo / Item", th_stock: "Existencia / Stock",
-                header_reparto: "REPARTO DE ITEMS", header_actividad: "RANKING ACTIVIDAD", header_puntos: "ESTADO DE CUENTA",
-                sub_puntos: "Balance de Puntos de la Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
+                tab_almacen: "ALMACÉN",
+                tab_reparto: "REPARTO",
+                tab_ranking: "RANKING ACTIVIDAD",
+                tab_puntos: "REAPERS POINTS",
+                header_almacen: "REAPERS ALMACÉN",
+                sub_almacen: "Registro Oficial de Suministros",
+                search_label: "BUSCAR EN EL TESORO:",
+                info_table: "Mostrando _TOTAL_ artículos",
+                zero_records: "No se han encontrado suministros",
+                th_icon: "Icono",
+                th_item: "Artículo / Item",
+                th_stock: "Existencia / Stock",
+                header_reparto: "REPARTO DE ITEMS",
+                header_actividad: "RANKING ACTIVIDAD",
+                header_puntos: "ESTADO DE CUENTA",
+                sub_puntos: "Balance de Puntos de la Comunidad",
+                label_positivos: "Saldos Positivos",
+                label_negativos: "Saldos Negativos",
+                no_data: "Sin datos registrados",
                 pts: "PTS"
             },
             en: {
-                tab_almacen: "STORAGE", tab_reparto: "DISTRIBUTION", tab_ranking: "ACTIVITY RANK", tab_puntos: "REAPERS POINTS",
-                header_almacen: "REAPERS STORAGE", sub_almacen: "Official Supply Registry", search_label: "SEARCH TREASURE:",
-                info_table: "Showing _TOTAL_ items", zero_records: "No supplies found",
-                th_icon: "Icon", th_item: "Article / Item", th_stock: "Stock / Inventory",
-                header_reparto: "ITEM DISTRIBUTION", header_actividad: "ACTIVITY RANKING", header_puntos: "ACCOUNT STATUS",
-                sub_puntos: "Community Points Balance", label_positivos: "Positive Balances", label_negativos: "Negative Balances",
+                tab_almacen: "STORAGE",
+                tab_reparto: "DISTRIBUTION",
+                tab_ranking: "ACTIVITY RANK",
+                tab_puntos: "REAPERS POINTS",
+                header_almacen: "REAPERS STORAGE",
+                sub_almacen: "Official Supply Registry",
+                search_label: "SEARCH TREASURE:",
+                info_table: "Showing _TOTAL_ items",
+                zero_records: "No supplies found",
+                th_icon: "Icon",
+                th_item: "Article / Item",
+                th_stock: "Stock / Inventory",
+                header_reparto: "ITEM DISTRIBUTION",
+                header_actividad: "ACTIVITY RANKING",
+                header_puntos: "ACCOUNT STATUS",
+                sub_puntos: "Community Points Balance",
+                label_positivos: "Positive Balances",
+                label_negativos: "Negative Balances",
+                no_data: "No data recorded",
                 pts: "PTS"
             },
             pt: {
-                tab_almacen: "ARMAZÉM", tab_reparto: "DISTRIBUIÇÃO", tab_ranking: "RANKING DE ATIVIDADE", tab_puntos: "REAPERS POINTS",
-                header_almacen: "ARMAZÉM REAPERS", sub_almacen: "Registro Oficial de Suprimentos", search_label: "BUSCAR NO TESOURO:",
-                info_table: "Mostrando _TOTAL_ itens", zero_records: "Nenhum suprimento encontrado",
-                th_icon: "Ícone", th_item: "Artigo / Item", th_stock: "Estoque",
-                header_reparto: "DISTRIBUIÇÃO DE ITENS", header_actividad: "RANKING DE ATIVIDADE", header_puntos: "ESTADO DA CONTA",
-                sub_puntos: "Balanço de Pontos da Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
+                tab_almacen: "ARMAZÉM",
+                tab_reparto: "DISTRIBUIÇÃO",
+                tab_ranking: "RANKING DE ATIVIDADE",
+                tab_puntos: "REAPERS POINTS",
+                header_almacen: "ARMAZÉM REAPERS",
+                sub_almacen: "Registro Oficial de Suprimentos",
+                search_label: "BUSCAR NO TESOURO:",
+                info_table: "Mostrando _TOTAL_ itens",
+                zero_records: "Nenhum suprimento encontrado",
+                th_icon: "Ícone",
+                th_item: "Artigo / Item",
+                th_stock: "Estoque",
+                header_reparto: "DISTRIBUIÇÃO DE ITENS",
+                header_actividad: "RANKING DE ATIVIDADE",
+                header_puntos: "ESTADO DA CONTA",
+                sub_puntos: "Balanço de Pontos da Comunidade",
+                label_positivos: "Saldos Positivos",
+                label_negativos: "Saldos Negativos",
+                no_data: "Sem dados registrados",
                 pts: "PTS"
             }
-        };
-
-        // DICCIONARIO DE TRADUCCIÓN PARA ARTÍCULOS DEL EXCEL
-        const itemsTraduccion = {
-            "Diamantes": { en: "Diamonds", pt: "Diamantes" },
-            "Cristal misterioso/ Mystery Crystal": { en: "Mystery Crystal", pt: "Cristal Mistérico" },
-            "Fragmento de diseño de arma de Andvari/ Andvari Weapon Design Fragment": { en: "Andvari Weapon Design Fragment", pt: "Fragmento de Design de Arma de Andvari" },
-            "Fragmento de diseño de armadura de Andvari/ Andvari Armor Design Fragment": { en: "Andvari Armor Design Fragment", pt: "Fragmento de Design de Armadura de Andvari" },
-            "Fragmento de diseño de accesorio de Andvari/ Andvari Accessory Design Fragment": { en: "Andvari Accessory Design Fragment", pt: "Fragmento de Design de Acessório de Andvari" },
-            "Diseño de arma de Andvari/ Andvari Weapon Design": { en: "Andvari Weapon Design", pt: "Design de Arma de Andvari" },
-            "Manual de habilidad inusual guerrero/ Rare Skill Manual - Warrior": { en: "Rare Skill Manual - Warrior", pt: "Manual de Habilidade Rara - Guerreiro" },
         };
 
         let currentLang = 'es';
 
-        // Función para obtener el nombre traducido
-        function obtenerNombreItem(nombreOriginal) {
-            if (!nombreOriginal) return "";
-            
-            // Limpiamos espacios extras que pueda traer el Excel
-            const nombreLimpio = nombreOriginal.trim();
-            
-            const item = itemsTraduccion[nombreLimpio];
-            if (item && item[currentLang]) {
-                return item[currentLang];
-            }
-            
-            return nombreLimpio; 
-        }
-
         function changeLanguage(lang) {
             currentLang = lang;
             
-            // Traducir textos estáticos (Tabs, encabezados)
+            // 1. Traducir todos los elementos con [data-key] (Tabs, Títulos, etc)
             $('[data-key]').each(function() {
                 const key = $(this).data('key');
                 if (i18n[lang][key]) {
@@ -224,20 +278,47 @@
                 }
             });
 
-            // Forzar la recarga de las tablas y listas para aplicar la nueva traducción
-            cargarDatos();
-            cargarReparto();
+            // 2. Traducir específicamente los textos de la tabla de Almacén
+            $('#th-icon').text(i18n[lang].th_icon);
+            $('#th-item').text(i18n[lang].th_item);
+            $('#th-stock').text(i18n[lang].th_stock);
+            
+            // 3. Actualizar los textos de DataTables
+            if ($.fn.DataTable.isDataTable('#tablaReapers')) {
+                const table = $('#tablaReapers').DataTable();
+                
+                // Actualizamos la configuración de lenguaje del objeto DataTable
+                table.context[0].oLanguage.sSearch = i18n[lang].search_label;
+                table.context[0].oLanguage.sInfo = i18n[lang].info_table;
+                table.context[0].oLanguage.sZeroRecords = i18n[lang].zero_records;
+                
+                // Redibujar para aplicar cambios visuales en el buscador
+                $('.dataTables_filter label').contents().filter(function() {
+                    return this.nodeType === 3;
+                }).first().replaceWith(i18n[lang].search_label);
+            }
         }
 
         function verSeccion(id, btn) {
+            // 1. Cambiar visibilidad de secciones
             $('.content-section').removeClass('active');
             $(`#sec-${id}`).addClass('active');
+            
+            // 2. Cambiar estado del botón
             $('.btn-tab').removeClass('active');
-            if (btn) $(btn).addClass('active');
-            else $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
+            if (btn) {
+                $(btn).addClass('active');
+            } else {
+                // Busca el botón que tiene la función verSeccion con ese ID
+                $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
+            }
+
+            // 3. Actualizar la URL limpia (ej: /deudores)
+            // Usamos history.pushState para que no aparezca el #
             window.history.pushState({ seccion: id }, "", id);
         }
 
+        // --- TU FUNCIÓN CARGAR DATOS ORIGINAL (ALMACÉN)[cite: 4] ---
         function cargarDatos() {
             const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=2029872222&single=true&output=csv';
             Papa.parse(csvUrl, {
@@ -251,57 +332,52 @@
                         const colItem = headers.findIndex(h => h.includes('Artículo'));
                         const colStock = headers.findIndex(h => h.includes('Existencia'));
                         rows.slice(headerRowIdx + 1).forEach(row => {
-                            const original = row[colItem] ? row[colItem].trim() : '';
+                            const nombre = row[colItem] ? row[colItem].trim() : '';
                             const stock = row[colStock] ? row[colStock].trim() : '0';
                             const imgPath = row[32] ? row[32].trim() : ''; 
-                            if (original && original !== "" && !original.includes('Total de puntos')) {
-                                // AQUÍ TRADUCIMOS EL NOMBRE
-                                const nombreFinal = obtenerNombreItem(original);
-                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombreFinal}</td><td class="text-right stock-number">${stock}</td></tr>`;
+                            if (nombre && nombre !== "" && !nombre.includes('Total de puntos')) {
+                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombre}</td><td class="text-right stock-number">${stock}</td></tr>`;
                             }
                         });
                     }
                     $('#cuerpoTabla').html(html);
-                    if ($.fn.DataTable.isDataTable('#tablaReapers')) $('#tablaReapers').DataTable().destroy();
                     $('#tablaReapers').DataTable({
-                        pageLength: 50, order: [[2, 'desc']],
-                        language: { 
-                            search: i18n[currentLang].search_label, 
-                            info: i18n[currentLang].info_table, 
-                            zeroRecords: i18n[currentLang].zero_records,
-                            paginate: { next: currentLang === 'es' ? "Sig" : "Next", previous: currentLang === 'es' ? "Ant" : "Prev" } 
-                        }
+                        destroy: true, pageLength: 50, order: [[2, 'desc']],
+                        language: { search: "BUSCAR EN EL TESORO:", info: "Mostrando _TOTAL_ artículos", zeroRecords: "No se han encontrado suministros", paginate: { next: "Siguiente", previous: "Anterior" } }
                     });
                 }
             });
         }
 
+        // --- FUNCIÓN REPARTO (AC y AD)[cite: 2] ---
         function cargarReparto() {
             const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
             Papa.parse(urlReparto, { download: true, complete: function(results) {
                 let hD = '', hAdmin = '', hAH = '';
                 results.data.slice(4).forEach(r => {
-                    if (r[1]) hD += `<tr><td><img src="${r[28]}" class="img-mini"></td><td>${obtenerNombreItem(r[1])}</td><td class="pts-orange">${r[3]}</td></tr>`;
-                    if (r[4]) hAdmin += `<tr><td>${obtenerNombreItem(r[4])}</td><td class="pts-orange">${r[6]}</td></tr>`;
-                    if (r[8]) hAH += `<tr><td><img src="${r[29]}" class="img-mini"></td><td>${obtenerNombreItem(r[8])}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
+                    if (r[1]) hD += `<tr><td><img src="${r[28]}" class="img-mini"></td><td>${r[1]}</td><td class="pts-orange">${r[3]}</td></tr>`;
+                    if (r[4]) hAdmin += `<tr><td>${r[4]}</td><td class="pts-orange">${r[6]}</td></tr>`;
+                    if (r[8]) hAH += `<tr><td><img src="${r[29]}" class="img-mini"></td><td>${r[8]}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
                 });
                 $('#listaDiscord').html(hD); $('#listaAdmin').html(hAdmin); $('#listaAH').html(hAH);
             }});
         }
 
+        // --- FUNCIÓN ACTIVIDAD (RANKING)[cite: 2, 3] ---
         function cargarActividad() {
             const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
             Papa.parse(urlActividad, { download: true, complete: function(results) {
                 const data = results.data;
                 let lista = [];
                 for (let i = 4; i < data.length; i++) {
-                    const nick = data[i][7]; const avg = data[i][16]; 
+                    const nick = data[i][7]; // Col H[cite: 2]
+                    const avg = data[i][16]; // Col Q[cite: 2]
                     if (nick && avg && nick !== "Nick") {
                         const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
                         lista.push({ nick, avg, valNum });
                     }
                 }
-                lista.sort((a, b) => b.valNum - a.valNum);
+                lista.sort((a, b) => b.valNum - a.valNum); //[cite: 3]
                 let html = '';
                 lista.forEach((u, i) => {
                     const color = u.valNum >= 50 ? 'pct-high' : 'pct-low';
@@ -313,39 +389,88 @@
 
         function cargarDeudores() {
             const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
-            Papa.parse(urlPuntos, { download: true, complete: function(results) {
-                const data = results.data;
-                let deudores = [], positivos = [];
-                for (let i = 3; i < data.length; i++) {
-                    const nombre = data[i][12]; const puntosStr = data[i][13]; 
-                    if (nombre && puntosStr) {
-                        const puntosVal = parseInt(puntosStr.replace('.', '').trim()) || 0;
-                        if (puntosVal < 0) deudores.push({ nombre, puntos: puntosVal });
-                        else if (puntosVal > 0) positivos.push({ nombre, puntos: puntosVal });
+            
+            Papa.parse(urlPuntos, { 
+                download: true, 
+                complete: function(results) {
+                    const data = results.data;
+                    let deudores = [];
+                    let positivos = [];
+                    
+                    for (let i = 3; i < data.length; i++) {
+                        const nombre = data[i][12]; // Columna M
+                        const puntosStr = data[i][13]; // Columna N
+                        
+                        if (nombre && puntosStr) {
+                            const puntosVal = parseInt(puntosStr.replace('.', '').trim()) || 0;
+                            if (puntosVal < 0) {
+                                deudores.push({ nombre, puntos: puntosVal });
+                            } else if (puntosVal > 0) {
+                                positivos.push({ nombre, puntos: puntosVal });
+                            }
+                        }
                     }
+                    
+                    // Ordenar: Positivos de mayor a menor, Deudores de más negativo a menos
+                    positivos.sort((a, b) => b.puntos - a.puntos);
+                    deudores.sort((a, b) => a.puntos - b.puntos);
+                    
+                    // Generar HTML Positivos (Verde)
+                    let htmlPos = '';
+                    positivos.forEach(p => {
+                        htmlPos += `
+                        <div class="ranking-row" style="border-left: 4px solid #22c55e; margin-bottom: 5px; background: rgba(34, 197, 94, 0.05); padding: 8px 15px;">
+                            <div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${p.nombre}</div>
+                            <div class="pct-high" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">
+                                ${p.puntos} PTS
+                            </div>
+                        </div>`;
+                    });
+
+                    // Generar HTML Deudores (Rojo)
+                    let htmlDeu = '';
+                    deudores.forEach(d => {
+                        htmlDeu += `
+                        <div class="ranking-row" style="border-left: 4px solid #ef4444; margin-bottom: 5px; background: rgba(239, 68, 68, 0.05); padding: 8px 15px;">
+                            <div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${d.nombre}</div>
+                            <div class="pct-low" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">
+                                ${d.puntos} PTS
+                            </div>
+                        </div>`;
+                    });
+                    
+                    $('#listaPositivos').html(htmlPos || '<p class="text-center text-slate-500 py-4 text-xs">No hay saldos positivos.</p>');
+                    $('#listaDeudores').html(htmlDeu || '<p class="text-center text-slate-500 py-4 text-xs">No hay deudores.</p>');
                 }
-                positivos.sort((a, b) => b.puntos - a.puntos); deudores.sort((a, b) => a.puntos - b.puntos);
-                let htmlPos = '', htmlDeu = '';
-                positivos.forEach(p => {
-                    htmlPos += `<div class="ranking-row" style="border-left: 4px solid #22c55e; margin-bottom: 5px; background: rgba(34, 197, 94, 0.05); padding: 8px 15px;"><div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${p.nombre}</div><div class="pct-high" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">${p.puntos} PTS</div></div>`;
-                });
-                deudores.forEach(d => {
-                    htmlDeu += `<div class="ranking-row" style="border-left: 4px solid #ef4444; margin-bottom: 5px; background: rgba(239, 68, 68, 0.05); padding: 8px 15px;"><div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${d.nombre}</div><div class="pct-low" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">${d.puntos} PTS</div></div>`;
-                });
-                $('#listaPositivos').html(htmlPos || '<p class="text-center text-slate-500 py-4 text-xs">No hay saldos positivos.</p>');
-                $('#listaDeudores').html(htmlDeu || '<p class="text-center text-slate-500 py-4 text-xs">No hay deudores.</p>');
-            }});
+            });
         }
 
+
         $(document).ready(function() {
-            cargarDatos(); cargarReparto(); cargarActividad(); cargarDeudores();
+            // Carga de tus datos de Google Sheets
+            cargarDatos();
+            cargarReparto();
+            cargarActividad();
+            cargarDeudores();
+
+            // LEER LA URL ACTUAL
+            // window.location.pathname devuelve algo como "/reparto" o "/tu-repo/reparto"
             const pathParts = window.location.pathname.split("/");
-            const lastPart = pathParts.pop() || pathParts.pop();
+            const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
+            
             const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints'];
-            if (seccionesValidas.includes(lastPart)) verSeccion(lastPart);
-            else verSeccion('almacen');
+
+            if (seccionesValidas.includes(lastPart)) {
+                verSeccion(lastPart);
+            } else {
+                // Si la ruta es la raíz o no existe, mostrar Almacén
+                verSeccion('almacen');
+            }
+
+            // Permitir que funcionen las flechas de "Atrás" y "Adelante" del navegador
             window.onpopstate = function(event) {
                 if (event.state && event.state.seccion) {
+                    // Solo cambiamos la sección visualmente sin volver a ejecutar pushState
                     $('.content-section').removeClass('active');
                     $(`#sec-${event.state.seccion}`).addClass('active');
                     $('.btn-tab').removeClass('active');
