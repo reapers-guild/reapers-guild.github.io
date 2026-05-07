@@ -494,18 +494,22 @@
         audioClick.volume = 0.1; // Ajusta aquí el volumen general (0.5 es un buen equilibrio)
 
         function reproducirSonido() {
-            // Clonamos el audio para que cada clic sea independiente y no se corten entre sí
-            const sonidoClonado = audioClick.cloneNode();
-            sonidoClonado.volume = audioClick.volume;
-            
-            sonidoClonado.play().catch(e => {
-                console.log("Interacción requerida o error de carga:", e);
-            });
-            
-            // Opcional: Limpiar el clon de la memoria después de sonar (0.5s suele bastar)
-            setTimeout(() => {
-                sonidoClonado.remove();
-            }, 500);
+            // Solo se ejecuta si el ancho de pantalla es de 768px o más (Escritorio)
+            if (window.innerWidth >= 768) {
+                // Clonamos el audio para que cada clic sea independiente
+                const sonidoClonado = audioClick.cloneNode();
+                sonidoClonado.volume = audioClick.volume;
+                
+                sonidoClonado.play().catch(e => {
+                    console.log("Interacción requerida o error de carga:", e);
+                });
+                
+                // Limpiar el clon de la memoria después de sonar
+                setTimeout(() => {
+                    sonidoClonado.remove();
+                }, 500);
+            }
+            // Si es menor a 768px (Mobile), la función no hace nada
         }
     </script>
 </body>
