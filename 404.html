@@ -10,7 +10,6 @@
     
     <style>
         .sticket-deudores img{margin: 0 auto;padding-top: 45px;position: absolute;bottom: -45px;transform: rotate(2deg);}
-        /* --- TUS ESTILOS ORIGINALES --- */
         #tablaReapers_length { margin-left: 15px; }
         #tablaReapers_filter { margin-right: 15px; }
         :root { --bg-dark: #0a0c10; --panel-dark: #161b22; --nordic-gold: #c5a059; --text-silver: #94a3b8; }
@@ -39,12 +38,7 @@
         }
 
         @media (min-width: 768px) {
-            .tabs-nav { 
-                display: flex; 
-                flex-direction: row;
-                justify-content: center; 
-                gap: 10px;
-            }
+            .tabs-nav { display: flex; flex-direction: row; justify-content: center; gap: 10px; }
             .btn-tab { font-size: 13px; padding: 12px 25px; }
         }
 
@@ -52,15 +46,9 @@
             .sticket-deudores{margin-left: 25px;}
             .evil-gay{display:none}
             .sticket-deudores img{max-width: 250px;bottom: -28px;}
-            .btn-tab {
-                font-size: 10px;
-                padding: 10px 4px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 45px;
-            }
+            .btn-tab { font-size: 10px; padding: 10px 4px; display: flex; align-items: center; justify-content: center; min-height: 45px; }
         }
+
         .btn-tab { padding: 12px 25px; border: 1px solid var(--nordic-gold); background: #161b22; color: var(--nordic-gold); font-family: 'Cinzel', serif; cursor: pointer; text-transform: uppercase; font-size: 13px; transition: 0.3s; }
         .btn-tab.active { background: var(--nordic-gold); color: black; }
         .content-section { display: none; }
@@ -145,9 +133,7 @@
         <div id="sec-actividad" class="content-section">
             <div class="logo-header"><h1 data-key="header_actividad">RANKING ACTIVIDAD</h1></div>
             <div id="listaActividad"></div>
-            <div class="evil-gay">
-                <img src="https://i.imgur.com/lqpTj11.png" alt="">
-            </div>
+            <div class="evil-gay"><img src="https://i.imgur.com/lqpTj11.png" alt=""></div>
         </div>
 
         <div id="sec-reaperspoints" class="content-section">
@@ -163,9 +149,7 @@
                 <div>
                     <h2 class="font-['Cinzel'] text-red-400 text-center mb-4 text-sm tracking-widest" data-key="label_negativos">Saldos Negativos</h2>
                     <div id="listaDeudores"></div>
-                    <div class="sticket-deudores">
-                        <img src="https://i.imgur.com/0uni79p.png" alt="">
-                    </div>
+                    <div class="sticket-deudores"><img src="https://i.imgur.com/0uni79p.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -201,7 +185,7 @@
                 info_table: "Mostrando _TOTAL_ itens", zero_records: "Nenhum suprimento encontrado",
                 th_icon: "Ícone", th_item: "Artigo / Item", th_stock: "Estoque",
                 header_reparto: "DISTRIBUIÇÃO DE ITENS", header_actividad: "RANKING DE ATIVIDADE", header_puntos: "ESTADO DA CONTA",
-                sub_puntos: "Balanço de Pontos da Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
+                sub_puntos: "Balanço de Pontos da Comunidade", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
                 pts: "PTS"
             }
         };
@@ -211,7 +195,6 @@
             "Diamantes": { en: "Diamonds", pt: "Diamantes" },
             "Hierro": { en: "Iron", pt: "Ferro" },
             "Poción de Vida": { en: "Health Potion", pt: "Poção de Vida" }
-            // Agrega aquí los nombres EXACTOS de tu Excel y su traducción
         };
 
         function obtenerNombreItem(nombreOriginal) {
@@ -219,7 +202,6 @@
             if (item && item[currentLang]) return item[currentLang];
             return nombreOriginal;
         }
-        /* ------------------------------------- */
 
         let currentLang = 'es';
 
@@ -229,8 +211,7 @@
                 const key = $(this).data('key');
                 if (i18n[lang][key]) $(this).text(i18n[lang][key]);
             });
-
-            // Recargar datos para procesar traducciones de ítems
+            // Recargar datos para procesar traducciones
             cargarDatos();
             cargarReparto();
         }
@@ -257,7 +238,6 @@
                         const colItem = headers.findIndex(h => h.includes('Artículo'));
                         const colStock = headers.findIndex(h => h.includes('Existencia'));
                         rows.slice(headerRowIdx + 1).forEach(row => {
-                            /* SECCIÓN TRADUCIDA */
                             const nombreOriginal = row[colItem] ? row[colItem].trim() : '';
                             const nombre = obtenerNombreItem(nombreOriginal); 
                             const stock = row[colStock] ? row[colStock].trim() : '0';
@@ -268,6 +248,7 @@
                         });
                     }
                     $('#cuerpoTabla').html(html);
+                    // IMPORTANTE: Destruir la tabla antes de recrearla con el nuevo idioma
                     if ($.fn.DataTable.isDataTable('#tablaReapers')) $('#tablaReapers').DataTable().destroy();
                     $('#tablaReapers').DataTable({
                         pageLength: 50, order: [[2, 'desc']],
@@ -287,7 +268,6 @@
             Papa.parse(urlReparto, { download: true, complete: function(results) {
                 let hD = '', hAdmin = '', hAH = '';
                 results.data.slice(4).forEach(r => {
-                    /* SECCIÓN TRADUCIDA */
                     if (r[1]) hD += `<tr><td><img src="${r[28]}" class="img-mini"></td><td>${obtenerNombreItem(r[1])}</td><td class="pts-orange">${r[3]}</td></tr>`;
                     if (r[4]) hAdmin += `<tr><td>${obtenerNombreItem(r[4])}</td><td class="pts-orange">${r[6]}</td></tr>`;
                     if (r[8]) hAH += `<tr><td><img src="${r[29]}" class="img-mini"></td><td>${obtenerNombreItem(r[8])}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
@@ -302,8 +282,7 @@
                 const data = results.data;
                 let lista = [];
                 for (let i = 4; i < data.length; i++) {
-                    const nick = data[i][7]; 
-                    const avg = data[i][16]; 
+                    const nick = data[i][7]; const avg = data[i][16]; 
                     if (nick && avg && nick !== "Nick") {
                         const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
                         lista.push({ nick, avg, valNum });
@@ -325,8 +304,7 @@
                 const data = results.data;
                 let deudores = [], positivos = [];
                 for (let i = 3; i < data.length; i++) {
-                    const nombre = data[i][12]; 
-                    const puntosStr = data[i][13]; 
+                    const nombre = data[i][12]; const puntosStr = data[i][13]; 
                     if (nombre && puntosStr) {
                         const puntosVal = parseInt(puntosStr.replace('.', '').trim()) || 0;
                         if (puntosVal < 0) deudores.push({ nombre, puntos: puntosVal });
