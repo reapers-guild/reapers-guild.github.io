@@ -495,7 +495,7 @@
         function reproducirSonido() {
             // Esto ayuda a que el sonido se "resetee" si haces clics rápidos
             audioClick.pause();
-            audioClick.currentTime = 0;
+            audioClick.currentTime = 0.5;
             
             // Intentar reproducir y capturar errores de permisos del navegador
             audioClick.play().catch(error => {
