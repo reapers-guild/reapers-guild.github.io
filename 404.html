@@ -491,16 +491,21 @@
             };
         });
         const audioClick = new Audio('iCreateWindow.wav');
+        audioClick.volume = 0.7; // Ajusta aquí el volumen general (0.5 es un buen equilibrio)
 
         function reproducirSonido() {
-            // Esto ayuda a que el sonido se "resetee" si haces clics rápidos
-            audioClick.pause();
-            audioClick.currentTime = 0.8;
+            // Clonamos el audio para que cada clic sea independiente y no se corten entre sí
+            const sonidoClonado = audioClick.cloneNode();
+            sonidoClonado.volume = audioClick.volume;
             
-            // Intentar reproducir y capturar errores de permisos del navegador
-            audioClick.play().catch(error => {
-                console.warn("El audio no pudo reproducirse debido a políticas del navegador:", error);
+            sonidoClonado.play().catch(e => {
+                console.log("Interacción requerida o error de carga:", e);
             });
+            
+            // Opcional: Limpiar el clon de la memoria después de sonar (0.5s suele bastar)
+            setTimeout(() => {
+                sonidoClonado.remove();
+            }, 500);
         }
     </script>
 </body>
