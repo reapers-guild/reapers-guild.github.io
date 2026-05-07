@@ -162,8 +162,7 @@
                 info_table: "Mostrando _TOTAL_ artículos", zero_records: "No se han encontrado suministros",
                 th_icon: "Icono", th_item: "Artículo / Item", th_stock: "Existencia / Stock",
                 header_reparto: "REPARTO DE ITEMS", header_actividad: "RANKING ACTIVIDAD", header_puntos: "ESTADO DE CUENTA",
-                sub_puntos: "Balance de Puntos de la Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
-                pts: "PTS"
+                sub_puntos: "Balance de Puntos de la Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos", pts: "PTS"
             },
             en: {
                 tab_almacen: "STORAGE", tab_reparto: "DISTRIBUTION", tab_ranking: "ACTIVITY RANK", tab_puntos: "REAPERS POINTS",
@@ -171,8 +170,7 @@
                 info_table: "Showing _TOTAL_ items", zero_records: "No supplies found",
                 th_icon: "Icon", th_item: "Article / Item", th_stock: "Stock / Inventory",
                 header_reparto: "ITEM DISTRIBUTION", header_actividad: "ACTIVITY RANKING", header_puntos: "ACCOUNT STATUS",
-                sub_puntos: "Community Points Balance", label_positivos: "Positive Balances", label_negativos: "Negative Balances",
-                pts: "PTS"
+                sub_puntos: "Community Points Balance", label_positivos: "Positive Balances", label_negativos: "Negative Balances", pts: "PTS"
             },
             pt: {
                 tab_almacen: "ARMAZÉM", tab_reparto: "DISTRIBUIÇÃO", tab_ranking: "RANKING DE ATIVIDADE", tab_puntos: "REAPERS POINTS",
@@ -180,26 +178,25 @@
                 info_table: "Mostrando _TOTAL_ itens", zero_records: "Nenhum suprimento encontrado",
                 th_icon: "Ícone", th_item: "Artigo / Item", th_stock: "Estoque",
                 header_reparto: "DISTRIBUIÇÃO DE ITENS", header_actividad: "RANKING DE ATIVIDADE", header_puntos: "ESTADO DA CONTA",
-                sub_puntos: "Balanço de Pontos da Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos",
-                pts: "PTS"
+                sub_puntos: "Balanço de Pontos da Comunidad", label_positivos: "Saldos Positivos", label_negativos: "Saldos Negativos", pts: "PTS"
             }
         };
 
-        // DICCIONARIO DE TRADUCCIÓN PARA ARTÍCULOS DEL EXCEL
+        // DICCIONARIO - Usa nombres en minúsculas para que sea más fácil comparar
         const itemsTraduccion = {
-            "Diamantes": { en: "Diamonds", pt: "Diamantes" },
-            "Hierro": { en: "Iron", pt: "Ferro" },
-            "Poción de Vida": { en: "Health Potion", pt: "Poção de Vida" },
-            "Fragmento de diseño de armadura de Andvari": { en: "Andvari Armor Design Fragment", pt: "Fragmento de design de armadura de Andvari" }
+            "diamantes": { en: "Diamonds", pt: "Diamantes" },
+            "hierro": { en: "Iron", pt: "Ferro" },
+            "poción de vida": { en: "Health Potion", pt: "Poção de Vida" },
+            "fragmento de diseño de armadura de andvari": { en: "Andvari Armor Design Fragment", pt: "Fragmento de design de armadura de Andvari" }
         };
 
         let currentLang = 'es';
 
-        // Función para obtener el nombre traducido
         function obtenerNombreItem(nombreOriginal) {
             if (!nombreOriginal) return "";
-            const limpio = nombreOriginal.trim();
-            const item = itemsTraduccion[limpio];
+            // Convertimos a minúsculas y limpiamos espacios para que coincida siempre
+            const clave = nombreOriginal.trim().toLowerCase();
+            const item = itemsTraduccion[clave];
             if (item && item[currentLang]) return item[currentLang];
             return nombreOriginal;
         }
@@ -210,7 +207,7 @@
                 const key = $(this).data('key');
                 if (i18n[lang][key]) $(this).text(i18n[lang][key]);
             });
-            // Recargamos los datos para aplicar la traducción a lo que viene del Excel
+            // IMPORTANTE: Volvemos a pedir los datos para que se traduzcan los nombres del Excel
             cargarDatos();
             cargarReparto();
         }
@@ -220,7 +217,6 @@
             $(`#sec-${id}`).addClass('active');
             $('.btn-tab').removeClass('active');
             if (btn) $(btn).addClass('active');
-            else $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
             window.history.pushState({ seccion: id }, "", id);
         }
 
@@ -233,17 +229,15 @@
                     let html = '';
                     const headerRowIdx = rows.findIndex(r => r.some(c => c && c.includes('Artículo')));
                     if (headerRowIdx !== -1) {
-                        const headers = rows[headerRowIdx];
-                        const colItem = headers.findIndex(h => h.includes('Artículo'));
-                        const colStock = headers.findIndex(h => h.includes('Existencia'));
+                        const colItem = rows[headerRowIdx].findIndex(h => h.includes('Artículo'));
+                        const colStock = rows[headerRowIdx].findIndex(h => h.includes('Existencia'));
                         rows.slice(headerRowIdx + 1).forEach(row => {
                             const original = row[colItem] ? row[colItem].trim() : '';
-                            const stock = row[colStock] ? row[colStock].trim() : '0';
-                            const imgPath = row[32] ? row[32].trim() : ''; 
                             if (original && original !== "" && !original.includes('Total de puntos')) {
-                                // AQUÍ TRADUCIMOS EL NOMBRE
-                                const nombreFinal = obtenerNombreItem(original);
-                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombreFinal}</td><td class="text-right stock-number">${stock}</td></tr>`;
+                                // APLICAMOS LA TRADUCCIÓN AQUÍ
+                                const nombreAMostrar = obtenerNombreItem(original);
+                                const stock = row[colStock] ? row[colStock].trim() : '0';
+                                html += `<tr><td class="text-center"><img src="${row[32]}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombreAMostrar}</td><td class="text-right stock-number">${stock}</td></tr>`;
                             }
                         });
                     }
@@ -281,7 +275,7 @@
                 const data = results.data;
                 let lista = [];
                 for (let i = 4; i < data.length; i++) {
-                    const nick = data[i][7]; const avg = data[i][16]; 
+                    const nick = data[i][7]; const avg = data[i][16];
                     if (nick && avg && nick !== "Nick") {
                         const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
                         lista.push({ nick, avg, valNum });
@@ -325,19 +319,7 @@
 
         $(document).ready(function() {
             cargarDatos(); cargarReparto(); cargarActividad(); cargarDeudores();
-            const pathParts = window.location.pathname.split("/");
-            const lastPart = pathParts.pop() || pathParts.pop();
-            const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints'];
-            if (seccionesValidas.includes(lastPart)) verSeccion(lastPart);
-            else verSeccion('almacen');
-            window.onpopstate = function(event) {
-                if (event.state && event.state.seccion) {
-                    $('.content-section').removeClass('active');
-                    $(`#sec-${event.state.seccion}`).addClass('active');
-                    $('.btn-tab').removeClass('active');
-                    $(`.btn-tab[onclick*="'${event.state.seccion}'"]`).addClass('active');
-                }
-            };
+            verSeccion('almacen');
         });
     </script>
 </body>
