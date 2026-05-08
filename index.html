@@ -473,10 +473,6 @@
                 justify-content: center;
                 min-height: 45px;
             }
-
-            .levitate-container {
-                display: none;
-            }
         }
 
         .btn-tab {
@@ -649,15 +645,22 @@
         }
 
         .levitate-container {
+            position: fixed; /* Mantiene la posición respecto a la pantalla */
+            top: 50%;       /* Centrado verticalmente (puedes ajustarlo, ej: 200px) */
+            left: 20px;      /* Distancia desde la izquierda (ajústalo para que no tape el contenido) */
+            transform: translateY(-50%); /* Centrado perfecto */
+            z-index: 9999;   /* Por encima de todo */
+            pointer-events: none; /* Permite hacer clic a través del personaje */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: transparent;
-            position: fixed;
-            top: 0;
-            left: -350px;
-            pointer-events: none;
+        }
+
+        /* En móviles lo ocultamos o ajustamos para que no estorbe */
+        @media (max-width: 767px) {
+            .levitate-container {
+                display: none;
+            }
         }
 
         .floating-character {
@@ -729,11 +732,12 @@
     </nav>
 
     <div class="main-container">
+        <div class="levitate-container banin-flotating">
+            <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
+        </div>
         <!-- SECCIÓN ALMACÉN (IGUAL A TU ORIGINAL) -->
         <div id="sec-almacen" class="content-section active">
-            <div class="levitate-container" class="banin-flotating">
-                <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
-            </div>
+            
             <div class="logo-header">
                 <h1>REAPERS ALMACÉN</h1>
                 <p class="text-slate-400 uppercase tracking-widest text-xs">Registro Oficial de Suministros</p>
