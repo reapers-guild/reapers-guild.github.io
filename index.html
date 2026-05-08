@@ -645,15 +645,15 @@
         }
 
         .levitate-container {
-            position: fixed; /* Mantiene la posición respecto a la pantalla */
-            top: 50%;       /* Centrado verticalmente (puedes ajustarlo, ej: 200px) */
-            left: 20px;      /* Distancia desde la izquierda (ajústalo para que no tape el contenido) */
-            transform: translateY(-50%); /* Centrado perfecto */
-            z-index: 9999;   /* Por encima de todo */
-            pointer-events: none; /* Permite hacer clic a través del personaje */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    position: fixed;
+    top: 75%;
+    right: 500px;
+    transform: translateY(-50%);
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
         }
 
         /* En móviles lo ocultamos o ajustamos para que no estorbe */
@@ -730,11 +730,11 @@
         <button class="btn-tab" onclick="verSeccion('reaperspoints', this)" data-key="tab_puntos">REAPERS
             POINTS</button>
     </nav>
-
+    <div class="levitate-container banin-flotating">
+        <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
+    </div>
     <div class="main-container">
-        <div class="levitate-container banin-flotating">
-            <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
-        </div>
+        
         <!-- SECCIÓN ALMACÉN (IGUAL A TU ORIGINAL) -->
         <div id="sec-almacen" class="content-section active">
             
