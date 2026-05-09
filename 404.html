@@ -731,7 +731,7 @@
             ACTIVIDAD</button>
         <button class="btn-tab" onclick="verSeccion('reaperspoints', this)" data-key="tab_puntos">REAPERS
             POINTS</button>
-        <button class="btn-tab" onclick="verSeccion('nueva', this)" data-key="tab_nueva">NORMATIVA</button>
+        <button class="btn-tab" onclick="verSeccion('normativa', this)" data-key="tab_normativa">NORMATIVA</button>
     </nav>
     
     <div class="main-container">
@@ -837,7 +837,7 @@
         </div>
         <!-- REAPERS NORMATIVA -->
         <div id="sec-normativa">
-    <div id="sec-nueva" class="content-section">
+    <div id="sec-normativa" class="content-section">
         <div class="logo-header">
             <h1 style="font-family: 'Cinzel', serif; color: #c5a059; font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; text-align: center; margin-bottom: 5px;">REGLAMENTO OFICIAL</h1>
             <p style="color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-align: center; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 20px;">Monarcas Guild Rules & Point System</p>
@@ -1561,7 +1561,7 @@
                 const pathParts = window.location.pathname.split("/");
                 const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
 
-                const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints','nueva'];
+                const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints','normativa'];
 
                 if (seccionesValidas.includes(lastPart)) {
                     verSeccion(lastPart);
