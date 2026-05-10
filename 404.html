@@ -1507,18 +1507,26 @@
                 });
             }
 
-            // --- FUNCIÓN REPARTO (AC y AD)[cite: 2] ---
+            // --- FUNCIÓN REPARTO CORREGIDA ---
             function cargarReparto() {
                 const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
                 Papa.parse(urlReparto, {
-                    download: true, complete: function (results) {
+                    download: true, 
+                    complete: function (results) {
                         let hD = '', hAdmin = '', hAH = '';
                         results.data.slice(4).forEach(r => {
-                            if (r[1]) hD += `<tr><td><img src="${r[28]}" class="img-mini"></td><td>${r[1]}</td><td class="pts-orange">${r[3]}</td></tr>`;
+                            // Columna A (0) o B (1) para imágenes, C (2) para Nombres, D (3) para Puntos
+                            if (r[2]) hD += `<tr><td><img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td>${r[2]}</td><td class="pts-orange">${r[3]}</td></tr>`;
+                            
+                            // Ajuste para Administración (si también se movieron, ajusta los índices 4 y 6)
                             if (r[4]) hAdmin += `<tr><td>${r[4]}</td><td class="pts-orange">${r[6]}</td></tr>`;
-                            if (r[8]) hAH += `<tr><td><img src="${r[29]}" class="img-mini"></td><td>${r[8]}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
+                            
+                            // Ajuste para Action House (Imagen en B(1), Nombre en I(8), Stock en J(9), Puntos en K(10))
+                            if (r[8]) hAH += `<tr><td><img src="${r[1]}" class="img-mini"></td><td>${r[8]}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
                         });
-                        $('#listaDiscord').html(hD); $('#listaAdmin').html(hAdmin); $('#listaAH').html(hAH);
+                        $('#listaDiscord').html(hD); 
+                        $('#listaAdmin').html(hAdmin); 
+                        $('#listaAH').html(hAH);
                     }
                 });
             }
@@ -1564,6 +1572,7 @@
                 });
             }
 
+            // --- FUNCIÓN DEUDORES CORREGIDA ---
             function cargarDeudores() {
                 const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
 
@@ -1574,9 +1583,13 @@
                         let deudores = [];
                         let positivos = [];
 
+                        // Empezamos en la fila donde están los datos reales
                         for (let i = 3; i < data.length; i++) {
-                            const nombre = data[i][12]; // Columna M
-                            const puntosStr = data[i][13]; // Columna N
+                            // ANTES: nombre en [12] (M) y puntos en [13] (N)
+                            // AHORA: Si moviste todo 2 columnas, prueba con [14] y [15]
+                            // Si el nombre está en la columna O y los puntos en P:
+                            const nombre = data[i][14]; 
+                            const puntosStr = data[i][15]; 
 
                             if (nombre && puntosStr) {
                                 const puntosVal = parseInt(puntosStr.replace('.', '').trim()) || 0;
