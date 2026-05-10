@@ -1516,34 +1516,34 @@
                     complete: function (results) {
                         let hD = '', hAdmin = '', hAH = '';
                         
-                        // Empezamos desde la fila 4 (slice(4)) como tenías antes
+                        // Filtramos filas vacías y empezamos en la fila donde están tus datos (4)
                         results.data.slice(4).forEach(r => {
                             
-                            // --- PARTE IZQUIERDA Y CENTRO (Lista Discord) ---
-                            // r[0] = Columna A (Imagen Izquierda)
-                            // r[2] = Columna C (Nombre del Item / Centro)
-                            // r[3] = Columna D (Puntos / Cantidad)
-                            if (r[2]) { 
+                            // --- LISTA IZQUIERDA (DISCORD / PUNTOS) ---
+                            // r[0] es Columna A (Imagen Izquierda)
+                            // r[2] es Columna C (Nombre del Item)
+                            // r[3] es Columna D (Puntos/Cantidad)
+                            if (r[2] && r[2].trim() !== "") { 
                                 hD += `
                                 <tr>
                                     <td>
                                         <img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
                                     </td>
-                                    <td class="text-white font-medium">${r[2]}</td>
+                                    <td>${r[2]}</td>
                                     <td class="pts-orange">${r[3]}</td>
                                 </tr>`;
                             }
 
-                            // --- PARTE DERECHA (Action House / AH) ---
-                            // r[1] = Columna B (Imagen que dices que ya funciona bien)
-                            // r[8] = Columna I (Nombre Item AH)
-                            // r[9] = Columna J (Stock)
-                            // r[10] = Columna K (Puntos AH)
-                            if (r[8]) {
+                            // --- LISTA DERECHA (ACTION HOUSE) ---
+                            // r[1] es Columna B (Imagen Derecha)
+                            // r[8] es Columna I (Nombre AH)
+                            // r[9] es Columna J (Stock)
+                            // r[10] es Columna K (Puntos AH)
+                            if (r[8] && r[8].trim() !== "") {
                                 hAH += `
                                 <tr>
                                     <td>
-                                        <img src="${r[1]}" class="img-mini">
+                                        <img src="${r[1]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
                                     </td>
                                     <td>${r[8]}</td>
                                     <td class="text-center">${r[9]}</td>
@@ -1551,8 +1551,10 @@
                                 </tr>`;
                             }
 
-                            // --- ADMINISTRACIÓN (Ajustado si también se movió) ---
-                            if (r[4]) {
+                            // --- LISTA CENTRO (ADMINISTRACIÓN) ---
+                            // r[4] es Columna E (Nombre Admin)
+                            // r[6] es Columna G (Puntos Admin)
+                            if (r[4] && r[4].trim() !== "") {
                                 hAdmin += `
                                 <tr>
                                     <td>${r[4]}</td>
@@ -1561,7 +1563,6 @@
                             }
                         });
 
-                        // Inyectamos el HTML en los contenedores
                         $('#listaDiscord').html(hD);
                         $('#listaAdmin').html(hAdmin);
                         $('#listaAH').html(hAH);
