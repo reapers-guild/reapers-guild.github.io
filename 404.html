@@ -1510,22 +1510,60 @@
             // --- FUNCIÓN REPARTO CORREGIDA ---
             function cargarReparto() {
                 const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
+                
                 Papa.parse(urlReparto, {
-                    download: true, 
+                    download: true,
                     complete: function (results) {
                         let hD = '', hAdmin = '', hAH = '';
+                        
+                        // Empezamos desde la fila 4 (slice(4)) como tenías antes
                         results.data.slice(4).forEach(r => {
-                            // Columna A (0) o B (1) para imágenes, C (2) para Nombres, D (3) para Puntos
-                            if (r[2]) hD += `<tr><td><img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td>${r[2]}</td><td class="pts-orange">${r[3]}</td></tr>`;
                             
-                            // Ajuste para Administración (si también se movieron, ajusta los índices 4 y 6)
-                            if (r[4]) hAdmin += `<tr><td>${r[4]}</td><td class="pts-orange">${r[6]}</td></tr>`;
-                            
-                            // Ajuste para Action House (Imagen en B(1), Nombre en I(8), Stock en J(9), Puntos en K(10))
-                            if (r[8]) hAH += `<tr><td><img src="${r[1]}" class="img-mini"></td><td>${r[8]}</td><td class="text-center">${r[9]}</td><td class="pts-orange">${r[10]}</td></tr>`;
+                            // --- PARTE IZQUIERDA Y CENTRO (Lista Discord) ---
+                            // r[0] = Columna A (Imagen Izquierda)
+                            // r[2] = Columna C (Nombre del Item / Centro)
+                            // r[3] = Columna D (Puntos / Cantidad)
+                            if (r[2]) { 
+                                hD += `
+                                <tr>
+                                    <td>
+                                        <img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
+                                    </td>
+                                    <td class="text-white font-medium">${r[2]}</td>
+                                    <td class="pts-orange">${r[3]}</td>
+                                </tr>`;
+                            }
+
+                            // --- PARTE DERECHA (Action House / AH) ---
+                            // r[1] = Columna B (Imagen que dices que ya funciona bien)
+                            // r[8] = Columna I (Nombre Item AH)
+                            // r[9] = Columna J (Stock)
+                            // r[10] = Columna K (Puntos AH)
+                            if (r[8]) {
+                                hAH += `
+                                <tr>
+                                    <td>
+                                        <img src="${r[1]}" class="img-mini">
+                                    </td>
+                                    <td>${r[8]}</td>
+                                    <td class="text-center">${r[9]}</td>
+                                    <td class="pts-orange">${r[10]}</td>
+                                </tr>`;
+                            }
+
+                            // --- ADMINISTRACIÓN (Ajustado si también se movió) ---
+                            if (r[4]) {
+                                hAdmin += `
+                                <tr>
+                                    <td>${r[4]}</td>
+                                    <td class="pts-orange">${r[6]}</td>
+                                </tr>`;
+                            }
                         });
-                        $('#listaDiscord').html(hD); 
-                        $('#listaAdmin').html(hAdmin); 
+
+                        // Inyectamos el HTML en los contenedores
+                        $('#listaDiscord').html(hD);
+                        $('#listaAdmin').html(hAdmin);
                         $('#listaAH').html(hAH);
                     }
                 });
