@@ -1514,58 +1514,43 @@
                 Papa.parse(urlReparto, {
                     download: true,
                     complete: function (results) {
-                        let hD = '', hAdmin = '', hAH = '';
+                        let hIzquierda = '', hDerecha = '';
                         
-                        // Filtramos filas vacías y empezamos en la fila donde están tus datos (4)
+                        // Empezamos en la fila 4 donde están los datos reales
                         results.data.slice(4).forEach(r => {
                             
-                            // --- LISTA IZQUIERDA (DISCORD / PUNTOS) ---
-                            // r[0] es Columna A (Imagen Izquierda)
-                            // r[2] es Columna C (Nombre del Item)
-                            // r[3] es Columna D (Puntos/Cantidad)
-                            if (r[2] && r[2].trim() !== "") { 
-                                hD += `
+                            // --- TABLA IZQUIERDA (Usando Columnas A, C y D) ---
+                            // r[0] = Imagen Columna A
+                            // r[2] = Nombre Columna C (Centro)
+                            // r[3] = Puntos Columna D
+                            if (r[2] && r[2].trim() !== "") {
+                                hIzquierda += `
                                 <tr>
-                                    <td>
-                                        <img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
-                                    </td>
-                                    <td>${r[2]}</td>
+                                    <td><img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
+                                    <td class="text-white">${r[2]}</td>
                                     <td class="pts-orange">${r[3]}</td>
                                 </tr>`;
                             }
 
-                            // --- LISTA DERECHA (ACTION HOUSE) ---
-                            // r[1] es Columna B (Imagen Derecha)
-                            // r[8] es Columna I (Nombre AH)
-                            // r[9] es Columna J (Stock)
-                            // r[10] es Columna K (Puntos AH)
+                            // --- TABLA DERECHA (Usando Columnas B, I, J y K) ---
+                            // r[1] = Imagen Columna B
+                            // r[8] = Nombre Item
+                            // r[9] = Cantidad
+                            // r[10] = Puntos
                             if (r[8] && r[8].trim() !== "") {
-                                hAH += `
+                                hDerecha += `
                                 <tr>
-                                    <td>
-                                        <img src="${r[1]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
-                                    </td>
+                                    <td><img src="${r[1]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
                                     <td>${r[8]}</td>
                                     <td class="text-center">${r[9]}</td>
                                     <td class="pts-orange">${r[10]}</td>
                                 </tr>`;
                             }
-
-                            // --- LISTA CENTRO (ADMINISTRACIÓN) ---
-                            // r[4] es Columna E (Nombre Admin)
-                            // r[6] es Columna G (Puntos Admin)
-                            if (r[4] && r[4].trim() !== "") {
-                                hAdmin += `
-                                <tr>
-                                    <td>${r[4]}</td>
-                                    <td class="pts-orange">${r[6]}</td>
-                                </tr>`;
-                            }
                         });
 
-                        $('#listaDiscord').html(hD);
-                        $('#listaAdmin').html(hAdmin);
-                        $('#listaAH').html(hAH);
+                        // Aplicamos a los IDs de tu HTML
+                        $('#listaDiscord').html(hIzquierda); // Tabla de la izquierda
+                        $('#listaAH').html(hDerecha);      // Tabla de la derecha
                     }
                 });
             }
