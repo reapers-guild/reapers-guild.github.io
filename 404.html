@@ -1508,52 +1508,52 @@
             }
 
             // --- FUNCIÓN REPARTO CORREGIDA ---
-            function cargarReparto() {
-                const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
+function cargarReparto() {
+    const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
+    
+    Papa.parse(urlReparto, {
+        download: true,
+        complete: function (results) {
+            let hIzquierda = '', hDerecha = '';
+            
+            // Empezamos en la fila 4 donde están los datos reales
+            results.data.slice(4).forEach(r => {
                 
-                Papa.parse(urlReparto, {
-                    download: true,
-                    complete: function (results) {
-                        let hIzquierda = '', hDerecha = '';
-                        
-                        // Empezamos en la fila 4 donde están los datos reales
-                        results.data.slice(4).forEach(r => {
-                            
-                            // --- TABLA IZQUIERDA (Usando Columnas A, C y D) ---
-                            // r[0] = Imagen Columna A
-                            // r[2] = Nombre Columna C (Centro)
-                            // r[3] = Puntos Columna D
-                            if (r[2] && r[2].trim() !== "") {
-                                hIzquierda += `
-                                <tr>
-                                    <td><img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
-                                    <td class="text-white">${r[2]}</td>
-                                    <td class="pts-orange">${r[3]}</td>
-                                </tr>`;
-                            }
+                // --- TABLA IZQUIERDA (Usando Columnas A, C y D) ---
+                // r[0] = Imagen Columna A
+                // r[2] = Nombre Columna C (Centro)
+                // r[3] = Puntos Columna D
+                if (r[2] && r[2].trim() !== "") {
+                    hIzquierda += `
+                    <tr>
+                        <td><img src="${r[0]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
+                        <td class="text-white">${r[2]}</td>
+                        <td class="pts-orange">${r[3]}</td>
+                    </tr>`;
+                }
 
-                            // --- TABLA DERECHA (Usando Columnas B, I, J y K) ---
-                            // r[1] = Imagen Columna B
-                            // r[8] = Nombre Item
-                            // r[9] = Cantidad
-                            // r[10] = Puntos
-                            if (r[8] && r[8].trim() !== "") {
-                                hDerecha += `
-                                <tr>
-                                    <td><img src="${r[1]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
-                                    <td>${r[8]}</td>
-                                    <td class="text-center">${r[9]}</td>
-                                    <td class="pts-orange">${r[10]}</td>
-                                </tr>`;
-                            }
-                        });
+                // --- TABLA DERECHA (Usando Columnas B, I, J y K) ---
+                // r[1] = Imagen Columna B
+                // r[8] = Nombre Item
+                // r[9] = Cantidad
+                // r[10] = Puntos
+                if (r[8] && r[8].trim() !== "") {
+                    hDerecha += `
+                    <tr>
+                        <td><img src="${r[1]}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
+                        <td>${r[8]}</td>
+                        <td class="text-center">${r[9]}</td>
+                        <td class="pts-orange">${r[10]}</td>
+                    </tr>`;
+                }
+            });
 
-                        // Aplicamos a los IDs de tu HTML
-                        $('#listaDiscord').html(hIzquierda); // Tabla de la izquierda
-                        $('#listaAH').html(hDerecha);      // Tabla de la derecha
-                    }
-                });
-            }
+            // Aplicamos a los IDs de tu HTML
+            $('#listaDiscord').html(hIzquierda); // Tabla de la izquierda
+            $('#listaAH').html(hDerecha);      // Tabla de la derecha
+        }
+    });
+}
 
             // --- FUNCIÓN ACTIVIDAD (RANKING) ---
             function cargarActividad() {
