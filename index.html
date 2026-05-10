@@ -1523,42 +1523,46 @@
                 });
             }
 
-// --- FUNCIÓN ACTIVIDAD (RANKING) ---
-function cargarActividad() {
-    const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
-    Papa.parse(urlActividad, {
-        download: true, 
-        complete: function (results) {
-            const data = results.data;
-            let lista = [];
-            // Empezamos en la fila donde están los datos (ajusta si es necesario)
-            for (let i = 4; i < data.length; i++) {
-                const nick = data[i][0];   // Usualmente el Nombre/Nick está en la Col A (Índice 0)
-                const avg = data[i][6];    // CAMBIO: Ahora toma la Columna G (Índice 6)
+            // --- FUNCIÓN ACTIVIDAD (RANKING) ---
+            function cargarActividad() {
+                const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
                 
-                if (nick && avg && nick !== "Nick") {
-                    // Limpiamos el valor para poder ordenar numéricamente
-                    const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
-                    lista.push({ nick, avg, valNum });
-                }
-            }
-            
-            // Ordenamos de mayor a menor actividad
-            lista.sort((a, b) => b.valNum - a.valNum); 
+                Papa.parse(urlActividad, {
+                    download: true,
+                    complete: function (results) {
+                        const data = results.data;
+                        let lista = [];
+                        
+                        // i=4 porque saltamos los encabezados del excel
+                        for (let i = 4; i < data.length; i++) {
+                            const nick = data[i][8];  // CAMBIO: Índice 8 es la Columna I (Nombres)
+                            const avg = data[i][6];   // CAMBIO: Índice 6 es la Columna G (%)
+                            
+                            // Verificamos que el nick no esté vacío y no sea el encabezado
+                            if (nick && avg && nick.trim() !== "" && nick !== "Nick") {
+                                // Limpiamos el valor para que sea un número (ej: "85%" -> 85)
+                                const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
+                                lista.push({ nick, avg, valNum });
+                            }
+                        }
+                        
+                        // Ordenar de mayor a menor actividad
+                        lista.sort((a, b) => b.valNum - a.valNum);
 
-            let html = '';
-            lista.forEach((u, i) => {
-                const color = u.valNum >= 50 ? 'pct-high' : 'pct-low';
-                html += `<div class="ranking-row">
-                            <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
-                            <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;">${u.nick}</div>
-                            <div class="${color}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
-                         </div>`;
-            });
-            $('#listaActividad').html(html);
-        }
-    });
-}
+                        let html = '';
+                        lista.forEach((u, i) => {
+                            const color = u.valNum >= 50 ? 'pct-high' : 'pct-low';
+                            html += `
+                                <div class="ranking-row">
+                                    <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
+                                    <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;">${u.nick}</div>
+                                    <div class="${color}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
+                                </div>`;
+                        });
+                        $('#listaActividad').html(html);
+                    }
+                });
+            }
 
             function cargarDeudores() {
                 const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
