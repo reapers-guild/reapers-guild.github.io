@@ -687,6 +687,65 @@
                 transform: translateY(0px);
             }
         }
+
+/* Contenedor que permite el scroll interno */
+.normativa-wrapper {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* Botones que SÍ siguen el scroll */
+.normativa-nav-externa {
+    position: -webkit-sticky; /* Soporte para Safari */
+    position: sticky;
+    top: 100px; /* Distancia desde el tope de la pantalla al bajar */
+    left: 0;
+    margin-right: 15px; /* Espacio entre botones y el box */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+    /* Esto lo saca visualmente si el contenedor tiene un ancho fijo */
+    margin-left: -170px; 
+}
+
+.btn-float-lang {
+    background: rgba(22, 27, 34, 0.95);
+    border: 1px solid #c5a059; /* Tu color dorado */
+    color: #c5a059;
+    width: 150PX;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.btn-float-lang:hover {
+    background: #c5a059;
+    color: #000;
+}
+
+/* Ajuste para que no se pierdan en pantallas medianas */
+@media (max-width: 1200px) {
+    .normativa-nav-externa {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
+
+/* Ocultar en móviles */
+@media (max-width: 767px) {
+    .normativa-nav-externa {
+        display: none;
+    }
+}
     </style>
 </head>
 
@@ -837,15 +896,16 @@
         </div>
         <!-- REAPERS NORMATIVA -->
     <div id="sec-normativa" class="content-section">
-        <div class="logo-header">
-            <h1 style="font-family: 'Cinzel', serif; color: #c5a059; font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; text-align: center; margin-bottom: 5px;">REGLAMENTO OFICIAL</h1>
-            <p style="color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-align: center; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 20px;">Monarcas Guild Rules & Point System</p>
-        </div>
 
         <div style="display: grid; grid-template-columns: 1fr; gap: 24px; padding: 20px;" class="md:grid-cols-2">
 
+            <div class="normativa-nav-externa">
+                <a href="#normativa-es" class="btn-float-lang" title="Español">REGLAS EN ESPAÑOL</a>
+                <a href="#normativa-en" class="btn-float-lang" title="English">RUES IN ENGLISH</a>
+            </div>
+
             <!-- ESPAÑOL -->
-            <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+            <div id="normativa-es" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
                 
                 <h3 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
                     🇪🇸 ESPAÑOL
@@ -1055,7 +1115,7 @@
             </div>
 
             <!-- ENGLISH -->
-            <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+            <div id="normativa-en" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
                 
                 <h3 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
                     🇺🇸 US ENGLISH
