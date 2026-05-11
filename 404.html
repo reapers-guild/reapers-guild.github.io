@@ -1515,16 +1515,17 @@ function cargarReparto() {
         download: true,
         complete: function (results) {
             let hD = '', hAdmin = '', hAH = '';
-            // Definimos la ruta a tu carpeta local
+            // IMPORTANTE: Esta es la ruta a tu carpeta local donde están las fotos
             const folderPath = "resource/"; 
 
             results.data.slice(4).forEach(r => {
-                // --- COLUMNA 1: DISCORD (Usa Columna A -> r[0]) ---
+                
+                // --- SECCIÓN DISCORD (Usa Columna A) ---
                 if (r[3] && r[3].trim() !== "") {
-                    // Si el excel solo tiene el código, ejemplo "101", 
-                    // esto buscará "resource/101.png"
-                    let nombreImagenA = r[0] ? r[0].trim() : "";
-                    let srcA = folderPath + nombreImagenA;
+                    // Tomamos el nombre del archivo de la Columna A (r[0])
+                    let imgNameA = r[0] ? r[0].trim() : "";
+                    // Si tus celdas no tienen el ".png", agrégalo aquí: + ".png"
+                    let srcA = folderPath + imgNameA; 
 
                     hD += `<tr>
                         <td><img src="${srcA}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
@@ -1533,7 +1534,7 @@ function cargarReparto() {
                     </tr>`;
                 }
 
-                // --- COLUMNA 2: ADMINISTRACIÓN (Sin cambios) ---
+                // --- SECCIÓN ADMINISTRACIÓN ---
                 if (r[6] && r[6].trim() !== "") {
                     hAdmin += `<tr>
                         <td>${r[6]}</td>
@@ -1541,11 +1542,11 @@ function cargarReparto() {
                     </tr>`;
                 }
 
-                // --- COLUMNA 3: ACTION HOUSE (Usa Columna B -> r[1]) ---
+                // --- SECCIÓN ACTION HOUSE (Usa Columna B) ---
                 if (r[10] && r[10].trim() !== "") {
-                    // Tomamos el código de la Columna B del Excel
-                    let nombreImagenB = r[1] ? r[1].trim() : "";
-                    let srcB = folderPath + nombreImagenB;
+                    // Tomamos el nombre del archivo de la Columna B (r[1])
+                    let imgNameB = r[1] ? r[1].trim() : "";
+                    let srcB = folderPath + imgNameB;
 
                     hAH += `
                     <tr>
