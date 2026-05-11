@@ -1510,30 +1510,30 @@
             // --- FUNCIÓN REPARTO CORREGIDA ---
 function cargarReparto() {
     const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
-    
+
     Papa.parse(urlReparto, {
         download: true,
         complete: function (results) {
             let hD = '', hAdmin = '', hAH = '';
-            const folderPath = "resource/"; // Carpeta donde están tus imágenes localmente
-
+            // Definimos la ruta a tu carpeta local
+            const folderPath = "resource/"; 
 
             results.data.slice(4).forEach(r => {
-                
-                // --- COLUMNA 1: DISCORD (Usa Columna A del Excel para la imagen) ---
-                // r[0] es la Columna A. r[3] es el nombre del item.
+                // --- COLUMNA 1: DISCORD (Usa Columna A -> r[0]) ---
                 if (r[3] && r[3].trim() !== "") {
-                    // Construimos la ruta: resource/nombre_en_columna_A.png
-                    let imgDiscord = folderPath + r[0].trim(); 
-                    
+                    // Si el excel solo tiene el código, ejemplo "101", 
+                    // esto buscará "resource/101.png"
+                    let nombreImagenA = r[0] ? r[0].trim() : "";
+                    let srcA = folderPath + nombreImagenA;
+
                     hD += `<tr>
-                        <td><img src="${imgDiscord}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
+                        <td><img src="${srcA}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
                         <td>${r[3]}</td>
                         <td class="pts-orange">${r[5]}</td>
                     </tr>`;
                 }
 
-                // --- COLUMNA 2: ADMINISTRACIÓN (Se queda igual) ---
+                // --- COLUMNA 2: ADMINISTRACIÓN (Sin cambios) ---
                 if (r[6] && r[6].trim() !== "") {
                     hAdmin += `<tr>
                         <td>${r[6]}</td>
@@ -1541,23 +1541,20 @@ function cargarReparto() {
                     </tr>`;
                 }
 
-                // --- COLUMNA 3: ACTION HOUSE (Usa Columna B del Excel para la imagen) ---
-                // r[1] es la Columna B. r[10] es el nombre del item.
+                // --- COLUMNA 3: ACTION HOUSE (Usa Columna B -> r[1]) ---
                 if (r[10] && r[10].trim() !== "") {
-                    // Construimos la ruta: resource/nombre_en_columna_B.png
-                    let imgAH = folderPath + r[1].trim();
+                    // Tomamos el código de la Columna B del Excel
+                    let nombreImagenB = r[1] ? r[1].trim() : "";
+                    let srcB = folderPath + nombreImagenB;
 
                     hAH += `
                     <tr>
                         <td class="text-center">
-                            <img src="${imgAH}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
+                            <img src="${srcB}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
                         </td>
-                        <td class="text-white">
-                            ${r[10]} </td>
-                        <td class="text-center text-gray-400">
-                            ${r[11]} </td>
-                        <td class="pts-orange text-right">
-                            ${r[12] || '0'} </td>
+                        <td class="text-white">${r[10]}</td>
+                        <td class="text-center text-gray-400">${r[11]}</td>
+                        <td class="pts-orange text-right">${r[12] || '0'}</td>
                     </tr>`;
                 }
             });
