@@ -1516,6 +1516,9 @@ function cargarReparto() {
         complete: function (results) {
             let hD = '', hAdmin = '', hAH = '';
             const folderPath = "resource/"; // Carpeta donde están tus imágenes localmente
+            let nombreImagen = fila.columnaA; 
+            let imgSrc = folderPath + nombreImagen;
+
 
             results.data.slice(4).forEach(r => {
                 
