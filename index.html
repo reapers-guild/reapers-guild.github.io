@@ -746,6 +746,143 @@
         display: none;
     }
 }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@900&display=swap');
+
+        /* Colores extraídos de tu imagen de Reapers Almacén */
+        :root {
+            --gold-primary: #c5a661; /* Dorado de los botones y títulos */
+            --gold-soft: rgba(197, 166, 97, 0.5);
+            --bg-dark: #0a0b0d;     /* Fondo oscuro de la tabla */
+            --bg-deep: #050505;     /* Fondo espacial profundo */
+        }
+
+        body { margin: 0; padding: 0; overflow: hidden; background: var(--bg-deep); }
+
+        .ciel {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            /* Fondo espacial alineado a la paleta oscura */
+            background: radial-gradient(circle at 20% 30%, rgba(197, 166, 97, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(10, 11, 13, 0.8) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, var(--bg-dark) 0%, var(--bg-deep) 100%);
+            z-index: 9999;
+            overflow: hidden;
+            transition: opacity 0.8s ease;
+        }
+
+        /* --- TIPOGRAFÍA ESTILO REAPERS ALMACÉN --- */
+        .title {
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            text-align: center;
+        }
+
+        .serif {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 9rem;
+            font-weight: 700;
+            letter-spacing: 20px;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(197, 166, 97, 0.4);
+            animation: text-glow 2s infinite ease-in-out;
+            margin-bottom: -30px;
+        }
+
+        .bold {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-top: -15px;
+            opacity: 0.7;
+            border-top: 1px solid var(--gold-soft);
+            border-bottom: 1px solid var(--gold-soft);
+            display: inline-block;
+            padding: 5px 20px;
+        }
+
+        @keyframes text-glow {
+            0%, 100% { filter: brightness(1); text-shadow: 0 0 15px rgba(197, 166, 97, 0.4); }
+            50% { filter: brightness(1.3); text-shadow: 0 0 30px rgba(197, 166, 97, 0.8); }
+        }
+
+        /* --- ESTRELLAS Y VELOCIDAD --- */
+        .stars-container { position: absolute; width: 100%; height: 100%; z-index: 1; }
+        .star-layer {
+            position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%;
+            box-shadow: 150px 250px #fff, 450px 550px var(--gold-primary), 850px 150px #fff, 1250px 850px var(--gold-primary);
+        }
+
+        .speed-line {
+            position: absolute;
+            background: linear-gradient(to left, var(--gold-primary), transparent);
+            height: 1px;
+            z-index: 7;
+            animation: move-speed-line linear infinite;
+        }
+
+        @keyframes move-speed-line {
+            from { left: 130%; }
+            to { left: -60%; }
+        }
+
+        /* --- NUBES OSCURAS --- */
+        .ciel .nuage {
+            position: absolute; bottom: -100px; left: 0; width: 300%; height: 120%;
+            background-repeat: repeat-x; background-size: contain; pointer-events: none;
+            filter: brightness(0) opacity(0.3);
+        }
+
+        .plan_3 { background-image: url('https://me.jonathan-besson.fr/ressources/avion/nuage_plan_3.png'); animation: move-nuage 15s linear infinite; z-index: 2; transform: scale(1.5); }
+        .plan_2 { background-image: url('https://me.jonathan-besson.fr/ressources/avion/nuage_plan_2.png'); animation: move-nuage 8s linear infinite; z-index: 5; transform: scale(1.8); }
+        .plan_1 { background-image: url('https://me.jonathan-besson.fr/ressources/avion/nuage_plan_1.png'); animation: move-nuage 4s linear infinite; z-index: 10; transform: scale(2.5); }
+
+        @keyframes move-nuage {
+            from { transform: translateX(0) scale(2.5); }
+            to { transform: translateX(-33.33%) scale(2.5); } 
+        }
+
+        /* --- AVIÓN CON BRILLO DORADO --- */
+        .avion-reapers {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1200px;
+            height: 700px;
+            background-image: url(https://i.imgur.com/2FebaJk.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            filter: drop-shadow(0 0 20px var(--gold-soft)) brightness(1.1);
+        }
+
+        .ciel.stay .avion-reapers { animation: shake 0.05s infinite, float 2s infinite ease-in-out; }
+        @keyframes shake {
+            0% { transform: translate(-50%, -50%) translate(1px, 1px); }
+            50% { transform: translate(-50%, -50%) translate(-1px, -1px); }
+            100% { transform: translate(-50%, -50%) translate(1px, 1px); }
+        }
+        @keyframes float { 0%, 100% { margin-top: 0; } 50% { margin-top: 10px; } }
+
+        .ciel.away .avion-reapers { animation: takeoff 2s forwards cubic-bezier(0.45, 0.05, 0.55, 0.95); }
+        @keyframes takeoff {
+            0% { transform: translate(-50%, -50%) rotate(0deg); left: 50%; }
+            100% { transform: translate(-50%, -50%) rotate(-15deg); left: 250%; top: -60%; }
+        }
+
+        .pantalla-lista { opacity: 0; pointer-events: none; }
     </style>
 </head>
 
@@ -754,25 +891,23 @@
         <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
     </div>
 
-    <div class='loader-container' id="loader">
-        <div class='rocket-container'>
-            <div class='structure'>
-                <img src="https://i.imgur.com/gmxJv6e.png" id="rocket-png" alt="Rocket">
-            </div>
-            <div class='text-container'>
-                <div>
-                    <h1 class="text-reapers">REAPERS</h1>
-                </div>
-            </div>
-            <div class='smoke'>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
+    <section class="ciel stay">
+        <div class="stars-container">
+            <div class="star-layer"></div>
         </div>
-        <div class='meteors-container'>
-            <span></span><span></span><span></span><span></span><span></span><span></span>
+        <div id="speed-lines-layer"></div>
+
+        <div class="title">
+            <span class="serif">REAPERS</span><br>
+            <span class="bold">REGISTRO OFICIAL DE SUMINISTROS</span>
         </div>
-    </div>
+        
+        <div class="nuage plan_3"></div>
+        <div class="nuage plan_2"></div>
+        <div class="nuage plan_1"></div>
+        
+        <div class="avion-reapers"></div>
+    </section>
 
 
     <div class="flex justify-end p-4 max-w-5xl mx-auto">
@@ -1334,19 +1469,21 @@
 
         <script>
 
-            // Esperamos a que cargue la ventana
-            window.addEventListener('load', () => {
-                // Esperamos 3 segundos antes de iniciar la desaparición
-                setTimeout(() => {
-                    const loader = document.getElementById('loader');
+        $(document).ready(function() {
+            for (let i = 0; i < 80; i++) {
+                let w = Math.random() * 300 + 100;
+                let t = Math.random() * 100;
+                let d = Math.random() * 0.2 + 0.05;
+                let delay = Math.random() * 2;
+                $('#speed-lines-layer').append(`<div class="speed-line" style="width: ${w}px; top: ${t}%; animation-duration: ${d}s; animation-delay: ${delay}s; opacity: ${Math.random()};"></div>`);
+            }
 
-                    // Añadimos la clase que hace el fade-out (opacidad 0)
-                    loader.classList.add('loader-hidden');
-
-                    // Opcional: habilitar scroll en el body después de la carga
-                    document.body.style.overflow = 'auto';
-                }, 1900); // 3000 milisegundos = 3 segundos
-            });
+            setTimeout(function() {
+                $('.ciel').removeClass('stay').addClass('away');
+                $('.speed-line').css('animation-duration', '0.01s');
+                setTimeout(function() { $('.ciel').addClass('pantalla-lista'); }, 2000);
+            }, 2000);
+        });
 
 
 
