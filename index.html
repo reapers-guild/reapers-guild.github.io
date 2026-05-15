@@ -1701,56 +1701,47 @@ function cargarReparto() {
     });
 }
 
-function cargarActividad() {
-    // URL de tu Excel (pestaña de actividad)
-    const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
-    
-    Papa.parse(urlActividad, {
-        download: true,
-        header: true, // Crucial: Esto lee los nombres de las columnas en lugar de números
-        skipEmptyLines: true,
-        complete: function (results) {
-            const data = results.data;
-            let lista = [];
-            
-            data.forEach(fila => {
-                // Buscamos el nombre en la columna que se llame "Nick" o "NICK"
-                const nick = fila["Nick"] || fila["NICK"];
-                // Buscamos el porcentaje en la columna que tenga el símbolo "%"
-                const avg = fila["%"] || "0%";
+            // --- FUNCIÓN ACTIVIDAD (RANKING) ---
+            function cargarActividad() {
+                const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
                 
-                // Validamos que el nombre no esté vacío y no sea el encabezado repetido
-                if (nick && nick.trim() !== "" && nick.toLowerCase() !== "nick") {
-                    // Convertimos el porcentaje a número para poder ordenar el ranking
-                    const valNum = parseFloat(avg.toString().replace('%', '').replace(',', '.').trim()) || 0;
-                    lista.push({ 
-                        nick: nick.trim(), 
-                        avg: avg, 
-                        valNum: valNum 
-                    });
-                }
-            });
-            
-            // Ordenamos la lista de mayor a menor porcentaje automáticamente
-            lista.sort((a, b) => b.valNum - a.valNum);
+                Papa.parse(urlActividad, {
+                    download: true,
+                    complete: function (results) {
+                        const data = results.data;
+                        let lista = [];
+                        
+                        // i=4 porque saltamos los encabezados del excel
+                        for (let i = 4; i < data.length; i++) {
+                            const nick = data[i][8];  // CAMBIO: Índice 8 es la Columna I (Nombres)
+                            const avg = data[i][6];   // CAMBIO: Índice 6 es la Columna G (%)
+                            
+                            // Verificamos que el nick no esté vacío y no sea el encabezado
+                            if (nick && avg && nick.trim() !== "" && nick !== "Nick") {
+                                // Limpiamos el valor para que sea un número (ej: "85%" -> 85)
+                                const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
+                                lista.push({ nick, avg, valNum });
+                            }
+                        }
+                        
+                        // Ordenar de mayor a menor actividad
+                        lista.sort((a, b) => b.valNum - a.valNum);
 
-            let html = '';
-            lista.forEach((u, i) => {
-                // Si tiene 50% o más sale en verde, si no en rojo (estilo Reapers)
-                const colorClass = u.valNum >= 50 ? 'pct-high' : 'pct-low';
-                html += `
-                    <div class="ranking-row">
-                        <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
-                        <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;color:white;">${u.nick}</div>
-                        <div class="${colorClass}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
-                    </div>`;
-            });
-            
-            // Inyectamos el resultado en el contenedor de tu primer HTML
-            $('#listaActividad').html(html || '<p style="text-align:center;color:gray;padding:20px;">No se encontraron datos en el Excel</p>');
-        }
-    });
-}
+                        let html = '';
+                        lista.forEach((u, i) => {
+                            const color = u.valNum >= 50 ? 'pct-high' : 'pct-low';
+                            html += `
+                                <div class="ranking-row">
+                                    <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
+                                    <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;">${u.nick}</div>
+                                    <div class="${color}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
+                                </div>`;
+                        });
+                        $('#listaActividad').html(html);
+                    }
+                });
+            }
+
             // --- FUNCIÓN DEUDORES CORREGIDA ---
             function cargarDeudores() {
                 const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
