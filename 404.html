@@ -1712,16 +1712,25 @@ function cargarReparto() {
                         let lista = [];
                         
                         // i=4 porque saltamos los encabezados del excel
-                        for (let i = 4; i < data.length; i++) {
-                            const nick = data[i][8];  // CAMBIO: Índice 8 es la Columna I (Nombres)
-                            const avg = data[i][6];   // CAMBIO: Índice 6 es la Columna G (%)
-                            
-                            // Verificamos que el nick no esté vacío y no sea el encabezado
-                            if (nick && avg && nick.trim() !== "" && nick !== "Nick") {
-                                // Limpiamos el valor para que sea un número (ej: "85%" -> 85)
-                                const valNum = parseFloat(avg.replace('%', '').replace(',', '.').trim()) || 0;
-                                lista.push({ nick, avg, valNum });
+                        for (let i = 0; i < data.length; i++) {
+                            const nick = data[i][8];
+                            const avg = data[i][6];
+
+                            // Saltar encabezados o filas vacías
+                            if (
+                                !nick ||
+                                !avg ||
+                                nick.trim() === "" ||
+                                nick.toLowerCase().includes("nick")
+                            ) {
+                                continue;
                             }
+
+                            const valNum = parseFloat(
+                                avg.replace('%', '').replace(',', '.').trim()
+                            ) || 0;
+
+                            lista.push({ nick, avg, valNum });
                         }
                         
                         // Ordenar de mayor a menor actividad
@@ -1754,7 +1763,15 @@ function cargarReparto() {
                         let positivos = [];
 
                         // Empezamos en la fila donde están los datos reales
-                        for (let i = 3; i < data.length; i++) {
+                        for (let i = 0; i < data.length; i++) {
+
+                            if (
+                                !nombre ||
+                                !puntosStr ||
+                                nombre.trim() === ""
+                            ) {
+                                continue;
+                            }
                             // ANTES: nombre en [12] (M) y puntos en [13] (N)
                             // AHORA: Si moviste todo 2 columnas, prueba con [14] y [15]
                             // Si el nombre está en la columna O y los puntos en P:
