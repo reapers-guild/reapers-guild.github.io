@@ -1706,38 +1706,41 @@ function cargarActividad() {
     
     Papa.parse(urlActividad, {
         download: true,
-        header: true, // <--- CAMBIO CRÍTICO: Lee los nombres de las columnas
+        header: true, // Esto permite usar los nombres de las columnas del Excel
         skipEmptyLines: true,
         complete: function (results) {
             const data = results.data;
             let lista = [];
             
             data.forEach(fila => {
-                // Buscamos las columnas por nombre exacto del Excel
-                const nick = fila["Nick"] || fila["NICK"] || fila["nick"];
-                const avg = fila["%"] || "0%";
+                // Buscamos por el nombre de la columna en tu Excel: "Nick" y "%"
+                const nick = fila["Nick"] || fila["NICK"];
+                const avg = fila["%"];
                 
                 if (nick && nick.trim() !== "" && nick.toLowerCase() !== "nick") {
+                    // Limpiamos el porcentaje para poder ordenar numéricamente
                     const valNum = parseFloat(avg.toString().replace('%', '').replace(',', '.').trim()) || 0;
                     lista.push({ nick: nick.trim(), avg: avg, valNum: valNum });
                 }
             });
             
-            // Ordenamos de mayor a menor porcentaje
+            // Ordenar de mayor a menor actividad
             lista.sort((a, b) => b.valNum - a.valNum);
 
             let html = '';
             lista.forEach((u, i) => {
+                // Aplicamos color verde si es >= 50%, si no, rojo
                 const colorClass = u.valNum >= 50 ? 'pct-high' : 'pct-low';
                 html += `
-                    <div class="ranking-row" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid rgba(197, 160, 89, 0.1);">
+                    <div class="ranking-row">
                         <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
                         <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;color:white;">${u.nick}</div>
                         <div class="${colorClass}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
                     </div>`;
             });
             
-            $('#listaActividad').html(html || '<p style="text-align:center;color:gray;">No hay datos de actividad disponibles</p>');
+            // Si la lista está vacía, mostramos un aviso en lugar de nada
+            $('#listaActividad').html(html || '<p style="text-align:center;color:gray;padding:20px;">No se encontraron datos en el Excel</p>');
         }
     });
 }
