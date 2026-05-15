@@ -1765,13 +1765,6 @@ function cargarReparto() {
                         // Empezamos en la fila donde están los datos reales
                         for (let i = 0; i < data.length; i++) {
 
-                            if (
-                                !nombre ||
-                                !puntosStr ||
-                                nombre.trim() === ""
-                            ) {
-                                continue;
-                            }
                             // ANTES: nombre en [12] (M) y puntos en [13] (N)
                             // AHORA: Si moviste todo 2 columnas, prueba con [14] y [15]
                             // Si el nombre está en la columna O y los puntos en P:
