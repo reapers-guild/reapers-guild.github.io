@@ -1702,25 +1702,26 @@ function cargarReparto() {
 }
 
 function cargarActividad() {
+    // URL de tu Excel (pestaña de actividad)
     const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
     
     Papa.parse(urlActividad, {
         download: true,
-        header: true, // Esto es vital para leer por nombre de columna
+        header: true, // Crucial: Esto lee los nombres de las columnas en lugar de números
         skipEmptyLines: true,
         complete: function (results) {
             const data = results.data;
             let lista = [];
             
-            // Si el header:true falla porque el CSV tiene filas vacías arriba, 
-            // intentamos procesar manualmente
             data.forEach(fila => {
-                // Buscamos la columna de Nick y Porcentaje sin importar mayúsculas
-                const nick = fila["Nick"] || fila["NICK"] || fila["nick"];
-                const avg = fila["%"] || fila["PORCENTAJE"] || "0%";
+                // Buscamos el nombre en la columna que se llame "Nick" o "NICK"
+                const nick = fila["Nick"] || fila["NICK"];
+                // Buscamos el porcentaje en la columna que tenga el símbolo "%"
+                const avg = fila["%"] || "0%";
                 
-                // Validamos que el nombre exista y no sea la propia palabra "Nick"
+                // Validamos que el nombre no esté vacío y no sea el encabezado repetido
                 if (nick && nick.trim() !== "" && nick.toLowerCase() !== "nick") {
+                    // Convertimos el porcentaje a número para poder ordenar el ranking
                     const valNum = parseFloat(avg.toString().replace('%', '').replace(',', '.').trim()) || 0;
                     lista.push({ 
                         nick: nick.trim(), 
@@ -1730,32 +1731,26 @@ function cargarActividad() {
                 }
             });
             
-            // Ordenar de mayor a menor actividad
+            // Ordenamos la lista de mayor a menor porcentaje automáticamente
             lista.sort((a, b) => b.valNum - a.valNum);
 
             let html = '';
-            if (lista.length > 0) {
-                lista.forEach((u, i) => {
-                    const colorClass = u.valNum >= 50 ? 'pct-high' : 'pct-low';
-                    html += `
-                        <div class="ranking-row">
-                            <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
-                            <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;color:white;">${u.nick}</div>
-                            <div class="${colorClass}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
-                        </div>`;
-                });
-            } else {
-                html = '<p style="text-align:center;color:gray;padding:20px;">No se encontraron datos. Revisa los encabezados del Excel ("Nick" y "%").</p>';
-            }
+            lista.forEach((u, i) => {
+                // Si tiene 50% o más sale en verde, si no en rojo (estilo Reapers)
+                const colorClass = u.valNum >= 50 ? 'pct-high' : 'pct-low';
+                html += `
+                    <div class="ranking-row">
+                        <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
+                        <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;color:white;">${u.nick}</div>
+                        <div class="${colorClass}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
+                    </div>`;
+            });
             
-            $('#listaActividad').html(html);
-        },
-        error: function(err) {
-            $('#listaActividad').html('<p style="text-align:center;color:red;">Error al conectar con Google Sheets</p>');
+            // Inyectamos el resultado en el contenedor de tu primer HTML
+            $('#listaActividad').html(html || '<p style="text-align:center;color:gray;padding:20px;">No se encontraron datos en el Excel</p>');
         }
     });
 }
-
             // --- FUNCIÓN DEUDORES CORREGIDA ---
             function cargarDeudores() {
                 const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
