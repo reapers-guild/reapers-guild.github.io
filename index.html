@@ -876,7 +876,6 @@
             0% { transform: translate(-50%, -50%) rotate(0deg); left: 50%; }
             100% { transform: translate(-50%, -50%) rotate(-15deg); left: 250%; top: -60%; }
         }
-
         .pantalla-lista { opacity: 0; pointer-events: none; }
     </style>
 </head>
@@ -1704,7 +1703,7 @@ function cargarReparto() {
 
             // --- FUNCIÓN ACTIVIDAD (RANKING) ---
             function cargarActividad() {
-                const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
+                const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pubhtml?gid=801467735&single=true';
                 
                 Papa.parse(urlActividad, {
                     download: true,
