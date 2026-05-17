@@ -3,7 +3,13 @@
 
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8EMCXPRHLP"></script>
-    <script>
+    
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -19,7 +25,13 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
-    <style>
+    
+<style>
+
+/* =====================================================
+   VARIABLES / BASE / COMPONENTES
+===================================================== */
+
         @media (max-width: 767px) {
             #rocket-png {
                 width: 420px !important;
@@ -323,15 +335,6 @@
             padding: 50px;
             text-align: center;
         }
-
-
-
-
-
-
-
-
-
 
         /* Estilo para el contenedor del selector de DataTables */
         .dataTables_length select {
@@ -920,7 +923,13 @@
             <option value="pt">PORTUGUÊS</option>
         </select>
     </div>
-    <nav class="tabs-nav">
+    
+
+<!-- =====================================================
+     NAVEGACIÓN TABS
+===================================================== -->
+
+<nav class="tabs-nav">
         <button class="btn-tab active" onclick="verSeccion('almacen', this)" data-key="tab_almacen">ALMACÉN</button>
         <button class="btn-tab" onclick="verSeccion('reparto', this)" data-key="tab_reparto">REPARTO</button>
         <button class="btn-tab" onclick="verSeccion('actividad', this)" data-key="tab_ranking">RANKING
@@ -930,10 +939,22 @@
         <button class="btn-tab" onclick="verSeccion('normativa', this)" data-key="tab_normativa">NORMATIVA</button>
     </nav>
     
-    <div class="main-container">
+    
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<div class="main-container">
         
         <!-- SECCIÓN ALMACÉN (IGUAL A TU ORIGINAL) -->
-        <div id="sec-almacen" class="content-section active">
+        
+
+<!-- =====================================================
+     SECCIÓN ALMACÉN
+===================================================== -->
+
+<div id="sec-almacen" class="content-section active">
             
             <div class="logo-header">
                 <h1>REAPERS ALMACÉN</h1>
@@ -952,7 +973,13 @@
         </div>
 
         <!-- SECCIÓN REPARTO -->
-        <div id="sec-reparto" class="content-section">
+        
+
+<!-- =====================================================
+     SECCIÓN REPARTO
+===================================================== -->
+
+<div id="sec-reparto" class="content-section">
             <div class="logo-header">
                 <h1>REPARTO DE ITEMS</h1>
             </div>
@@ -998,7 +1025,13 @@
         </div>
 
         <!-- RANKING ACTIVIDAD -->
-        <div id="sec-actividad" class="content-section">
+        
+
+<!-- =====================================================
+     SECCIÓN ACTIVIDAD
+===================================================== -->
+
+<div id="sec-actividad" class="content-section">
             <div class="logo-header">
                 <h1>RANKING ACTIVIDAD</h1>
             </div>
@@ -1008,7 +1041,13 @@
             </div>
         </div>
         <!-- REAPERS POINTS -->
-        <div id="sec-reaperspoints" class="content-section">
+        
+
+<!-- =====================================================
+     SECCIÓN REAPERS POINTS
+===================================================== -->
+
+<div id="sec-reaperspoints" class="content-section">
             <div class="logo-header">
                 <h1>ESTADO DE CUENTA</h1>
                 <p class="text-slate-400 uppercase tracking-widest text-xs">Balance de Puntos de la Comunidad</p>
@@ -1032,7 +1071,13 @@
             </div>
         </div>
         <!-- REAPERS NORMATIVA -->
-    <div id="sec-normativa" class="content-section">
+    
+
+<!-- =====================================================
+     SECCIÓN NORMATIVA
+===================================================== -->
+
+<div id="sec-normativa" class="content-section">
 
         <div style="display: grid; grid-template-columns: 1fr; gap: 24px; padding: 20px;" class="md:grid-cols-2">
 
@@ -1486,9 +1531,6 @@
                 setTimeout(function() { $('.ciel').addClass('pantalla-lista'); }, 2000);
             }, 2000);
         });
-
-
-
 
             const i18n = {
                 es: {
