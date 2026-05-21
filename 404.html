@@ -1012,7 +1012,7 @@ function cargarReparto() {
                 const pathParts = window.location.pathname.split("/");
                 const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
 
-                const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints','normativa'];
+                const seccionesValidas = ['reparto', 'actividad', 'reaperspoints','normativa'];
 
                 if (seccionesValidas.includes(lastPart)) {
                     verSeccion(lastPart);
