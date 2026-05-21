@@ -1012,13 +1012,13 @@ function cargarReparto() {
                 const pathParts = window.location.pathname.split("/");
                 const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
 
-                const seccionesValidas = ['reparto', 'actividad', 'reaperspoints','normativa'];
+                const seccionesValidas = ['almacen', 'reparto', 'actividad', 'reaperspoints','normativa'];
 
                 if (seccionesValidas.includes(lastPart)) {
                     verSeccion(lastPart);
                 } else {
                     // Si la ruta es la raíz o no existe, mostrar Almacén
-                    verSeccion('almacen');
+                    verSeccion('reparto');
                 }
 
                 // Permitir que funcionen las flechas de "Atrás" y "Adelante" del navegador
