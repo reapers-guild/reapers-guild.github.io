@@ -66,8 +66,15 @@
 ===================================================== -->
 
     <nav class="tabs-nav">
-        <button class="btn-tab" onclick="verSeccion('normativa', this)" data-key="tab_normativa">NORMATIVA</button>
-        <button class="btn-tab" onclick="verSeccion('cofres', this)" data-key="tab_cofres">GUÍA COFRES</button>
+        <!-- Botón para Normativa -->
+        <button onclick="showSection('sec-normativa')" class="nav-btn">
+            Normativa
+        </button>
+
+        <!-- Botón para Guía de Cofres -->
+        <button onclick="showSection('cofres-section')" class="nav-btn">
+            Guía de Cofres
+        </button>
     </nav>
 
 
@@ -1753,6 +1760,18 @@
             event.currentTarget.classList.add('active');
         }
 
+        function showSection(sectionId) {
+            // 1. Ocultar todas las secciones que tengan la clase 'tab-content'
+            const sections = document.querySelectorAll('.tab-content');
+            sections.forEach(sec => {
+                sec.classList.add('hidden');
+            });
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+        }
     </script>
 </body>
 
