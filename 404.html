@@ -108,15 +108,20 @@
         <!-- =====================================================
      SECCIÓN GUÍA DE COFRES Y SKINS DE ARMA
 ===================================================== -->
+        <section id="cofres-section" class="section-container">
+            <h2>Cofres por Mapa</h2>
 
-        <div id="sec-cofres" class="content-section">
-            <div class="logo-header">
-                <h1 style="font-family: 'Cinzel', serif; color: #c5a059;">GUÍA DE COFRES Y SKINS</h1>
-                <p class="text-slate-400 uppercase tracking-widest text-xs">Ubicaciones Secuenciales por Capítulos</p>
+            <!-- Navegación por Sub-apartados (MAP 1 a MAP 5) -->
+            <div class="map-tabs">
+                <button class="map-tab-btn active" onclick="openMapTab(event, 'map1')">MAP 1</button>
+                <button class="map-tab-btn" onclick="openMapTab(event, 'map2')">MAP 2</button>
+                <button class="map-tab-btn" onclick="openMapTab(event, 'map3')">MAP 3</button>
+                <button class="map-tab-btn" onclick="openMapTab(event, 'map4')">MAP 4</button>
+                <button class="map-tab-btn" onclick="openMapTab(event, 'map5')">MAP 5</button>
             </div>
 
-            <div style="padding: 20px; margin: 0 auto;">
-
+            <!-- Contenido MAP 1 -->
+            <div id="map1" class="map-tab-content active">
                 <!-- CAPÍTULO I: MIDGARD -->
                 <div
                     style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -233,7 +238,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Contenido MAP 2 -->
+            <div id="map2" class="map-tab-content">
                 <!-- CAPÍTULO II: JOTUNHEIM -->
                 <div
                     style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -349,7 +357,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Contenido MAP 3 -->
+            <div id="map3" class="map-tab-content">
                 <!-- CAPÍTULO III: NIDAVELLIR -->
                 <div
                     style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -466,7 +477,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Contenido MAP 4 -->
+            <div id="map4" class="map-tab-content">
                 <!-- CAPÍTULO IV: ALFHEIM -->
                 <div
                     style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -582,7 +596,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Contenido MAP 5 -->
+            <div id="map5" class="map-tab-content">
                 <!-- CAPÍTULO V: MUSPELHEIM -->
                 <div
                     style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -698,613 +715,613 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
+        </section>
+    </div>
 
 
-        <!-- =====================================================
+    <!-- =====================================================
      SECCIÓN REPARTO
 ===================================================== -->
 
-        <div id="sec-reparto" class="content-section">
-            <div class="logo-header">
-                <h1>REPARTO DE ITEMS</h1>
+    <div id="sec-reparto" class="content-section">
+        <div class="logo-header">
+            <h1>REPARTO DE ITEMS</h1>
+        </div>
+        <div class="reparto-grid">
+            <div class="reparto-col">
+                <div class="reparto-header">DISCORD</div>
+                <table class="tab-reparto">
+                    <thead>
+                        <tr>
+                            <th colspan="2">ITEM</th>
+                            <th>PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaDiscord"></tbody>
+                </table>
             </div>
-            <div class="reparto-grid">
-                <div class="reparto-col">
-                    <div class="reparto-header">DISCORD</div>
-                    <table class="tab-reparto">
-                        <thead>
-                            <tr>
-                                <th colspan="2">ITEM</th>
-                                <th>PTS</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaDiscord"></tbody>
-                    </table>
-                </div>
-                <div class="reparto-col">
-                    <div class="reparto-header">ADMINISTRACIÓN</div>
-                    <table class="tab-reparto">
-                        <thead>
-                            <tr>
-                                <th>ITEM</th>
-                                <th>PTS</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaAdmin"></tbody>
-                    </table>
-                </div>
-                <div class="reparto-col">
-                    <div class="reparto-header">ACTION HOUSE</div>
-                    <table class="tab-reparto">
-                        <thead>
-                            <tr>
-                                <th colspan="2">ITEM</th>
-                                <th>STOCK</th>
-                                <th>PTS</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaAH"></tbody>
-                    </table>
-                </div>
+            <div class="reparto-col">
+                <div class="reparto-header">ADMINISTRACIÓN</div>
+                <table class="tab-reparto">
+                    <thead>
+                        <tr>
+                            <th>ITEM</th>
+                            <th>PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAdmin"></tbody>
+                </table>
+            </div>
+            <div class="reparto-col">
+                <div class="reparto-header">ACTION HOUSE</div>
+                <table class="tab-reparto">
+                    <thead>
+                        <tr>
+                            <th colspan="2">ITEM</th>
+                            <th>STOCK</th>
+                            <th>PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAH"></tbody>
+                </table>
             </div>
         </div>
+    </div>
 
-        <!-- RANKING ACTIVIDAD -->
+    <!-- RANKING ACTIVIDAD -->
 
 
-        <!-- =====================================================
+    <!-- =====================================================
      SECCIÓN ACTIVIDAD
 ===================================================== -->
 
-        <div id="sec-actividad" class="content-section">
-            <div class="logo-header">
-                <h1>RANKING ACTIVIDAD</h1>
-            </div>
-            <div id="listaActividad"></div>
-            <div class="evil-gay">
-                <img src="https://i.imgur.com/yWL2HJ3.png" alt="">
-            </div>
+    <div id="sec-actividad" class="content-section">
+        <div class="logo-header">
+            <h1>RANKING ACTIVIDAD</h1>
         </div>
-        <!-- REAPERS POINTS -->
+        <div id="listaActividad"></div>
+        <div class="evil-gay">
+            <img src="https://i.imgur.com/yWL2HJ3.png" alt="">
+        </div>
+    </div>
+    <!-- REAPERS POINTS -->
 
 
-        <!-- =====================================================
+    <!-- =====================================================
      SECCIÓN REAPERS POINTS
 ===================================================== -->
 
-        <div id="sec-reaperspoints" class="content-section">
-            <div class="logo-header">
-                <h1>ESTADO DE CUENTA</h1>
-                <p class="text-slate-400 uppercase tracking-widest text-xs">Balance de Puntos de la Comunidad</p>
+    <div id="sec-reaperspoints" class="content-section">
+        <div class="logo-header">
+            <h1>ESTADO DE CUENTA</h1>
+            <p class="text-slate-400 uppercase tracking-widest text-xs">Balance de Puntos de la Comunidad</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
+            <div>
+                <h2 class="font-['Cinzel'] text-green-400 text-center mb-4 text-sm tracking-widest">Saldos Positivos
+                </h2>
+                <div id="listaPositivos"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-                <div>
-                    <h2 class="font-['Cinzel'] text-green-400 text-center mb-4 text-sm tracking-widest">Saldos Positivos
-                    </h2>
-                    <div id="listaPositivos"></div>
-                </div>
-
-                <div>
-                    <h2 class="font-['Cinzel'] text-red-400 text-center mb-4 text-sm tracking-widest">Saldos Negativos
-                    </h2>
-                    <div id="listaDeudores"></div>
-                    <div class="sticket-deudores">
-                        <img src="https://i.imgur.com/0uni79p.png" alt="">
-                    </div>
+            <div>
+                <h2 class="font-['Cinzel'] text-red-400 text-center mb-4 text-sm tracking-widest">Saldos Negativos
+                </h2>
+                <div id="listaDeudores"></div>
+                <div class="sticket-deudores">
+                    <img src="https://i.imgur.com/0uni79p.png" alt="">
                 </div>
             </div>
         </div>
-        <!-- REAPERS NORMATIVA -->
+    </div>
+    <!-- REAPERS NORMATIVA -->
 
 
-        <!-- =====================================================
+    <!-- =====================================================
      SECCIÓN NORMATIVA
 ===================================================== -->
 
-        <div id="sec-normativa" class="content-section">
+    <div id="sec-normativa" class="content-section">
 
-            <div style="display: grid; grid-template-columns: 1fr; gap: 24px; padding: 20px;" class="md:grid-cols-2">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 24px; padding: 20px;" class="md:grid-cols-2">
 
-                <div class="normativa-nav-externa">
-                    <a href="#normativa-es" class="btn-float-lang" title="Español">REGLAS EN ESPAÑOL</a>
-                    <a href="#normativa-en" class="btn-float-lang" title="English">RUES IN ENGLISH</a>
+            <div class="normativa-nav-externa">
+                <a href="#normativa-es" class="btn-float-lang" title="Español">REGLAS EN ESPAÑOL</a>
+                <a href="#normativa-en" class="btn-float-lang" title="English">RUES IN ENGLISH</a>
+            </div>
+
+            <!-- ESPAÑOL -->
+            <div id="normativa-es"
+                style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+
+                <h3
+                    style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
+                    🇪🇸 ESPAÑOL
+                </h3>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📜
+                        Introducción</b>
+
+                    Este gremio es un lugar para disfrutar, divertirnos, pasarlo bien y colaborar. Les animamos a
+                    mantener siempre una actitud positiva que ayude a crear un buen ambiente para todos.
+                    <br><br>
+                    Valoramos enormemente a quienes invierten tiempo, esfuerzo y recursos en el gremio. Por ello,
+                    esas personas tendrán prioridad al momento de recibir equipos, habilidades o ítems.
+                    <br><br>
+                    Para garantizar un crecimiento equitativo, se ha creado un sistema de puntos basado en la
+                    participación en actividades del gremio.
                 </div>
 
-                <!-- ESPAÑOL -->
-                <div id="normativa-es"
-                    style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📝 1.
+                        Normativa General</b>
 
-                    <h3
-                        style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
-                        🇪🇸 ESPAÑOL
-                    </h3>
+                    Respeta siempre a todos los miembros y evita hacer aquello que no te gustaría recibir.
+                    <br><br>
+                    El acoso, discriminación, toxicidad, odio o cualquier comportamiento negativo NO será tolerado.
+                </div>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📜
-                            Introducción</b>
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🏆 2.
+                        Sistema de Puntos</b>
 
-                        Este gremio es un lugar para disfrutar, divertirnos, pasarlo bien y colaborar. Les animamos a
-                        mantener siempre una actitud positiva que ayude a crear un buen ambiente para todos.
-                        <br><br>
-                        Valoramos enormemente a quienes invierten tiempo, esfuerzo y recursos en el gremio. Por ello,
-                        esas personas tendrán prioridad al momento de recibir equipos, habilidades o ítems.
-                        <br><br>
-                        Para garantizar un crecimiento equitativo, se ha creado un sistema de puntos basado en la
-                        participación en actividades del gremio.
-                    </div>
+                    <div style="margin-top: 14px;">
+                        <b style="color: #f8d58a;">2.1 Derrota de Jefes</b>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📝 1.
-                            Normativa General</b>
-
-                        Respeta siempre a todos los miembros y evita hacer aquello que no te gustaría recibir.
-                        <br><br>
-                        El acoso, discriminación, toxicidad, odio o cualquier comportamiento negativo NO será tolerado.
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🏆 2.
-                            Sistema de Puntos</b>
-
-                        <div style="margin-top: 14px;">
-                            <b style="color: #f8d58a;">2.1 Derrota de Jefes</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>Mapa 2: 1 punto</li>
-                                <li>Mapa 3 y B4: 1 punto</li>
-                                <li>Mapa 4 y B7: 3 puntos</li>
-                                <li>Mapa 5: 25 puntos</li>
-                                <li>Fortaleza Sombría Piso 2: 5 puntos</li>
-                                <li>Fortaleza Sombría Piso 3: 10 puntos</li>
-                                <li>Eventos Inter-servidor: 50 puntos</li>
-                                <li>Mazmorra del gremio: 15 puntos</li>
-                            </ul>
-
-                            <div
-                                style="background: rgba(30, 41, 59, 0.5); padding: 12px; margin-top: 14px; font-size: 0.76rem; border-radius: 4px; color: #cbd5e1;">
-                                Debes golpear al menos una vez al jefe para recibir puntos.
-                                <br><br>
-                                Si solo golpeas una vez y abandonas la pelea, no recibirás puntos y podrás recibir
-                                sanciones.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📸
-                            Requisito Obligatorio</b>
-
-                        En bosses de mapa 2 (excepto Bauti y Jarn), debes desactivar "ocultar nombre" y enviar evidencia
-                        del drop en:
+                        <ul
+                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                            <li>Mapa 2: 1 punto</li>
+                            <li>Mapa 3 y B4: 1 punto</li>
+                            <li>Mapa 4 y B7: 3 puntos</li>
+                            <li>Mapa 5: 25 puntos</li>
+                            <li>Fortaleza Sombría Piso 2: 5 puntos</li>
+                            <li>Fortaleza Sombría Piso 3: 10 puntos</li>
+                            <li>Eventos Inter-servidor: 50 puntos</li>
+                            <li>Mazmorra del gremio: 15 puntos</li>
+                        </ul>
 
                         <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
-                            📸 photos-map-2
-                        </div>
-
-                        <div style="margin-top: 12px;">
-                            Si das el último golpe y no envías prueba, perderás 10 puntos.
+                            style="background: rgba(30, 41, 59, 0.5); padding: 12px; margin-top: 14px; font-size: 0.76rem; border-radius: 4px; color: #cbd5e1;">
+                            Debes golpear al menos una vez al jefe para recibir puntos.
+                            <br><br>
+                            Si solo golpeas una vez y abandonas la pelea, no recibirás puntos y podrás recibir
+                            sanciones.
                         </div>
                     </div>
+                </div>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">⚔️ 2.2
-                            Bonificación PvP</b>
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📸
+                        Requisito Obligatorio</b>
 
-                        PvP General → x2 puntos
+                    En bosses de mapa 2 (excepto Bauti y Jarn), debes desactivar "ocultar nombre" y enviar evidencia
+                    del drop en:
+
+                    <div
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
+                        📸 photos-map-2
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        Si das el último golpe y no envías prueba, perderás 10 puntos.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">⚔️ 2.2
+                        Bonificación PvP</b>
+
+                    PvP General → x2 puntos
+                    <br>
+                    PvP Intenso → x3 puntos
+                    <br><br>
+                    El Líder o Sublíder decide cuándo aplicar la bonificación.
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">☠️ 2.3
+                        Recompensas por Kills</b>
+
+                    Es obligatorio subir captura del historial de muertes mostrando fecha y hora.
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Guilds enemigas: 2 puntos por kill</li>
+                        <li>Objetivos prioritarios: 5 puntos por kill</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">💎 3.
+                        Cambio de Puntos por Ítems</b>
+
+                    Los ítems entregados por el gremio son para fortalecer al jugador y mejorar el rendimiento
+                    general del clan.
+
+                    <div
+                        style="background: #000; border: 1px solid #c5a059; padding: 14px; color: #4ade80; font-family: monospace; text-align: center; margin: 14px 0; font-size: 0.92rem;">
+                        Valor en puntos = (Valor de mercado - 53) / 5
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        1 punto = 5 diamantes.
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        Se permiten puntos negativos únicamente si el jugador mantiene más del 50% de actividad en
+                        bosses importantes.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🎁 3.1
+                        Formas de Conseguir Ítems</b>
+
+                    <b style="color: #f8d58a;">3.1.1 Subastas</b>
+                    <br>
+                    Los ítems de bajo valor serán subastados por el gremio.
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Duración: 1 hora</li>
+                        <li>Puja mínima: 53 diamantes</li>
+                        <li>Libre participación</li>
+                    </ul>
+
+                    <div style="margin-top: 18px;">
+                        <b style="color: #f8d58a;">3.1.2 Solicitud de Ítems</b>
                         <br>
-                        PvP Intenso → x3 puntos
-                        <br><br>
-                        El Líder o Sublíder decide cuándo aplicar la bonificación.
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">☠️ 2.3
-                            Recompensas por Kills</b>
-
-                        Es obligatorio subir captura del historial de muertes mostrando fecha y hora.
-
-                        <ul
-                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Guilds enemigas: 2 puntos por kill</li>
-                            <li>Objetivos prioritarios: 5 puntos por kill</li>
-                        </ul>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">💎 3.
-                            Cambio de Puntos por Ítems</b>
-
-                        Los ítems entregados por el gremio son para fortalecer al jugador y mejorar el rendimiento
-                        general del clan.
-
-                        <div
-                            style="background: #000; border: 1px solid #c5a059; padding: 14px; color: #4ade80; font-family: monospace; text-align: center; margin: 14px 0; font-size: 0.92rem;">
-                            Valor en puntos = (Valor de mercado - 53) / 5
-                        </div>
-
-                        <div style="margin-top: 8px;">
-                            1 punto = 5 diamantes.
-                        </div>
-
-                        <div style="margin-top: 12px;">
-                            Se permiten puntos negativos únicamente si el jugador mantiene más del 50% de actividad en
-                            bosses importantes.
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🎁 3.1
-                            Formas de Conseguir Ítems</b>
-
-                        <b style="color: #f8d58a;">3.1.1 Subastas</b>
-                        <br>
-                        Los ítems de bajo valor serán subastados por el gremio.
-
-                        <ul
-                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Duración: 1 hora</li>
-                            <li>Puja mínima: 53 diamantes</li>
-                            <li>Libre participación</li>
-                        </ul>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #f8d58a;">3.1.2 Solicitud de Ítems</b>
-                            <br>
-                            Debe realizarse en el canal:
-                        </div>
-
-                        <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
-                            🏪 auction-house-list
-                        </div>
-
-                        <div style="margin-top: 14px;">
-                            <b style="color: #f8d58a;">Formato obligatorio:</b>
-                        </div>
-
-                        <ul
-                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Nombre</li>
-                            <li>Fecha</li>
-                            <li>Ítem solicitado</li>
-                        </ul>
-
-                        <div style="margin-top: 12px;">
-                            No puedes solicitar ítems si tienes puntos negativos.
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📘
-                            Manuales y Equipos</b>
-
-                        <div style="margin-top: 10px;">
-                            <b style="color: #f8d58a;">📖 Manuales Épicos / Legendarios</b>
-                            <br>
-                            Se entregan siguiendo un orden circular y requieren al menos 50% de actividad semanal.
-                        </div>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #f8d58a;">🛡️ Equipos Épicos y Legendarios</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>Prioridad para completar sets</li>
-                                <li>Prioridad para tanques, PvP y healers activos</li>
-                                <li>Si recibes un equipo mejor, debes entregar tu equipo anterior a otro miembro
-                                    aprobado por administración.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📚
-                            Códices</b>
-
-                        <div style="margin-top: 10px;">
-                            <b style="color: #4ade80;">🟢 Códices Verdes</b>
-                            <br>
-                            El jugador que haga Last Hit tiene prioridad.
-                        </div>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #60a5fa;">🔵 Códices Azules</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>Los códices +2 / +6 son responsabilidad del jugador.</li>
-                                <li>Los códices +3 / +7 serán mejorados por el clan.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📦 4.
-                            Control e Inventario</b>
-
-                        Todos los registros del gremio están disponibles públicamente en Google Sheets.
-
-                        <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; margin-top: 12px; border-radius: 4px; color: #67e8f9;">
-                            👉 Tabla Consolidada de Puntos y Registros
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🔥
-                            Evento de Invocación de Jefes</b>
-
-                        Los bosses entregan recompensas personales y recompensas para la subasta del clan.
-                        <br><br>
-                        Es importante avisar rápidamente a la administración quién invocó el jefe.
+                        Debe realizarse en el canal:
                     </div>
 
                     <div
-                        style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 14px; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
-                        <b style="color: #f87171;">🤖 BOT DE ASISTENCIA</b>
-                        <br><br>
-                        Cuando aparezca un boss, el bot enviará un mensaje en el canal de actividad.
-                        <br><br>
-                        Tendrás 20 minutos para reaccionar con ✅.
-                        <br><br>
-                        Marcar asistencia sin acudir al boss tendrá una sanción severa.
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
+                        🏪 auction-house-list
                     </div>
 
+                    <div style="margin-top: 14px;">
+                        <b style="color: #f8d58a;">Formato obligatorio:</b>
+                    </div>
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Nombre</li>
+                        <li>Fecha</li>
+                        <li>Ítem solicitado</li>
+                    </ul>
+
+                    <div style="margin-top: 12px;">
+                        No puedes solicitar ítems si tienes puntos negativos.
+                    </div>
                 </div>
 
-                <!-- ENGLISH -->
-                <div id="normativa-en"
-                    style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📘
+                        Manuales y Equipos</b>
 
-                    <h3
-                        style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
-                        🇺🇸 US ENGLISH
-                    </h3>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📜
-                            Introduction</b>
-
-                        This guild is a place to enjoy, have fun, and collaborate together. We encourage everyone to
-                        always maintain a positive attitude that helps create a good environment for all members.
-                        <br><br>
-                        We highly value players who invest time, effort, and resources into the guild. Because of this,
-                        those members will receive priority when it comes to gear, skills, or items.
-                        <br><br>
-                        To ensure fair progression, a point system has been created based on participation in guild
-                        activities.
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📝 1.
-                            General Rules</b>
-
-                        Always respect all members and avoid doing anything you would not like done to yourself.
-                        <br><br>
-                        Harassment, discrimination, toxicity, hate speech, or any negative behavior will NOT be
-                        tolerated.
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🏆 2.
-                            Point System</b>
-
-                        <div style="margin-top: 14px;">
-                            <b style="color: #f8d58a;">2.1 Boss Defeat</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>Map 2: 1 point</li>
-                                <li>Map 3 and B4: 1 point</li>
-                                <li>Map 4 and B7: 3 points</li>
-                                <li>Map 5: 25 points</li>
-                                <li>Shadow Fortress Floor 2: 5 points</li>
-                                <li>Shadow Fortress Floor 3: 10 points</li>
-                                <li>Cross-server Events: 50 points</li>
-                                <li>Guild Dungeon: 15 points</li>
-                            </ul>
-
-                            <div
-                                style="background: rgba(30, 41, 59, 0.5); padding: 12px; margin-top: 14px; font-size: 0.76rem; border-radius: 4px; color: #cbd5e1;">
-                                You must hit the boss at least once to receive points.
-                                <br><br>
-                                If you only hit once and leave the fight, you will not receive points and may receive
-                                penalties.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📸
-                            Mandatory Requirement</b>
-
-                        For Map 2 bosses (except Bauti and Jarn), you must disable "hide name" and upload proof of the
-                        drop in:
-
-                        <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
-                            📸 photos-map-2
-                        </div>
-
-                        <div style="margin-top: 12px;">
-                            If you land the last hit and fail to upload proof, you will lose 10 points.
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">⚔️ 2.2
-                            PvP Bonus</b>
-
-                        General PvP → x2 points
+                    <div style="margin-top: 10px;">
+                        <b style="color: #f8d58a;">📖 Manuales Épicos / Legendarios</b>
                         <br>
-                        Intense PvP → x3 points
-                        <br><br>
-                        The Leader or Sub-Leader decides when the bonus applies.
+                        Se entregan siguiendo un orden circular y requieren al menos 50% de actividad semanal.
                     </div>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">☠️ 2.3
-                            Kill Rewards</b>
-
-                        Uploading a screenshot of the kill history showing date and time is mandatory.
+                    <div style="margin-top: 18px;">
+                        <b style="color: #f8d58a;">🛡️ Equipos Épicos y Legendarios</b>
 
                         <ul
                             style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Enemy guilds: 2 points per kill</li>
-                            <li>Priority targets: 5 points per kill</li>
+                            <li>Prioridad para completar sets</li>
+                            <li>Prioridad para tanques, PvP y healers activos</li>
+                            <li>Si recibes un equipo mejor, debes entregar tu equipo anterior a otro miembro
+                                aprobado por administración.</li>
                         </ul>
                     </div>
+                </div>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">💎 3.
-                            Point Exchange for Items</b>
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📚
+                        Códices</b>
 
-                        Items provided by the guild are meant to strengthen players and improve the clan’s overall
-                        performance.
-
-                        <div
-                            style="background: #000; border: 1px solid #c5a059; padding: 14px; color: #4ade80; font-family: monospace; text-align: center; margin: 14px 0; font-size: 0.92rem;">
-                            Point Value = (Market Value - 53) / 5
-                        </div>
-
-                        <div style="margin-top: 8px;">
-                            1 point = 5 diamonds.
-                        </div>
-
-                        <div style="margin-top: 12px;">
-                            Negative points are allowed only if the player maintains more than 50% activity in important
-                            bosses.
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🎁 3.1
-                            Ways to Obtain Items</b>
-
-                        <b style="color: #f8d58a;">3.1.1 Auctions</b>
+                    <div style="margin-top: 10px;">
+                        <b style="color: #4ade80;">🟢 Códices Verdes</b>
                         <br>
-                        Low-value items will be auctioned by the guild.
+                        El jugador que haga Last Hit tiene prioridad.
+                    </div>
+
+                    <div style="margin-top: 18px;">
+                        <b style="color: #60a5fa;">🔵 Códices Azules</b>
 
                         <ul
                             style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Duration: 1 hour</li>
-                            <li>Minimum bid: 53 diamonds</li>
-                            <li>Open participation</li>
+                            <li>Los códices +2 / +6 son responsabilidad del jugador.</li>
+                            <li>Los códices +3 / +7 serán mejorados por el clan.</li>
                         </ul>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #f8d58a;">3.1.2 Item Requests</b>
-                            <br>
-                            Requests must be made in the channel:
-                        </div>
-
-                        <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
-                            🏪 auction-house-list
-                        </div>
-
-                        <div style="margin-top: 14px;">
-                            <b style="color: #f8d58a;">Required Format:</b>
-                        </div>
-
-                        <ul
-                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                            <li>Name</li>
-                            <li>Date</li>
-                            <li>Requested item</li>
-                        </ul>
-
-                        <div style="margin-top: 12px;">
-                            You cannot request items if you have negative points.
-                        </div>
                     </div>
+                </div>
 
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📘
-                            Manuals and Equipment</b>
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📦 4.
+                        Control e Inventario</b>
 
-                        <div style="margin-top: 10px;">
-                            <b style="color: #f8d58a;">📖 Epic / Legendary Manuals</b>
-                            <br>
-                            Distributed following a rotation order and require at least 50% weekly activity.
-                        </div>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #f8d58a;">🛡️ Epic and Legendary Equipment</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>Priority for completing sets</li>
-                                <li>Priority for active tanks, PvP players, and healers</li>
-                                <li>If you receive better equipment, you must pass your previous gear to another member
-                                    approved by administration.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📚
-                            Codexes</b>
-
-                        <div style="margin-top: 10px;">
-                            <b style="color: #4ade80;">🟢 Green Codexes</b>
-                            <br>
-                            The player who lands the Last Hit has priority.
-                        </div>
-
-                        <div style="margin-top: 18px;">
-                            <b style="color: #60a5fa;">🔵 Blue Codexes</b>
-
-                            <ul
-                                style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-                                <li>+2 / +6 codexes are the player's responsibility.</li>
-                                <li>+3 / +7 codexes will be upgraded by the clan.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📦 4.
-                            Control and Inventory</b>
-
-                        All guild records are publicly available in Google Sheets.
-
-                        <div
-                            style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; margin-top: 12px; border-radius: 4px; color: #67e8f9;">
-                            👉 Consolidated Point and Records Table
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
-                        <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🔥
-                            Boss Summon Event</b>
-
-                        Bosses provide personal rewards as well as rewards for clan auctions.
-                        <br><br>
-                        It is important to quickly notify the administration who summoned the boss.
-                    </div>
+                    Todos los registros del gremio están disponibles públicamente en Google Sheets.
 
                     <div
-                        style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 14px; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
-                        <b style="color: #f87171;">🤖 ATTENDANCE BOT</b>
-                        <br><br>
-                        When a boss appears, the bot will send a message in the activity channel.
-                        <br><br>
-                        You will have 20 minutes to react with ✅.
-                        <br><br>
-                        Marking attendance without actually attending the boss fight will result in a severe penalty.
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; margin-top: 12px; border-radius: 4px; color: #67e8f9;">
+                        👉 Tabla Consolidada de Puntos y Registros
                     </div>
+                </div>
 
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🔥
+                        Evento de Invocación de Jefes</b>
+
+                    Los bosses entregan recompensas personales y recompensas para la subasta del clan.
+                    <br><br>
+                    Es importante avisar rápidamente a la administración quién invocó el jefe.
+                </div>
+
+                <div
+                    style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 14px; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
+                    <b style="color: #f87171;">🤖 BOT DE ASISTENCIA</b>
+                    <br><br>
+                    Cuando aparezca un boss, el bot enviará un mensaje en el canal de actividad.
+                    <br><br>
+                    Tendrás 20 minutos para reaccionar con ✅.
+                    <br><br>
+                    Marcar asistencia sin acudir al boss tendrá una sanción severa.
                 </div>
 
             </div>
+
+            <!-- ENGLISH -->
+            <div id="normativa-en"
+                style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(197, 160, 89, 0.2); padding: 24px; border-radius: 4px;">
+
+                <h3
+                    style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid #c5a059; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">
+                    🇺🇸 US ENGLISH
+                </h3>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📜
+                        Introduction</b>
+
+                    This guild is a place to enjoy, have fun, and collaborate together. We encourage everyone to
+                    always maintain a positive attitude that helps create a good environment for all members.
+                    <br><br>
+                    We highly value players who invest time, effort, and resources into the guild. Because of this,
+                    those members will receive priority when it comes to gear, skills, or items.
+                    <br><br>
+                    To ensure fair progression, a point system has been created based on participation in guild
+                    activities.
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📝 1.
+                        General Rules</b>
+
+                    Always respect all members and avoid doing anything you would not like done to yourself.
+                    <br><br>
+                    Harassment, discrimination, toxicity, hate speech, or any negative behavior will NOT be
+                    tolerated.
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🏆 2.
+                        Point System</b>
+
+                    <div style="margin-top: 14px;">
+                        <b style="color: #f8d58a;">2.1 Boss Defeat</b>
+
+                        <ul
+                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                            <li>Map 2: 1 point</li>
+                            <li>Map 3 and B4: 1 point</li>
+                            <li>Map 4 and B7: 3 points</li>
+                            <li>Map 5: 25 points</li>
+                            <li>Shadow Fortress Floor 2: 5 points</li>
+                            <li>Shadow Fortress Floor 3: 10 points</li>
+                            <li>Cross-server Events: 50 points</li>
+                            <li>Guild Dungeon: 15 points</li>
+                        </ul>
+
+                        <div
+                            style="background: rgba(30, 41, 59, 0.5); padding: 12px; margin-top: 14px; font-size: 0.76rem; border-radius: 4px; color: #cbd5e1;">
+                            You must hit the boss at least once to receive points.
+                            <br><br>
+                            If you only hit once and leave the fight, you will not receive points and may receive
+                            penalties.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📸
+                        Mandatory Requirement</b>
+
+                    For Map 2 bosses (except Bauti and Jarn), you must disable "hide name" and upload proof of the
+                    drop in:
+
+                    <div
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
+                        📸 photos-map-2
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        If you land the last hit and fail to upload proof, you will lose 10 points.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">⚔️ 2.2
+                        PvP Bonus</b>
+
+                    General PvP → x2 points
+                    <br>
+                    Intense PvP → x3 points
+                    <br><br>
+                    The Leader or Sub-Leader decides when the bonus applies.
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">☠️ 2.3
+                        Kill Rewards</b>
+
+                    Uploading a screenshot of the kill history showing date and time is mandatory.
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Enemy guilds: 2 points per kill</li>
+                        <li>Priority targets: 5 points per kill</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">💎 3.
+                        Point Exchange for Items</b>
+
+                    Items provided by the guild are meant to strengthen players and improve the clan’s overall
+                    performance.
+
+                    <div
+                        style="background: #000; border: 1px solid #c5a059; padding: 14px; color: #4ade80; font-family: monospace; text-align: center; margin: 14px 0; font-size: 0.92rem;">
+                        Point Value = (Market Value - 53) / 5
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        1 point = 5 diamonds.
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        Negative points are allowed only if the player maintains more than 50% activity in important
+                        bosses.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🎁 3.1
+                        Ways to Obtain Items</b>
+
+                    <b style="color: #f8d58a;">3.1.1 Auctions</b>
+                    <br>
+                    Low-value items will be auctioned by the guild.
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Duration: 1 hour</li>
+                        <li>Minimum bid: 53 diamonds</li>
+                        <li>Open participation</li>
+                    </ul>
+
+                    <div style="margin-top: 18px;">
+                        <b style="color: #f8d58a;">3.1.2 Item Requests</b>
+                        <br>
+                        Requests must be made in the channel:
+                    </div>
+
+                    <div
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px; margin-top: 10px; border-radius: 4px; color: #67e8f9; font-family: monospace;">
+                        🏪 auction-house-list
+                    </div>
+
+                    <div style="margin-top: 14px;">
+                        <b style="color: #f8d58a;">Required Format:</b>
+                    </div>
+
+                    <ul
+                        style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                        <li>Name</li>
+                        <li>Date</li>
+                        <li>Requested item</li>
+                    </ul>
+
+                    <div style="margin-top: 12px;">
+                        You cannot request items if you have negative points.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📘
+                        Manuals and Equipment</b>
+
+                    <div style="margin-top: 10px;">
+                        <b style="color: #f8d58a;">📖 Epic / Legendary Manuals</b>
+                        <br>
+                        Distributed following a rotation order and require at least 50% weekly activity.
+                    </div>
+
+                    <div style="margin-top: 18px;">
+                        <b style="color: #f8d58a;">🛡️ Epic and Legendary Equipment</b>
+
+                        <ul
+                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                            <li>Priority for completing sets</li>
+                            <li>Priority for active tanks, PvP players, and healers</li>
+                            <li>If you receive better equipment, you must pass your previous gear to another member
+                                approved by administration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📚
+                        Codexes</b>
+
+                    <div style="margin-top: 10px;">
+                        <b style="color: #4ade80;">🟢 Green Codexes</b>
+                        <br>
+                        The player who lands the Last Hit has priority.
+                    </div>
+
+                    <div style="margin-top: 18px;">
+                        <b style="color: #60a5fa;">🔵 Blue Codexes</b>
+
+                        <ul
+                            style="margin-left: 18px; margin-top: 10px; list-style-type: disc; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+                            <li>+2 / +6 codexes are the player's responsibility.</li>
+                            <li>+3 / +7 codexes will be upgraded by the clan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">📦 4.
+                        Control and Inventory</b>
+
+                    All guild records are publicly available in Google Sheets.
+
+                    <div
+                        style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; margin-top: 12px; border-radius: 4px; color: #67e8f9;">
+                        👉 Consolidated Point and Records Table
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+                    <b style="color: #c5a059; display: block; text-transform: uppercase; margin-bottom: 6px;">🔥
+                        Boss Summon Event</b>
+
+                    Bosses provide personal rewards as well as rewards for clan auctions.
+                    <br><br>
+                    It is important to quickly notify the administration who summoned the boss.
+                </div>
+
+                <div
+                    style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 14px; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6;">
+                    <b style="color: #f87171;">🤖 ATTENDANCE BOT</b>
+                    <br><br>
+                    When a boss appears, the bot will send a message in the activity channel.
+                    <br><br>
+                    You will have 20 minutes to react with ✅.
+                    <br><br>
+                    Marking attendance without actually attending the boss fight will result in a severe penalty.
+                </div>
+
+            </div>
+
         </div>
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
