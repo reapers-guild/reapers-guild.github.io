@@ -1723,6 +1723,19 @@
             // Si es menor a 768px (Mobile), la función no hace nada
         }
 
+        function openMapTab(event, mapId) {
+            // Ocultar todos los contenidos de mapas dentro de la sección de cofres
+            const contents = document.querySelectorAll('.map-tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Quitar la clase 'active' de todos los botones de mapa
+            const buttons = document.querySelectorAll('.map-tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Mostrar el contenido actual y marcar el botón presionado como activo
+            document.getElementById(mapId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
 
     </script>
 </body>
