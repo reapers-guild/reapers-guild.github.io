@@ -858,3 +858,41 @@
             100% { transform: translate(-50%, -50%) rotate(-15deg); left: 250%; top: -60%; }
         }
         .pantalla-lista { opacity: 0; pointer-events: none; }
+
+/* Botones de navegación de mapas */
+.map-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.map-tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.map-tab-btn:hover {
+  background-color: #333;
+}
+
+.map-tab-btn.active {
+  background-color: #e0a96d; /* Cambia al color acentuado de tu web */
+  color: #111;
+  border-color: #e0a96d;
+}
+
+/* Ocultar/Mostrar contenido según la pestaña seleccionada */
+.map-tab-content {
+  display: none;
+}
+
+.map-tab-content.active {
+  display: block;
+}
