@@ -639,7 +639,7 @@ table.dataTable thead th {
     /* Aplicamos la animación */
     animation: float 4s ease-in-out infinite;
     /* Un pequeño filtro de brillo o sombra puede ayudar al efecto místico */
-    filter: drop-shadow(0 5px 15px rgba(0, 255, 127, 0.3));
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.4))
 }
 
 /* Definición de los movimientos */
