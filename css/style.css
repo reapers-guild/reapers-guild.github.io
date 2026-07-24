@@ -3,6 +3,10 @@
 ===================================================== */
 
 @media (max-width: 767px) {
+   #scrollToTopBtn {
+    bottom: 20px !important;
+    left: 20px !important;
+}
     #rocket-png {
         width: 420px !important;
     }
