@@ -1097,7 +1097,28 @@
             $('.nav-btn').removeClass('active');
             if (btn) $(btn).addClass('active');
         }
+        // Mostrar u ocultar el botón al hacer scroll
+        window.onscroll = function () {
+            let btn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        // Función para volver arriba con desplazamiento suave
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
+    <!-- Botón Ir Arriba (Bottom Left) -->
+    <button id="scrollToTopBtn" onclick="scrollToTop()" title="Volver arriba">
+        ▲
+    </button>
 </body>
 
 </html>
