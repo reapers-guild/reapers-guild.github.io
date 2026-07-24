@@ -991,3 +991,12 @@
     color: #c5a059;
     padding: 10px;
 }
+/* Oculta todo el contenido por defecto */
+.content-block {
+  display: none;
+}
+
+/* Solo muestra el bloque que tiene la clase .active */
+.content-block.active {
+  display: block;
+}
