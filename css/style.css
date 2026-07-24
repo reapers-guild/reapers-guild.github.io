@@ -1142,3 +1142,6 @@ table.dataTable thead th {
     background: #c5a059;
     color: #0f172a;
 }
+.img-quest {
+   clip-path: inset(2% 2% 2% 2%);
+}
