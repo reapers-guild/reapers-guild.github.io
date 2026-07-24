@@ -1158,3 +1158,10 @@ table.dataTable thead th {
     max-width: none !important;
     display: block;
 }
+.mapa-completo {
+   background: #aa8948;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: solid 1px black;
+
+}
