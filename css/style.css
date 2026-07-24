@@ -1165,3 +1165,27 @@ table.dataTable thead th {
     border: solid 1px black;
 
 }
+#scrollToTopBtn {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99;
+    font-size: 18px;
+    border: 1px solid rgba(197, 160, 89, 0.6);
+    outline: none;
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #c5a059;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #c5a059;
+    color: #0f172a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(197, 160, 89, 0.4);
+}
