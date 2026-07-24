@@ -1145,4 +1145,15 @@ table.dataTable thead th {
 
 .img-quest {
     clip-path: inset(2% 2% 2% 2%);
+
+    /* Hace que la imagen ocupe todo el ancho disponible */
+    width: calc(100% + 24px) !important;
+
+    /* Cancela el padding de 12px del contenedor en los lados */
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+
+    /* Asegura que no tenga límites extra */
+    max-width: none !important;
+    display: block;
 }
