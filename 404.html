@@ -826,7 +826,6 @@
         }
 
         function verSeccion(id, btn) {
-
             reproducirSonido();
 
             // 1. Cambiar visibilidad de secciones
@@ -838,13 +837,11 @@
             if (btn) {
                 $(btn).addClass('active');
             } else {
-                // Busca el botón que tiene la función verSeccion con ese ID
                 $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
             }
 
-            // 3. Actualizar la URL limpia (ej: /deudores)
-            // Usamos history.pushState para que no aparezca el #
-            window.history.pushState({ seccion: id }, "", id);
+            // 3. COMENTAR O ELIMINAR ESTA LÍNEA PARA NO CAMBIAR LA URL:
+            // window.history.pushState({ seccion: id }, "", id);
         }
 
         // --- TU FUNCIÓN CARGAR DATOS ORIGINAL (ALMACÉN)[cite: 4] ---
@@ -1057,36 +1054,19 @@
 
 
         $(document).ready(function () {
-            // Carga de tus datos de Google Sheets
+            // Carga de datos
             cargarDatos();
             cargarReparto();
             cargarActividad();
             cargarDeudores();
 
-            // LEER LA URL ACTUAL
-            // window.location.pathname devuelve algo como "/reparto" o "/tu-repo/reparto"
-            const pathParts = window.location.pathname.split("/");
-            const lastPart = pathParts.pop() || pathParts.pop(); // Maneja si termina en /
-
-            const seccionesValidas = ['reparto', 'actividad', 'reaperspoints', 'normativa', 'cofres'];
-
-            if (seccionesValidas.includes(lastPart)) {
-                verSeccion(lastPart);
-            } else {
-                // Si la ruta es la raíz o no existe, mostrar Almacén
-                verSeccion('cofres');
+            // Limpia cualquier subruta (/reparto, etc.) para que vuelva al dominio principal/raíz
+            if (window.location.pathname !== '/' && !window.location.pathname.endsWith('.html')) {
+                window.history.replaceState({}, document.title, window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1));
             }
 
-            // Permitir que funcionen las flechas de "Atrás" y "Adelante" del navegador
-            window.onpopstate = function (event) {
-                if (event.state && event.state.seccion) {
-                    // Solo cambiamos la sección visualmente sin volver a ejecutar pushState
-                    $('.content-section').removeClass('active');
-                    $(`#sec-${event.state.seccion}`).addClass('active');
-                    $('.btn-tab').removeClass('active');
-                    $(`.btn-tab[onclick*="'${event.state.seccion}'"]`).addClass('active');
-                }
-            };
+            // Mostrar directamente la sección principal por defecto sin modificar la URL
+            verSeccion('cofres');
         });
         const audioClick = new Audio('iCreateWindow.wav');
         audioClick.volume = 0.1; // Ajusta aquí el volumen general (0.5 es un buen equilibrio)
