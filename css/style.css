@@ -616,6 +616,7 @@ table.dataTable thead th {
 
 .levitate-container {
     position: fixed;
+    z-index: 9;
     top: 75%;
     right: 40px;
     transform: translateY(-50%);
@@ -633,7 +634,7 @@ table.dataTable thead th {
 }
 
 .floating-character {
-    width: 300px;
+    width: 540px;
     /* Ajusta el tamaño a tu gusto */
     height: auto;
     /* Aplicamos la animación */
