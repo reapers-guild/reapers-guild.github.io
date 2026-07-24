@@ -1,1377 +1,761 @@
-<!DOCTYPE html>
-<html lang="es">
+<!-- Selector de Idiomas Flotante -->
+<div class="language-selector">
+    <button class="lang-btn active" onclick="switchLanguage('es', this)">Español</button>
+    <button class="lang-btn" onclick="switchLanguage('en', this)">English</button>
+    <button class="lang-btn" onclick="switchLanguage('pt', this)">Português</button>
+</div>
 
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8EMCXPRHLP"></script>
-
-
-    <!-- =====================================================
-     SCRIPTS
-===================================================== -->
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-8EMCXPRHLP');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REAPERS - Portal Oficial</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <div class="levitate-container banin-flotating">
-        <img src="https://i.imgur.com/t9zF6Bp.png" alt="Personaje Levitando" class="floating-character">
-    </div>
-
-    <section class="ciel stay">
-        <div class="stars-container">
-            <div class="star-layer"></div>
-        </div>
-        <div id="speed-lines-layer"></div>
-
-        <div class="title">
-            <span class="serif">REAPERS</span><br>
-            <span class="bold">REGISTRO OFICIAL DE SUMINISTROS</span>
-        </div>
-
-        <div class="nuage plan_3"></div>
-        <div class="nuage plan_2"></div>
-        <div class="nuage plan_1"></div>
-
-        <div class="avion-reapers"></div>
-    </section>
-
-
-    <!-- Pestañas / Botones -->
-    <div class="language-selector">
-        <!-- Poner 'active' en el botón de español -->
-        <button class="lang-btn active" data-lang="es">Español</button>
-        <button class="lang-btn" data-lang="en">English</button>
-        <button class="lang-btn" data-lang="pt">Português</button>
-    </div>
-
-    <!-- Contenedores de contenido -->
-    <div class="lang-content">
-        <!-- Asegurar que el div de español tenga la clase activa/visible -->
-        <div id="content-es" class="content-block active">
-            <p>Texto en español por defecto.</p>
-        </div>
-
-        <div id="content-en" class="content-block">
-            <p>English content.</p>
-        </div>
-
-        <div id="content-pt" class="content-block">
-            <p>Conteúdo em português.</p>
-        </div>
-    </div>
-
-    <!-- =====================================================
+<!-- =====================================================
      NAVEGACIÓN TABS
 ===================================================== -->
+<nav class="tabs-nav">
+    <button onclick="verSeccion('cofres-section', this)" class="nav-btn active">
+        Guía de Cofres
+    </button>
+</nav>
 
-    <nav class="tabs-nav">
-
-        <!-- Botón para Guía de Cofres -->
-        <button onclick="showSection('cofres-section')" class="nav-btn">
-            Guía de Cofres
-        </button>
-    </nav>
-
-
-
-    <!-- =====================================================
+<!-- =====================================================
      CONTENIDO PRINCIPAL
 ===================================================== -->
+<div class="main-container">
 
-    <div class="main-container">
+    <section id="cofres-section" class="section-container">
 
-        <!-- =====================================================
-     SECCIÓN GUÍA DE COFRES Y SKINS DE ARMA
-===================================================== -->
-        <section id="cofres-section" class="section-container">
+        <!-- Navegación por Sub-apartados (MAP 1 a MAP 5) -->
+        <div class="map-tabs">
+            <button class="map-tab-btn active" onclick="openMapTab(event, 'map1')" data-key="btn_map1">MAP 1</button>
+            <button class="map-tab-btn" onclick="openMapTab(event, 'map2')" data-key="btn_map2">MAP 2</button>
+            <button class="map-tab-btn" onclick="openMapTab(event, 'map3')" data-key="btn_map3">MAP 3</button>
+            <button class="map-tab-btn" onclick="openMapTab(event, 'map4')" data-key="btn_map4">MAP 4</button>
+            <button class="map-tab-btn" onclick="openMapTab(event, 'map5')" data-key="btn_map5">MAP 5</button>
+        </div>
 
-            <!-- Navegación por Sub-apartados (MAP 1 a MAP 5) -->
-            <div class="map-tabs">
-                <button class="map-tab-btn active" onclick="openMapTab(event, 'map1')" data-key="btn_map1">MAP
-                    1</button>
-                <button class="map-tab-btn" onclick="openMapTab(event, 'map2')" data-key="btn_map2">MAP 2</button>
-                <button class="map-tab-btn" onclick="openMapTab(event, 'map3')" data-key="btn_map3">MAP 3</button>
-                <button class="map-tab-btn" onclick="openMapTab(event, 'map4')" data-key="btn_map4">MAP 4</button>
-                <button class="map-tab-btn" onclick="openMapTab(event, 'map5')" data-key="btn_map5">MAP 5</button>
-            </div>
+        <!-- Contenido MAP 1 -->
+        <div id="map1" class="map-tab-content active">
+            <div
+                style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+                <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
+                    data-key="m1_title">
+                    🌿 CAPÍTULO I: MIDGARD
+                </h2>
 
-            <!-- Contenido MAP 1 -->
-            <div id="map1" class="map-tab-content active">
-                <!-- CAPÍTULO I: MIDGARD -->
-                <div
-                    style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
-                    <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
-                        data-key="m1_title">
-                        🌿 CHAPTER I: MIDGARD
-                    </h2>
-
-                    <div style="display: grid; gap: 16px;">
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c1_t">Treasure
-                                Chest 1 – Egil's Farm</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c1_d">Right
-                                under the tree immediately behind your arrival location.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w1_t">✨ Weapon
-                                Skin Chest 1 – Windmill Pasture</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w1_d">Northern
-                                part of Windmill Pasture after leaving Egil's Farm.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c2_t">Treasure
-                                Chest 2 – Waterfall Hills (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c2_d">Slightly
-                                hidden behind the hill near the waterfall.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c3_t">Treasure
-                                Chest 3 – Waterfall Hills (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c3_d">Inside
-                                the waterfall, accessible via the rocky passage.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c4_t">Treasure
-                                Chest 4 – Eastern Plains</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c4_d">Hidden
-                                between the tall grass and the rocks.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c5_t">Treasure
-                                Chest 5 – Emu Habitat</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c5_d">In the
-                                innermost, nest-like area.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c6_t">Treasure
-                                Chest 6 – Northern Plains</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c6_d">At the
-                                top of the Forsaken Fortress.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w2_t">✨ Weapon
-                                Skin Chest 2 – Abandoned Village</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w2_d">After
-                                claiming chest 6, continue straight toward Abandoned Village.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c7_t">Treasure
-                                Chest 7 – Manaheim</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c7_d">Left
-                                castle wall inside the 'Flight' sub-quest area.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c8_t">Treasure
-                                Chest 8 – Bandit Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c8_d">On the
-                                gate of the Bandit Settlement.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c9_t">Treasure
-                                Chest 9 – Lerad's Hideout</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c9_d">Behind
-                                the burning cross, deep within the hideout.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w3_t">✨ Weapon
-                                Skin Chest 3 – Lerad's Hideout</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w3_d">Deep
-                                inside the hideout, don't miss it!</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c10_t">Treasure
-                                Chest 10 – Sea Serpent's Lair</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c10_d">On the
-                                wall directly above the entrance.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w4_t">✨ Weapon
-                                Skin Chest 4 – Cultist Compound (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w4_d">Elevated
-                                wooden platform near the cultist altar.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w5_t">✨ Weapon
-                                Skin Chest 5 – Cultist Compound (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w5_d">Nearby
-                                final compound boundary.</p>
-                        </div>
+                <div style="display: grid; gap: 16px;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c1_t">Cofre del
+                            Tesoro 1 – Granja de Egil</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c1_d">Justo debajo
+                            del árbol inmediatamente detrás del punto de llegada.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w1_t">✨ Cofre de
+                            Skin de Arma 1 – Pastizal del Molino</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w1_d">Parte norte
+                            del pastizal del molino al salir de la granja de Egil.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c2_t">Cofre del
+                            Tesoro 2 – Colinas de la Cascada (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c2_d">Ligeramente
+                            oculto detrás de la colina cerca de la cascada.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c3_t">Cofre del
+                            Tesoro 3 – Colinas de la Cascada (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c3_d">Dentro de la
+                            cascada, accesible por el pasaje rocoso.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c4_t">Cofre del
+                            Tesoro 4 – Llanuras del Este</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c4_d">Oculto entre
+                            la hierba alta y las rocas.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c5_t">Cofre del
+                            Tesoro 5 – Hábitat de Emu</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c5_d">En la zona
+                            más profunda, similar a un nido.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c6_t">Cofre del
+                            Tesoro 6 – Llanuras del Norte</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c6_d">En la cima
+                            de la Fortaleza Abandonada.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w2_t">✨ Cofre de
+                            Skin de Arma 2 – Aldea Abandonada</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w2_d">Tras
+                            reclamar el cofre 6, continua recto hacia la Aldea Abandonada.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c7_t">Cofre del
+                            Tesoro 7 – Manaheim</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c7_d">Muro
+                            izquierdo del castillo dentro del área de la sub-misión 'Vuelo'.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c8_t">Cofre del
+                            Tesoro 8 – Asentamiento de Bandidos</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c8_d">En el portón
+                            del Asentamiento de Bandidos.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c9_t">Cofre del
+                            Tesoro 9 – Guarida de Lerad</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c9_d">Detrás de la
+                            cruz en llamas, en lo profundo de la guarida.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w3_t">✨ Cofre de
+                            Skin de Arma 3 – Guarida de Lerad</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w3_d">En lo
+                            profundo de la guarida, ¡no te lo pierdas!</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m1_c10_t">Cofre del
+                            Tesoro 10 – Guarida de la Serpiente Marina</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_c10_d">En la pared
+                            directamente sobre la entrada.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w4_t">✨ Cofre de
+                            Skin de Arma 4 – Campamento del Culto (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w4_d">Plataforma
+                            elevada de madera cerca del altar de los cultistas.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m1_w5_t">✨ Cofre de
+                            Skin de Arma 5 – Campamento del Culto (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m1_w5_d">Cerca del
+                            límite final del campamento.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Contenido MAP 2 -->
-            <div id="map2" class="map-tab-content">
-                <!-- CAPÍTULO II: JOTUNHEIM -->
-                <div
-                    style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
-                    <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
-                        data-key="m2_title">
-                        ❄️ CHAPTER II: JOTUNHEIM
-                    </h2>
+        <!-- Contenido MAP 2 -->
+        <div id="map2" class="map-tab-content">
+            <!-- CAPÍTULO II: JOTUNHEIM -->
+            <div
+                style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+                <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
+                    data-key="m2_title">
+                    ❄️ CHAPTER II: JOTUNHEIM
+                </h2>
 
-                    <div style="display: grid; gap: 16px;">
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c1_t">Treasure
-                                Chest 1 – Bergelmir (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c1_d">Near the
-                                Underground Prison, behind Hreid.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c2_t">Treasure
-                                Chest 2 – Bergelmir (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c2_d">On the
-                                cliff ledge behind the town buildings.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w1_t">✨ Weapon
-                                Skin Chest 1 – Spider Colony</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w1_d">Climb
-                                structure near spider colony in an open spot.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c3_t">Treasure
-                                Chest 3 – Bergelmir (3)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c3_d">At the
-                                top of castle gate (climbable from town).</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c4_t">Treasure
-                                Chest 4 – Bergelmir (4)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c4_d">Past
-                                Bergelmir Gate to the left; glide under bridge.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c5_t">Treasure
-                                Chest 5 – Orc Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c5_d">At the
-                                top of the tower behind Farba.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c6_t">Treasure
-                                Chest 6 – Savage Land</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c6_d">Far end
-                                of the coastline.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w2_t">✨ Weapon
-                                Skin Chest 2 – Savage Land</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w2_d">Nearby
-                                Chest 6 on the coast.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c7_t">Treasure
-                                Chest 7 – Idunn's Garden</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c7_d">Top of
-                                largest pillar, next to large mushroom.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c8_t">Treasure
-                                Chest 8 – Primeval Battlefield</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c8_d">At the
-                                top of the cliff.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c9_t">Treasure
-                                Chest 9 – Void Canyon</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c9_d">Below
-                                the cliff.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w3_t">✨ Weapon
-                                Skin Chest 3 – Fanged Giants' Lair</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w3_d">Check
-                                location and jump off with mount.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c10_t">Treasure
-                                Chest 10 – Tyr's Frost Fortress</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c10_d">On
-                                black rock inside Tyr's spawn area.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w4_t">✨ Weapon
-                                Skin Chest 4 – Harpy's Nest</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w4_d">Climb
-                                upper cliff inside Harpy Nest.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w5_t">✨ Weapon
-                                Skin Chest 5 – Evil Dragon's Lair</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w5_d">High up;
-                                climb rock face or descend from above.</p>
-                        </div>
+                <div style="display: grid; gap: 16px;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c1_t">Treasure
+                            Chest 1 – Bergelmir (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c1_d">Near the
+                            Underground Prison, behind Hreid.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c2_t">Treasure
+                            Chest 2 – Bergelmir (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c2_d">On the
+                            cliff ledge behind the town buildings.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w1_t">✨ Weapon
+                            Skin Chest 1 – Spider Colony</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w1_d">Climb
+                            structure near spider colony in an open spot.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c3_t">Treasure
+                            Chest 3 – Bergelmir (3)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c3_d">At the
+                            top of castle gate (climbable from town).</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c4_t">Treasure
+                            Chest 4 – Bergelmir (4)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c4_d">Past
+                            Bergelmir Gate to the left; glide under bridge.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c5_t">Treasure
+                            Chest 5 – Orc Settlement</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c5_d">At the
+                            top of the tower behind Farba.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c6_t">Treasure
+                            Chest 6 – Savage Land</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c6_d">Far end
+                            of the coastline.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w2_t">✨ Weapon
+                            Skin Chest 2 – Savage Land</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w2_d">Nearby
+                            Chest 6 on the coast.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c7_t">Treasure
+                            Chest 7 – Idunn's Garden</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c7_d">Top of
+                            largest pillar, next to large mushroom.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c8_t">Treasure
+                            Chest 8 – Primeval Battlefield</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c8_d">At the
+                            top of the cliff.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c9_t">Treasure
+                            Chest 9 – Void Canyon</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c9_d">Below
+                            the cliff.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w3_t">✨ Weapon
+                            Skin Chest 3 – Fanged Giants' Lair</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w3_d">Check
+                            location and jump off with mount.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m2_c10_t">Treasure
+                            Chest 10 – Tyr's Frost Fortress</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_c10_d">On
+                            black rock inside Tyr's spawn area.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w4_t">✨ Weapon
+                            Skin Chest 4 – Harpy's Nest</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w4_d">Climb
+                            upper cliff inside Harpy Nest.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m2_w5_t">✨ Weapon
+                            Skin Chest 5 – Evil Dragon's Lair</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m2_w5_d">High up;
+                            climb rock face or descend from above.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Contenido MAP 3 -->
-            <div id="map3" class="map-tab-content">
-                <!-- CAPÍTULO III: NIDAVELLIR -->
-                <div
-                    style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
-                    <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
-                        data-key="m3_title">
-                        ⚒️ CHAPTER III: NIDAVELLIR
-                    </h2>
+        <!-- Contenido MAP 3 -->
+        <div id="map3" class="map-tab-content">
+            <!-- CAPÍTULO III: NIDAVELLIR -->
+            <div
+                style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+                <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
+                    data-key="m3_title">
+                    ⚒️ CHAPTER III: NIDAVELLIR
+                </h2>
 
-                    <div style="display: grid; gap: 16px;">
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c1_t">Treasure
-                                Chest 1 – Svartalfheim</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c1_d">In town,
-                                up ladder on right after returning.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c2_t">Treasure
-                                Chest 2 – Frozen Forest</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c2_d">Below
-                                cliff; cross bridge and follow left edge.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c3_t">Treasure
-                                Chest 3 – Blizzard Snowplains (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c3_d">Inside
-                                building with stairs, north side.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c4_t">Treasure
-                                Chest 4 – Blizzard Snowplains (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c4_d">Next to
-                                broken ship down the cliff.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c5_t">Treasure
-                                Chest 5 – Graverobbers' Fort</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c5_d">In fort
-                                outskirts near wooden barricades.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w1_t">✨ Weapon
-                                Skin Chest 1 – Graverobbers' Fort</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w1_d">In house
-                                courtyard on left side (south hill).</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c6_t">Treasure
-                                Chest 6 – Screeching Plains</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c6_d">Under
-                                large tree vine near western cliff of Andvari's Forge.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w2_t">✨ Weapon
-                                Skin Chest 2 – Andvari's Smithy</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w2_d">Behind
-                                rock near conquest base, southwest of Smithy.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c7_t">Treasure
-                                Chest 7 – Icy Ridge</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c7_d">Top of
-                                giant rock mountain (steep path).</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w3_t">✨ Weapon
-                                Skin Chest 3 – Goblin Attack Site</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w3_d">Large
-                                rock middle of lake, east side.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c8_t">Treasure
-                                Chest 8 – Howling Cliffs</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c8_d">In front
-                                of cliff behind Ice Lake.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c9_t">Treasure
-                                Chest 9 – Dvergr Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c9_d">On top
-                                of sculpture; climb to claim.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w4_t">✨ Weapon
-                                Skin Chest 4 – Dvergr Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w4_d">Valley
-                                beyond rocky hill, northeast.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w5_t">✨ Weapon
-                                Skin Chest 5 – Dwarven Royal Tombs</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w5_d">On rock
-                                north of Royal Tombs.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c10_t">Treasure
-                                Chest 10 – ThunderFields</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c10_d">Cliff
-                                northeast of Thor's ThunderFields; climb right cliff and move left.</p>
-                        </div>
+                <div style="display: grid; gap: 16px;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c1_t">Treasure
+                            Chest 1 – Svartalfheim</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c1_d">In town,
+                            up ladder on right after returning.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c2_t">Treasure
+                            Chest 2 – Frozen Forest</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c2_d">Below
+                            cliff; cross bridge and follow left edge.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c3_t">Treasure
+                            Chest 3 – Blizzard Snowplains (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c3_d">Inside
+                            building with stairs, north side.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c4_t">Treasure
+                            Chest 4 – Blizzard Snowplains (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c4_d">Next to
+                            broken ship down the cliff.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c5_t">Treasure
+                            Chest 5 – Graverobbers' Fort</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c5_d">In fort
+                            outskirts near wooden barricades.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w1_t">✨ Weapon
+                            Skin Chest 1 – Graverobbers' Fort</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w1_d">In house
+                            courtyard on left side (south hill).</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c6_t">Treasure
+                            Chest 6 – Screeching Plains</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c6_d">Under
+                            large tree vine near western cliff of Andvari's Forge.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w2_t">✨ Weapon
+                            Skin Chest 2 – Andvari's Smithy</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w2_d">Behind
+                            rock near conquest base, southwest of Smithy.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c7_t">Treasure
+                            Chest 7 – Icy Ridge</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c7_d">Top of
+                            giant rock mountain (steep path).</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w3_t">✨ Weapon
+                            Skin Chest 3 – Goblin Attack Site</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w3_d">Large
+                            rock middle of lake, east side.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c8_t">Treasure
+                            Chest 8 – Howling Cliffs</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c8_d">In front
+                            of cliff behind Ice Lake.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c9_t">Treasure
+                            Chest 9 – Dvergr Settlement</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c9_d">On top
+                            of sculpture; climb to claim.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w4_t">✨ Weapon
+                            Skin Chest 4 – Dvergr Settlement</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w4_d">Valley
+                            beyond rocky hill, northeast.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m3_w5_t">✨ Weapon
+                            Skin Chest 5 – Dwarven Royal Tombs</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_w5_d">On rock
+                            north of Royal Tombs.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m3_c10_t">Treasure
+                            Chest 10 – ThunderFields</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m3_c10_d">Cliff
+                            northeast of Thor's ThunderFields; climb right cliff and move left.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Contenido MAP 4 -->
-            <div id="map4" class="map-tab-content">
-                <!-- CAPÍTULO IV: ALFHEIM -->
-                <div
-                    style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
-                    <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
-                        data-key="m4_title">
-                        🌳 FAIRY CHAPTER IV: ALFHEIM
-                    </h2>
+        <!-- Contenido MAP 4 -->
+        <div id="map4" class="map-tab-content">
+            <!-- CAPÍTULO IV: ALFHEIM -->
+            <div
+                style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+                <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
+                    data-key="m4_title">
+                    🌳 FAIRY CHAPTER IV: ALFHEIM
+                </h2>
 
-                    <div style="display: grid; gap: 16px;">
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c1_t">Treasure
-                                Chest 1 – Gimle</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c1_d">Readily
-                                visible north of Gimle town.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c2_t">Treasure
-                                Chest 2 – Dusky Canyon</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c2_d">Ground
-                                level along canyon walls.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c3_t">Treasure
-                                Chest 3 – Shadow Ambush</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c3_d">In front
-                                of structure west side.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w1_t">✨ Weapon
-                                Skin Chest 1 – Shadow Ambush</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w1_d">Elevated
-                                ledge overlooking ruins.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c4_t">Treasure
-                                Chest 4 – Infernal Woods</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c4_d">Bottom
-                                of wall, easily claimed.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c5_t">Treasure
-                                Chest 5 – Odin's Descent</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c5_d">Under
-                                building southwest of Odin's Descent.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c6_t">Treasure
-                                Chest 6 – Void Plains</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c6_d">Near
-                                large tree south of Void Plains.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c7_t">Treasure
-                                Chest 7 – Darkmoon Highlands</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c7_d">Under
-                                structure on south side.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w2_t">✨ Weapon
-                                Skin Chest 2 – Darkmoon Highlands</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w2_d">Behind
-                                dried mushroom tree, south side.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c8_t">Treasure
-                                Chest 8 – Muspelheim Portal</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c8_d">In a
-                                large tree near the portal.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c9_t">Treasure
-                                Chest 9 – Merman Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c9_d">Center
-                                of lake in open area.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w3_t">✨ Weapon
-                                Skin Chest 3 – Merman Settlement</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w3_d">Top of
-                                watchtower east of lake.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c10_t">Treasure
-                                Chest 10 – Nidavellir Portal</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c10_d">Between
-                                tree roots near portal.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w4_t">✨ Weapon
-                                Skin Chest 4 – World Tree Basin</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w4_d">Behind
-                                tree on south side of basin.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w5_t">✨ Weapon
-                                Skin Chest 5 – Corrupted Ravine</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w5_d">Between
-                                two large trees past wolf area.</p>
-                        </div>
+                <div style="display: grid; gap: 16px;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c1_t">Treasure
+                            Chest 1 – Gimle</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c1_d">Readily
+                            visible north of Gimle town.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c2_t">Treasure
+                            Chest 2 – Dusky Canyon</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c2_d">Ground
+                            level along canyon walls.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c3_t">Treasure
+                            Chest 3 – Shadow Ambush</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c3_d">In front
+                            of structure west side.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w1_t">✨ Weapon
+                            Skin Chest 1 – Shadow Ambush</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w1_d">Elevated
+                            ledge overlooking ruins.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c4_t">Treasure
+                            Chest 4 – Infernal Woods</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c4_d">Bottom
+                            of wall, easily claimed.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c5_t">Treasure
+                            Chest 5 – Odin's Descent</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c5_d">Under
+                            building southwest of Odin's Descent.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c6_t">Treasure
+                            Chest 6 – Void Plains</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c6_d">Near
+                            large tree south of Void Plains.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c7_t">Treasure
+                            Chest 7 – Darkmoon Highlands</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c7_d">Under
+                            structure on south side.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w2_t">✨ Weapon
+                            Skin Chest 2 – Darkmoon Highlands</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w2_d">Behind
+                            dried mushroom tree, south side.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c8_t">Treasure
+                            Chest 8 – Muspelheim Portal</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c8_d">In a
+                            large tree near the portal.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c9_t">Treasure
+                            Chest 9 – Merman Settlement</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c9_d">Center
+                            of lake in open area.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w3_t">✨ Weapon
+                            Skin Chest 3 – Merman Settlement</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w3_d">Top of
+                            watchtower east of lake.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m4_c10_t">Treasure
+                            Chest 10 – Nidavellir Portal</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_c10_d">Between
+                            tree roots near portal.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w4_t">✨ Weapon
+                            Skin Chest 4 – World Tree Basin</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w4_d">Behind
+                            tree on south side of basin.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m4_w5_t">✨ Weapon
+                            Skin Chest 5 – Corrupted Ravine</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m4_w5_d">Between
+                            two large trees past wolf area.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Contenido MAP 5 -->
-            <div id="map5" class="map-tab-content">
-                <!-- CAPÍTULO V: MUSPELHEIM -->
-                <div
-                    style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
-                    <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
-                        data-key="m5_title">
-                        🔥 CHAPTER V: MUSPELHEIM
-                    </h2>
+        <!-- Contenido MAP 5 -->
+        <div id="map5" class="map-tab-content">
+            <!-- CAPÍTULO V: MUSPELHEIM -->
+            <div
+                style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 160, 89, 0.3); padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+                <h2 style="font-family: 'Cinzel', serif; color: #c5a059; border-bottom: 1px solid rgba(197, 160, 89, 0.4); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3rem;"
+                    data-key="m5_title">
+                    🔥 CHAPTER V: MUSPELHEIM
+                </h2>
 
-                    <div style="display: grid; gap: 16px;">
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c1_t">Treasure
-                                Chest 1 – Surtr's Lava Throne (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c1_d">North of
-                                Surtr's residence.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w1_t">✨ Weapon
-                                Skin Chest 1 – Surtr's Lava Throne (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w1_d">On rock
-                                ledge directly above entry path.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w2_t">✨ Weapon
-                                Skin Chest 2 – Surtr's Lava Throne (3)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w2_d">Fly
-                                uninterrupted from right cliff over lava.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c2_t">Treasure
-                                Chest 2 – Oskopnir</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c2_d">Back
-                                area of town, hidden behind a wall.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c3_t">Treasure
-                                Chest 3 – Alfheim Portal (1)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c3_d">In front
-                                of stable structure (no monsters).</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c4_t">Treasure
-                                Chest 4 – Alfheim Portal (2)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c4_d">On a
-                                small hill a short distance north.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w3_t">✨ Weapon
-                                Skin Chest 3 – Alfheim Portal (3)</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w3_d">Atop
-                                basalt rock formation nearby.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c5_t">Treasure
-                                Chest 5 – Bloodwood Canyon</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c5_d">Behind
-                                largest slanted tree on the hill.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w4_t">✨ Weapon
-                                Skin Chest 4 – Covert Ravine</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w4_d">Behind
-                                waterfall right next to arrival point.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c6_t">Treasure
-                                Chest 6 – Drake Badlands</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c6_d">On the
-                                tower in the northwest.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c7_t">Treasure
-                                Chest 7 – Loser's Lot</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c7_d">At the
-                                end of the cliff on the right.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c8_t">Treasure
-                                Chest 8 – Decrepit Arena</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c8_d">On hill
-                                north of Boss Audumla's spawn area.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
-                            <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w5_t">✨ Weapon
-                                Skin Chest 5 – Surtr's Citadel</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w5_d">At peak
-                                of obsidian tower overlooking lava sea.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c9_t">Treasure
-                                Chest 9 – Abyss of Splendor</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c9_d">On top
-                                of the tower.</p>
-                        </div>
-                        <div
-                            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
-                            <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c10_t">Treasure
-                                Chest 10 – Flame Orc Encampment</b>
-                            <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c10_d">Move
-                                slowly to avoid taking lava damage.</p>
-                        </div>
+                <div style="display: grid; gap: 16px;">
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c1_t">Treasure
+                            Chest 1 – Surtr's Lava Throne (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c1_d">North of
+                            Surtr's residence.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w1_t">✨ Weapon
+                            Skin Chest 1 – Surtr's Lava Throne (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w1_d">On rock
+                            ledge directly above entry path.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w2_t">✨ Weapon
+                            Skin Chest 2 – Surtr's Lava Throne (3)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w2_d">Fly
+                            uninterrupted from right cliff over lava.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c2_t">Treasure
+                            Chest 2 – Oskopnir</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c2_d">Back
+                            area of town, hidden behind a wall.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c3_t">Treasure
+                            Chest 3 – Alfheim Portal (1)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c3_d">In front
+                            of stable structure (no monsters).</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c4_t">Treasure
+                            Chest 4 – Alfheim Portal (2)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c4_d">On a
+                            small hill a short distance north.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w3_t">✨ Weapon
+                            Skin Chest 3 – Alfheim Portal (3)</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w3_d">Atop
+                            basalt rock formation nearby.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c5_t">Treasure
+                            Chest 5 – Bloodwood Canyon</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c5_d">Behind
+                            largest slanted tree on the hill.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w4_t">✨ Weapon
+                            Skin Chest 4 – Covert Ravine</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w4_d">Behind
+                            waterfall right next to arrival point.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c6_t">Treasure
+                            Chest 6 – Drake Badlands</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c6_d">On the
+                            tower in the northwest.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c7_t">Treasure
+                            Chest 7 – Loser's Lot</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c7_d">At the
+                            end of the cliff on the right.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c8_t">Treasure
+                            Chest 8 – Decrepit Arena</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c8_d">On hill
+                            north of Boss Audumla's spawn area.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(197, 160, 89, 0.3); padding: 12px; border-radius: 4px;">
+                        <b style="color: #c084fc; display: block; margin-bottom: 4px;" data-key="m5_w5_t">✨ Weapon
+                            Skin Chest 5 – Surtr's Citadel</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_w5_d">At peak
+                            of obsidian tower overlooking lava sea.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c9_t">Treasure
+                            Chest 9 – Abyss of Splendor</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c9_d">On top
+                            of the tower.</p>
+                    </div>
+                    <div
+                        style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 4px;">
+                        <b style="color: #f8d58a; display: block; margin-bottom: 4px;" data-key="m5_c10_t">Treasure
+                            Chest 10 – Flame Orc Encampment</b>
+                        <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;" data-key="m5_c10_d">Move
+                            slowly to avoid taking lava damage.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    </section>
+</div>
 
-    <script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-        $(document).ready(function () {
-            for (let i = 0; i < 80; i++) {
-                let w = Math.random() * 300 + 100;
-                let t = Math.random() * 100;
-                let d = Math.random() * 0.2 + 0.05;
-                let delay = Math.random() * 2;
-                $('#speed-lines-layer').append(`<div class="speed-line" style="width: ${w}px; top: ${t}%; animation-duration: ${d}s; animation-delay: ${delay}s; opacity: ${Math.random()};"></div>`);
+<script>
+
+    // Mantenemos las traducciones exactamente igual a como las tienes definidas
+    const i18n = {
+        es: {
+            btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
+            m1_title: "🌿 CAPÍTULO I: MIDGARD",
+            m1_c1_t: "Cofre del Tesoro 1 – Granja de Egil", m1_c1_d: "Justo debajo del árbol inmediatamente detrás del punto de llegada.",
+            m1_w1_t: "✨ Cofre de Skin de Arma 1 – Pastizal del Molino", m1_w1_d: "Parte norte del pastizal del molino al salir de la granja de Egil.",
+            m1_c2_t: "Cofre del Tesoro 2 – Colinas de la Cascada (1)", m1_c2_d: "Ligeramente oculto detrás de la colina cerca de la cascada.",
+            m1_c3_t: "Cofre del Tesoro 3 – Colinas de la Cascada (2)", m1_c3_d: "Dentro de la cascada, accesible por el pasaje rocoso.",
+            m1_c4_t: "Cofre del Tesoro 4 – Llanuras del Este", m1_c4_d: "Oculto entre la hierba alta y las rocas.",
+            m1_c5_t: "Cofre del Tesoro 5 – Hábitat de Emu", m1_c5_d: "En la zona más profunda, similar a un nido.",
+            m1_c6_t: "Cofre del Tesoro 6 – Llanuras del Norte", m1_c6_d: "En la cima de la Fortaleza Abandonada.",
+            m1_w2_t: "✨ Cofre de Skin de Arma 2 – Aldea Abandonada", m1_w2_d: "Tras reclamar el cofre 6, continua recto hacia la Aldea Abandonada.",
+            m1_c7_t: "Cofre del Tesoro 7 – Manaheim", m1_c7_d: "Muro izquierdo del castillo dentro del área de la sub-misión 'Vuelo'.",
+            m1_c8_t: "Cofre del Tesoro 8 – Asentamiento de Bandidos", m1_c8_d: "En el portón del Asentamiento de Bandidos.",
+            m1_c9_t: "Cofre del Tesoro 9 – Guarida de Lerad", m1_c9_d: "Detrás de la cruz en llamas, en lo profundo de la guarida.",
+            m1_w3_t: "✨ Cofre de Skin de Arma 3 – Guarida de Lerad", m1_w3_d: "En lo profundo de la guarida, ¡no te lo pierdas!",
+            m1_c10_t: "Cofre del Tesoro 10 – Guarida de la Serpiente Marina", m1_c10_d: "En la pared directamente sobre la entrada.",
+            m1_w4_t: "✨ Cofre de Skin de Arma 4 – Campamento del Culto (1)", m1_w4_d: "Plataforma elevada de madera cerca del altar de los cultistas.",
+            m1_w5_t: "✨ Cofre de Skin de Arma 5 – Campamento del Culto (2)", m1_w5_d: "Cerca del límite final del campamento."
+        },
+        en: {
+            btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
+            m1_title: "🌿 CHAPTER I: MIDGARD",
+            m1_c1_t: "Treasure Chest 1 – Egil's Farm", m1_c1_d: "Right under the tree immediately behind your arrival location.",
+            m1_w1_t: "✨ Weapon Skin Chest 1 – Windmill Pasture", m1_w1_d: "Northern part of Windmill Pasture after leaving Egil's Farm.",
+            m1_c2_t: "Treasure Chest 2 – Waterfall Hills (1)", m1_c2_d: "Slightly hidden behind the hill near the waterfall.",
+            m1_c3_t: "Treasure Chest 3 – Waterfall Hills (2)", m1_c3_d: "Inside the waterfall, accessible via the rocky passage.",
+            m1_c4_t: "Treasure Chest 4 – Eastern Plains", m1_c4_d: "Hidden between the tall grass and the rocks.",
+            m1_c5_t: "Treasure Chest 5 – Emu Habitat", m1_c5_d: "In the innermost, nest-like area.",
+            m1_c6_t: "Treasure Chest 6 – Northern Plains", m1_c6_d: "At the top of the Forsaken Fortress.",
+            m1_w2_t: "✨ Weapon Skin Chest 2 – Abandoned Village", m1_w2_d: "After claiming chest 6, continue straight toward Abandoned Village.",
+            m1_c7_t: "Treasure Chest 7 – Manaheim", m1_c7_d: "Left castle wall inside the 'Flight' sub-quest area.",
+            m1_c8_t: "Treasure Chest 8 – Bandit Settlement", m1_c8_d: "On the gate of the Bandit Settlement.",
+            m1_c9_t: "Treasure Chest 9 – Lerad's Hideout", m1_c9_d: "Behind the burning cross, deep within the hideout.",
+            m1_w3_t: "✨ Weapon Skin Chest 3 – Lerad's Hideout", m1_w3_d: "Deep inside the hideout, don't miss it!",
+            m1_c10_t: "Treasure Chest 10 – Sea Serpent's Lair", m1_c10_d: "On the wall directly above the entrance.",
+            m1_w4_t: "✨ Weapon Skin Chest 4 – Cultist Compound (1)", m1_w4_d: "Elevated wooden platform near the cultist altar.",
+            m1_w5_t: "✨ Weapon Skin Chest 5 – Cultist Compound (2)", m1_w5_d: "Nearby final compound boundary."
+        },
+        pt: {
+            btn_map1: "MAPA 1", btn_map2: "MAPA 2", btn_map3: "MAPA 3", btn_map4: "MAPA 4", btn_map5: "MAPA 5",
+            m1_title: "🌿 CAPÍTULO I: MIDGARD",
+            m1_c1_t: "Baú do Tesouro 1 – Fazenda de Egil", m1_c1_d: "Logo abaixo da árvore imediatamente atrás do ponto de chegada.",
+            m1_w1_t: "✨ Baú de Skin de Arma 1 – Pasto do Moinho", m1_w1_d: "Parte norte do pasto do moinho ao sair da fazenda de Egil.",
+            m1_c2_t: "Baú do Tesouro 2 – Colinas da Cachoeira (1)", m1_c2_d: "Ligeiramente escondido atrás da colina perto da cachoeira.",
+            m1_c3_t: "Baú do Tesouro 3 – Colinas da Cachoeira (2)", m1_c3_d: "Dentro da cachoeira, acessível pela passagem rochosa.",
+            m1_c4_t: "Baú do Tesouro 4 – Planícies do Leste", m1_c4_d: "Escondido entre a grama alta e as rochas.",
+            m1_c5_t: "Baú do Tesouro 5 – Hábitat de Emu", m1_c5_d: "Na área mais profunda, semelhante a um ninho.",
+            m1_c6_t: "Baú do Tesouro 6 – Planícies do Norte", m1_c6_d: "No topo da Fortaleza Abandonada.",
+            m1_w2_t: "✨ Baú de Skin de Arma 2 – Vila Abandonada", m1_w2_d: "Após coletar o baú 6, continue direto para a Vila Abandonada.",
+            m1_c7_t: "Baú do Tesouro 7 – Manaheim", m1_c7_d: "Muro esquerdo do castelo dentro da área da sub-missão 'Voo'.",
+            m1_c8_t: "Baú do Tesouro 8 – Acampamento de Bandidos", m1_c8_d: "No portão do Acampamento de Bandidos.",
+            m1_c9_t: "Baú do Tesouro 9 – Esconderijo de Lerad", m1_c9_d: "Atrás da cruz em chamas, no fundo do esconderijo.",
+            m1_w3_t: "✨ Baú de Skin de Arma 3 – Esconderijo de Lerad", m1_w3_d: "No fundo do esconderijo, não perca!",
+            m1_c10_t: "Baú do Tesouro 10 – Toca da Serpente Marinha", m1_c10_d: "Na parede diretamente acima da entrada.",
+            m1_w4_t: "✨ Baú de Skin de Arma 4 – Acampamento Cultista (1)", m1_w4_d: "Plataforma de madeira elevada perto do altar cultista.",
+            m1_w5_t: "✨ Baú de Skin de Arma 5 – Acampamento Cultista (2)", m1_w5_d: "Perto do limite final do acampamento."
+        }
+    };
+
+    let currentLang = 'es';
+
+    $(document).ready(function () {
+        // Animación Inicial
+        for (let i = 0; i < 80; i++) {
+            let w = Math.random() * 300 + 100;
+            let t = Math.random() * 100;
+            let d = Math.random() * 0.2 + 0.05;
+            let delay = Math.random() * 2;
+            $('#speed-lines-layer').append(`<div class="speed-line" style="width: ${w}px; top: ${t}%; animation-duration: ${d}s; animation-delay: ${delay}s; opacity: ${Math.random()};"></div>`);
+        }
+
+        setTimeout(function () {
+            $('.ciel').removeClass('stay').addClass('away');
+            $('.speed-line').css('animation-duration', '0.01s');
+            setTimeout(function () { $('.ciel').addClass('pantalla-lista'); }, 2000);
+        }, 2000);
+
+        // Aseguramos que cargue en español por defecto
+        switchLanguage('es');
+    });
+
+    // FUNCIÓN ÚNICA Y CORREGIDA PARA CAMBIAR IDIOMA
+    function switchLanguage(lang, btnElement) {
+        currentLang = lang;
+
+        // 1. Cambiar estado visual de los botones del selector
+        if (btnElement) {
+            $('.lang-btn').removeClass('active');
+            $(btnElement).addClass('active');
+        }
+
+        // 2. Recorrer y traducir todos los elementos con data-key
+        $('[data-key]').each(function () {
+            const key = $(this).data('key');
+            if (i18n[lang] && i18n[lang][key]) {
+                $(this).text(i18n[lang][key]);
             }
-
-            setTimeout(function () {
-                $('.ciel').removeClass('stay').addClass('away');
-                $('.speed-line').css('animation-duration', '0.01s');
-                setTimeout(function () { $('.ciel').addClass('pantalla-lista'); }, 2000);
-            }, 2000);
         });
-
-        // Actualización del objeto i18n
-        const i18n = {
-            es: {
-                btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
-
-                // MAP 1
-                m1_title: "🌿 CAPÍTULO I: MIDGARD",
-                m1_c1_t: "Cofre del Tesoro 1 – Granja de Egil", m1_c1_d: "Justo debajo del árbol inmediatamente detrás del punto de llegada.",
-                m1_w1_t: "✨ Cofre de Skin de Arma 1 – Pastizal del Molino", m1_w1_d: "Parte norte del pastizal del molino al salir de la granja de Egil.",
-                m1_c2_t: "Cofre del Tesoro 2 – Colinas de la Cascada (1)", m1_c2_d: "Ligeramente oculto detrás de la colina cerca de la cascada.",
-                m1_c3_t: "Cofre del Tesoro 3 – Colinas de la Cascada (2)", m1_c3_d: "Dentro de la cascada, accesible por el pasaje rocoso.",
-                m1_c4_t: "Cofre del Tesoro 4 – Llanuras del Este", m1_c4_d: "Oculto entre la hierba alta y las rocas.",
-                m1_c5_t: "Cofre del Tesoro 5 – Hábitat de Emu", m1_c5_d: "En la zona más profunda, similar a un nido.",
-                m1_c6_t: "Cofre del Tesoro 6 – Llanuras del Norte", m1_c6_d: "En la cima de la Fortaleza Abandonada.",
-                m1_w2_t: "✨ Cofre de Skin de Arma 2 – Aldea Abandonada", m1_w2_d: "Tras reclamar el cofre 6, continua recto hacia la Aldea Abandonada.",
-                m1_c7_t: "Cofre del Tesoro 7 – Manaheim", m1_c7_d: "Muro izquierdo del castillo dentro del área de la sub-misión 'Vuelo'.",
-                m1_c8_t: "Cofre del Tesoro 8 – Asentamiento de Bandidos", m1_c8_d: "En el portón del Asentamiento de Bandidos.",
-                m1_c9_t: "Cofre del Tesoro 9 – Guarida de Lerad", m1_c9_d: "Detrás de la cruz en llamas, en lo profundo de la guarida.",
-                m1_w3_t: "✨ Cofre de Skin de Arma 3 – Guarida de Lerad", m1_w3_d: "En lo profundo de la guarida, ¡no te lo pierdas!",
-                m1_c10_t: "Cofre del Tesoro 10 – Guarida de la Serpiente Marina", m1_c10_d: "En la pared directamente sobre la entrada.",
-                m1_w4_t: "✨ Cofre de Skin de Arma 4 – Campamento del Culto (1)", m1_w4_d: "Plataforma elevada de madera cerca del altar de los cultistas.",
-                m1_w5_t: "✨ Cofre de Skin de Arma 5 – Campamento del Culto (2)", m1_w5_d: "Cerca del límite final del campamento.",
-
-                // MAP 2
-                m2_title: "❄️ CAPÍTULO II: JOTUNHEIM",
-                m2_c1_t: "Cofre del Tesoro 1 – Bergelmir (1)", m2_c1_d: "Cerca de la Prisión Subterránea, detrás de Hreid.",
-                m2_c2_t: "Cofre del Tesoro 2 – Bergelmir (2)", m2_c2_d: "En el saliente del acantilado detrás de los edificios del pueblo.",
-                m2_w1_t: "✨ Cofre de Skin de Arma 1 – Colonia de Arañas", m2_w1_d: "Sube a la estructura cerca de la colonia de arañas en un punto abierto.",
-                m2_c3_t: "Cofre del Tesoro 3 – Bergelmir (3)", m2_c3_d: "En la parte superior de la puerta del castillo (escalable desde la ciudad).",
-                m2_c4_t: "Cofre del Tesoro 4 – Bergelmir (4)", m2_c4_d: "Pasando la puerta de Bergelmir a la izquierda; planea bajo el puente.",
-                m2_c5_t: "Cofre del Tesoro 5 – Asentamiento Orco", m2_c5_d: "En la cima de la torre detrás de Farba.",
-                m2_c6_t: "Cofre del Tesoro 6 – Tierra Salvaje", m2_c6_d: "Al final de la línea de costa.",
-                m2_w2_t: "✨ Cofre de Skin de Arma 2 – Tierra Salvaje", m2_w2_d: "Cerca del cofre 6 en la costa.",
-                m2_c7_t: "Cofre del Tesoro 7 – Jardín de Idunn", m2_c7_d: "Cima del pilar más grande, al lado del hongo gigante.",
-                m2_c8_t: "Cofre del Tesoro 8 – Campo de Batalla Primitivo", m2_c8_d: "En la cima del acantilado.",
-                m2_c9_t: "Cofre del Tesoro 9 – Cañón del Vacío", m2_c9_d: "Debajo del acantilado.",
-                m2_w3_t: "✨ Cofre de Skin de Arma 3 – Guarida de Gigantes Colmilludos", m2_w3_d: "Revisa la ubicación y salta con la montura.",
-                m2_c10_t: "Cofre del Tesoro 10 – Fortaleza Helada de Tyr", m2_c10_d: "Sobre roca negra dentro del área de aparición de Tyr.",
-                m2_w4_t: "✨ Cofre de Skin de Arma 4 – Nido de Arpías", m2_w4_d: "Sube al acantilado superior dentro del Nido de Arpías.",
-                m2_w5_t: "✨ Cofre de Skin de Arma 5 – Guarida del Dragón Malvado", m2_w5_d: "En lo alto; escala la pared de roca o desciende desde arriba.",
-
-                // MAP 3
-                m3_title: "⚒️ CAPÍTULO III: NIDAVELLIR",
-                m3_c1_t: "Cofre del Tesoro 1 – Svartalfheim", m3_c1_d: "En la ciudad, subiendo por la escalera a la derecha tras regresar.",
-                m3_c2_t: "Cofre del Tesoro 2 – Bosque Congelado", m3_c2_d: "Debajo del acantilado; cruza el puente y sigue el borde izquierdo.",
-                m3_c3_t: "Cofre del Tesoro 3 – Llanuras de Ventisca (1)", m3_c3_d: "Dentro del edificio con escaleras, lado norte.",
-                m3_c4_t: "Cofre del Tesoro 4 – Llanuras de Ventisca (2)", m3_c4_d: "Al lado del barco roto bajando el acantilado.",
-                m3_c5_t: "Cofre del Tesoro 5 – Fuerte de los Saqueadores", m3_c5_d: "A las afueras del fuerte cerca de las barricadas de madera.",
-                m3_w1_t: "✨ Cofre de Skin de Arma 1 – Fuerte de los Saqueadores", m3_w1_d: "En el patio de la casa en el lado izquierdo (colina sur).",
-                m3_c6_t: "Cofre del Tesoro 6 – Llanuras Chillonas", m3_c6_d: "Bajo la enredadera del árbol grande cerca del acantilado oeste de la Forja de Andvari.",
-                m3_w2_t: "✨ Cofre de Skin de Arma 2 – Herrería de Andvari", m3_w2_d: "Detrás de la roca cerca de la base de conquista, al suroeste de la Herrería.",
-                m3_c7_t: "Cofre del Tesoro 7 – Cresta Helada", m3_c7_d: "Cima de la montaña de roca gigante (camino empinado).",
-                m3_w3_t: "✨ Cofre de Skin de Arma 3 – Sitio de Ataque Goblin", m3_w3_d: "Roca grande en medio del lago, lado este.",
-                m3_c8_t: "Cofre del Tesoro 8 – Acantilados Aullantes", m3_c8_d: "Frente al acantilado detrás del Lago de Hielo.",
-                m3_c9_t: "Cofre del Tesoro 9 – Asentamiento Dvergr", m3_c9_d: "Encima de la escultura; sube para reclamar.",
-                m3_w4_t: "✨ Cofre de Skin de Arma 4 – Asentamiento Dvergr", m3_w4_d: "Valle más allá de la colina rocosa, noreste.",
-                m3_w5_t: "✨ Cofre de Skin de Arma 5 – Tumbas Reales Enanas", m3_w5_d: "En la roca al norte de las Tumbas Reales.",
-                m3_c10_t: "Cofre del Tesoro 10 – Campos del Trueno", m3_c10_d: "Acantilado al noreste de los Campos del Trueno de Thor; sube al acantilado derecho y muévete a la izquierda.",
-
-                // MAP 4
-                m4_title: "🧚 CAPÍTULO IV: ALFHEIM",
-                m4_c1_t: "Cofre del Tesoro 1 – Gimle", m4_c1_d: "Fácilmente visible al norte de la ciudad de Gimle.",
-                m4_c2_t: "Cofre del Tesoro 2 – Cañón Sombrío", m4_c2_d: "A nivel del suelo a lo largo de las paredes del cañón.",
-                m4_c3_t: "Cofre del Tesoro 3 – Emboscada de Sombras", m4_c3_d: "Frente a la estructura en el lado oeste.",
-                m4_w1_t: "✨ Cofre de Skin de Arma 1 – Emboscada de Sombras", m4_w1_d: "Cornisa elevada con vista a las ruinas.",
-                m4_c4_t: "Cofre del Tesoro 4 – Bosques Infernales", m4_c4_d: "Parte inferior del muro, fácil de reclamar.",
-                m4_c5_t: "Cofre del Tesoro 5 – Descenso de Odín", m4_c5_d: "Debajo del edificio al suroeste del Descenso de Odín.",
-                m4_c6_t: "Cofre del Tesoro 6 – Llanuras del Vacío", m4_c6_d: "Cerca del árbol grande al sur de las Llanuras del Vacío.",
-                m4_c7_t: "Cofre del Tesoro 7 – Alturas de la Luna Oscura", m4_c7_d: "Debajo de la estructura en el lado sur.",
-                m4_w2_t: "✨ Cofre de Skin de Arma 2 – Alturas de la Luna Oscura", m4_w2_d: "Detrás del árbol de hongo seco, lado sur.",
-                m4_c8_t: "Cofre del Tesoro 8 – Portal de Muspelheim", m4_c8_d: "En un árbol grande cerca del portal.",
-                m4_c9_t: "Cofre del Tesoro 9 – Asentamiento Tritón", m4_c9_d: "Centro del lago en área abierta.",
-                m4_w3_t: "✨ Cofre de Skin de Arma 3 – Asentamiento Tritón", m4_w3_d: "Cima de la torre de vigilancia al este del lago.",
-                m4_c10_t: "Cofre del Tesoro 10 – Portal de Nidavellir", m4_c10_d: "Entre las raíces de los árboles cerca del portal.",
-                m4_w4_t: "✨ Cofre de Skin de Arma 4 – Cuenca del Árbol del Mundo", m4_w4_d: "Detrás del árbol en el lado sur de la cuenca.",
-                m4_w5_t: "✨ Cofre de Skin de Arma 5 – Cañada Corrupta", m4_w5_d: "Entre dos árboles grandes pasando la zona de lobos.",
-
-                // MAP 5
-                m5_title: "🔥 CAPÍTULO V: MUSPELHEIM",
-                m5_c1_t: "Cofre del Tesoro 1 – Trono de Lava de Surtr (1)", m5_c1_d: "Al norte de la residencia de Surtr.",
-                m5_w1_t: "✨ Cofre de Skin de Arma 1 – Trono de Lava de Surtr (2)", m5_w1_d: "En el saliente rocoso directamente sobre el camino de entrada.",
-                m5_w2_t: "✨ Cofre de Skin de Arma 2 – Trono de Lava de Surtr (3)", m5_w2_d: "Vuela sin interrupción desde el acantilado derecho sobre la lava.",
-                m5_c2_t: "Cofre del Tesoro 2 – Oskopnir", m5_c2_d: "Zona trasera de la ciudad, oculto detrás de un muro.",
-                m5_c3_t: "Cofre del Tesoro 3 – Portal de Alfheim (1)", m5_c3_d: "Frente a la estructura de establos (sin monstruos).",
-                m5_c4_t: "Cofre del Tesoro 4 – Portal de Alfheim (2)", m5_c4_d: "En una pequeña colina a corta distancia al norte.",
-                m5_w3_t: "✨ Cofre de Skin de Arma 3 – Portal de Alfheim (3)", m5_w3_d: "Sobre la formación rocosa de basalto cercana.",
-                m5_c5_t: "Cofre del Tesoro 5 – Cañón de Madera Sangrienta", m5_c5_d: "Detrás del árbol inclinado más grande de la colina.",
-                m5_w4_t: "✨ Cofre de Skin de Arma 4 – Cañada Encubierta", m5_w4_d: "Detrás de la cascada, justo al lado del punto de llegada.",
-                m5_c6_t: "Cofre del Tesoro 6 – Tierras Malas de Dragones", m5_c6_d: "En la torre del noroeste.",
-                m5_c7_t: "Cofre del Tesoro 7 – Lote de los Perdedores", m5_c7_d: "Al final del acantilado a la derecha.",
-                m5_c8_t: "Cofre del Tesoro 8 – Arena Decrépita", m5_c8_d: "En la colina al norte del área de aparición del Boss Audumla.",
-                m5_w5_t: "✨ Cofre de Skin de Arma 5 – Ciudadela de Surtr", m5_w5_d: "En el pico de la torre de obsidiana con vista al mar de lava.",
-                m5_c9_t: "Cofre del Tesoro 9 – Abismo del Esplendor", m5_c9_d: "En la cima de la torre.",
-                m5_c10_t: "Cofre del Tesoro 10 – Campamento Orco de Llama", m5_c10_d: "Muévete despacio para evitar recibir daño por lava."
-            },
-            en: {
-                btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
-
-                // MAP 1
-                m1_title: "🌿 CHAPTER I: MIDGARD",
-                m1_c1_t: "Treasure Chest 1 – Egil's Farm", m1_c1_d: "Right under the tree immediately behind your arrival location.",
-                m1_w1_t: "✨ Weapon Skin Chest 1 – Windmill Pasture", m1_w1_d: "Northern part of Windmill Pasture after leaving Egil's Farm.",
-                m1_c2_t: "Treasure Chest 2 – Waterfall Hills (1)", m1_c2_d: "Slightly hidden behind the hill near the waterfall.",
-                m1_c3_t: "Treasure Chest 3 – Waterfall Hills (2)", m1_c3_d: "Inside the waterfall, accessible via the rocky passage.",
-                m1_c4_t: "Treasure Chest 4 – Eastern Plains", m1_c4_d: "Hidden between the tall grass and the rocks.",
-                m1_c5_t: "Treasure Chest 5 – Emu Habitat", m1_c5_d: "In the innermost, nest-like area.",
-                m1_c6_t: "Treasure Chest 6 – Northern Plains", m1_c6_d: "At the top of the Forsaken Fortress.",
-                m1_w2_t: "✨ Weapon Skin Chest 2 – Abandoned Village", m1_w2_d: "After claiming chest 6, continue straight toward Abandoned Village.",
-                m1_c7_t: "Treasure Chest 7 – Manaheim", m1_c7_d: "Left castle wall inside the 'Flight' sub-quest area.",
-                m1_c8_t: "Treasure Chest 8 – Bandit Settlement", m1_c8_d: "On the gate of the Bandit Settlement.",
-                m1_c9_t: "Treasure Chest 9 – Lerad's Hideout", m1_c9_d: "Behind the burning cross, deep within the hideout.",
-                m1_w3_t: "✨ Weapon Skin Chest 3 – Lerad's Hideout", m1_w3_d: "Deep inside the hideout, don't miss it!",
-                m1_c10_t: "Treasure Chest 10 – Sea Serpent's Lair", m1_c10_d: "On the wall directly above the entrance.",
-                m1_w4_t: "✨ Weapon Skin Chest 4 – Cultist Compound (1)", m1_w4_d: "Elevated wooden platform near the cultist altar.",
-                m1_w5_t: "✨ Weapon Skin Chest 5 – Cultist Compound (2)", m1_w5_d: "Nearby final compound boundary.",
-
-                // MAP 2
-                m2_title: "❄️ CHAPTER II: JOTUNHEIM",
-                m2_c1_t: "Treasure Chest 1 – Bergelmir (1)", m2_c1_d: "Near the Underground Prison, behind Hreid.",
-                m2_c2_t: "Treasure Chest 2 – Bergelmir (2)", m2_c2_d: "On the cliff ledge behind the town buildings.",
-                m2_w1_t: "✨ Weapon Skin Chest 1 – Spider Colony", m2_w1_d: "Climb structure near spider colony in an open spot.",
-                m2_c3_t: "Treasure Chest 3 – Bergelmir (3)", m2_c3_d: "At the top of castle gate (climbable from town).",
-                m2_c4_t: "Treasure Chest 4 – Bergelmir (4)", m2_c4_d: "Past Bergelmir Gate to the left; glide under bridge.",
-                m2_c5_t: "Treasure Chest 5 – Orc Settlement", m2_c5_d: "At the top of the tower behind Farba.",
-                m2_c6_t: "Treasure Chest 6 – Savage Land", m2_c6_d: "Far end of the coastline.",
-                m2_w2_t: "✨ Weapon Skin Chest 2 – Savage Land", m2_w2_d: "Nearby Chest 6 on the coast.",
-                m2_c7_t: "Treasure Chest 7 – Idunn's Garden", m2_c7_d: "Top of largest pillar, next to large mushroom.",
-                m2_c8_t: "Treasure Chest 8 – Primeval Battlefield", m2_c8_d: "At the top of the cliff.",
-                m2_c9_t: "Treasure Chest 9 – Void Canyon", m2_c9_d: "Below the cliff.",
-                m2_w3_t: "✨ Weapon Skin Chest 3 – Fanged Giants' Lair", m2_w3_d: "Check location and jump off with mount.",
-                m2_c10_t: "Treasure Chest 10 – Tyr's Frost Fortress", m2_c10_d: "On black rock inside Tyr's spawn area.",
-                m2_w4_t: "✨ Weapon Skin Chest 4 – Harpy's Nest", m2_w4_d: "Climb upper cliff inside Harpy Nest.",
-                m2_w5_t: "✨ Weapon Skin Chest 5 – Evil Dragon's Lair", m2_w5_d: "High up; climb rock face or descend from above.",
-
-                // MAP 3
-                m3_title: "⚒️ CHAPTER III: NIDAVELLIR",
-                m3_c1_t: "Treasure Chest 1 – Svartalfheim", m3_c1_d: "In town, up ladder on right after returning.",
-                m3_c2_t: "Treasure Chest 2 – Frozen Forest", m3_c2_d: "Below cliff; cross bridge and follow left edge.",
-                m3_c3_t: "Treasure Chest 3 – Blizzard Snowplains (1)", m3_c3_d: "Inside building with stairs, north side.",
-                m3_c4_t: "Treasure Chest 4 – Blizzard Snowplains (2)", m3_c4_d: "Next to broken ship down the cliff.",
-                m3_c5_t: "Treasure Chest 5 – Graverobbers' Fort", m3_c5_d: "In fort outskirts near wooden barricades.",
-                m3_w1_t: "✨ Weapon Skin Chest 1 – Graverobbers' Fort", m3_w1_d: "In house courtyard on left side (south hill).",
-                m3_c6_t: "Treasure Chest 6 – Screeching Plains", m3_c6_d: "Under large tree vine near western cliff of Andvari's Forge.",
-                m3_w2_t: "✨ Weapon Skin Chest 2 – Andvari's Smithy", m3_w2_d: "Behind rock near conquest base, southwest of Smithy.",
-                m3_c7_t: "Treasure Chest 7 – Icy Ridge", m3_c7_d: "Top of giant rock mountain (steep path).",
-                m3_w3_t: "✨ Weapon Skin Chest 3 – Goblin Attack Site", m3_w3_d: "Large rock middle of lake, east side.",
-                m3_c8_t: "Treasure Chest 8 – Howling Cliffs", m3_c8_d: "In front of cliff behind Ice Lake.",
-                m3_c9_t: "Treasure Chest 9 – Dvergr Settlement", m3_c9_d: "On top of sculpture; climb to claim.",
-                m3_w4_t: "✨ Weapon Skin Chest 4 – Dvergr Settlement", m3_w4_d: "Valley beyond rocky hill, northeast.",
-                m3_w5_t: "✨ Weapon Skin Chest 5 – Dwarven Royal Tombs", m3_w5_d: "On rock north of Royal Tombs.",
-                m3_c10_t: "Treasure Chest 10 – ThunderFields", m3_c10_d: "Cliff northeast of Thor's ThunderFields; climb right cliff and move left.",
-
-                // MAP 4
-                m4_title: "FAIRY CHAPTER IV: ALFHEIM",
-                m4_c1_t: "Treasure Chest 1 – Gimle", m4_c1_d: "Readily visible north of Gimle town.",
-                m4_c2_t: "Treasure Chest 2 – Dusky Canyon", m4_c2_d: "Ground level along canyon walls.",
-                m4_c3_t: "Treasure Chest 3 – Shadow Ambush", m4_c3_d: "In front of structure west side.",
-                m4_w1_t: "✨ Weapon Skin Chest 1 – Shadow Ambush", m4_w1_d: "Elevated ledge overlooking ruins.",
-                m4_c4_t: "Treasure Chest 4 – Infernal Woods", m4_c4_d: "Bottom of wall, easily claimed.",
-                m4_c5_t: "Treasure Chest 5 – Odin's Descent", m4_c5_d: "Under building southwest of Odin's Descent.",
-                m4_c6_t: "Treasure Chest 6 – Void Plains", m4_c6_d: "Near large tree south of Void Plains.",
-                m4_c7_t: "Treasure Chest 7 – Darkmoon Highlands", m4_c7_d: "Under structure on south side.",
-                m4_w2_t: "✨ Weapon Skin Chest 2 – Darkmoon Highlands", m4_w2_d: "Behind dried mushroom tree, south side.",
-                m4_c8_t: "Treasure Chest 8 – Muspelheim Portal", m4_c8_d: "In a large tree near the portal.",
-                m4_c9_t: "Treasure Chest 9 – Merman Settlement", m4_c9_d: "Center of lake in open area.",
-                m4_w3_t: "✨ Weapon Skin Chest 3 – Merman Settlement", m4_w3_d: "Top of watchtower east of lake.",
-                m4_c10_t: "Treasure Chest 10 – Nidavellir Portal", m4_c10_d: "Between tree roots near portal.",
-                m4_w4_t: "✨ Weapon Skin Chest 4 – World Tree Basin", m4_w4_d: "Behind tree on south side of basin.",
-                m4_w5_t: "✨ Weapon Skin Chest 5 – Corrupted Ravine", m4_w5_d: "Between two large trees past wolf area.",
-
-                // MAP 5
-                m5_title: "🔥 CHAPTER V: MUSPELHEIM",
-                m5_c1_t: "Treasure Chest 1 – Surtr's Lava Throne (1)", m5_c1_d: "North of Surtr's residence.",
-                m5_w1_t: "✨ Weapon Skin Chest 1 – Surtr's Lava Throne (2)", m5_w1_d: "On rock ledge directly above entry path.",
-                m5_w2_t: "✨ Weapon Skin Chest 2 – Surtr's Lava Throne (3)", m5_w2_d: "Fly uninterrupted from right cliff over lava.",
-                m5_c2_t: "Treasure Chest 2 – Oskopnir", m5_c2_d: "Back area of town, hidden behind a wall.",
-                m5_c3_t: "Treasure Chest 3 – Alfheim Portal (1)", m5_c3_d: "In front of stable structure (no monsters).",
-                m5_c4_t: "Treasure Chest 4 – Alfheim Portal (2)", m5_c4_d: "On a small hill a short distance north.",
-                m5_w3_t: "✨ Weapon Skin Chest 3 – Alfheim Portal (3)", m5_w3_d: "Atop basalt rock formation nearby.",
-                m5_c5_t: "Treasure Chest 5 – Bloodwood Canyon", m5_c5_d: "Behind largest slanted tree on the hill.",
-                m5_w4_t: "✨ Weapon Skin Chest 4 – Covert Ravine", m5_w4_d: "Behind waterfall right next to arrival point.",
-                m5_c6_t: "Treasure Chest 6 – Drake Badlands", m5_c6_d: "On the tower in the northwest.",
-                m5_c7_t: "Treasure Chest 7 – Loser's Lot", m5_c7_d: "At the end of the cliff on the right.",
-                m5_c8_t: "Treasure Chest 8 – Decrepit Arena", m5_c8_d: "On hill north of Boss Audumla's spawn area.",
-                m5_w5_t: "✨ Weapon Skin Chest 5 – Surtr's Citadel", m5_w5_d: "At peak of obsidian tower overlooking lava sea.",
-                m5_c9_t: "Treasure Chest 9 – Abyss of Splendor", m5_c9_d: "On top of the tower.",
-                m5_c10_t: "Treasure Chest 10 – Flame Orc Encampment", m5_c10_d: "Move slowly to avoid taking lava damage."
-            },
-            pt: {
-                btn_map1: "MAPA 1", btn_map2: "MAPA 2", btn_map3: "MAPA 3", btn_map4: "MAPA 4", btn_map5: "MAPA 5",
-
-                // MAP 1
-                m1_title: "🌿 CAPÍTULO I: MIDGARD",
-                m1_c1_t: "Baú do Tesouro 1 – Fazenda de Egil", m1_c1_d: "Logo abaixo da árvore imediatamente atrás do ponto de chegada.",
-                m1_w1_t: "✨ Baú de Skin de Arma 1 – Pasto do Moinho", m1_w1_d: "Parte norte do pasto do moinho ao sair da fazenda de Egil.",
-                m1_c2_t: "Baú do Tesouro 2 – Colinas da Cachoeira (1)", m1_c2_d: "Ligeiramente escondido atrás da colina perto da cachoeira.",
-                m1_c3_t: "Baú do Tesouro 3 – Colinas da Cachoeira (2)", m1_c3_d: "Dentro da cachoeira, acessível pela passagem rochosa.",
-                m1_c4_t: "Baú do Tesouro 4 – Planícies do Leste", m1_c4_d: "Escondido entre a grama alta e as rochas.",
-                m1_c5_t: "Baú do Tesouro 5 – Hábitat de Emu", m1_c5_d: "Na área mais profunda, semelhante a um ninho.",
-                m1_c6_t: "Baú do Tesouro 6 – Planícies do Norte", m1_c6_d: "No topo da Fortaleza Abandonada.",
-                m1_w2_t: "✨ Baú de Skin de Arma 2 – Vila Abandonada", m1_w2_d: "Após coletar o baú 6, continue direto para a Vila Abandonada.",
-                m1_c7_t: "Baú do Tesouro 7 – Manaheim", m1_c7_d: "Muro esquerdo do castelo dentro da área da sub-missão 'Voo'.",
-                m1_c8_t: "Baú do Tesouro 8 – Acampamento de Bandidos", m1_c8_d: "No portão do Acampamento de Bandidos.",
-                m1_c9_t: "Baú do Tesouro 9 – Esconderijo de Lerad", m1_c9_d: "Atrás da cruz em chamas, no fundo do esconderijo.",
-                m1_w3_t: "✨ Baú de Skin de Arma 3 – Esconderijo de Lerad", m1_w3_d: "No fundo do esconderijo, não perca!",
-                m1_c10_t: "Baú do Tesouro 10 – Toca da Serpente Marinha", m1_c10_d: "Na parede diretamente acima da entrada.",
-                m1_w4_t: "✨ Baú de Skin de Arma 4 – Acampamento Cultista (1)", m1_w4_d: "Plataforma de madeira elevada perto do altar cultista.",
-                m1_w5_t: "✨ Baú de Skin de Arma 5 – Acampamento Cultista (2)", m1_w5_d: "Perto do limite final do acampamento.",
-
-                // MAP 2
-                m2_title: "❄️ CAPÍTULO II: JOTUNHEIM",
-                m2_c1_t: "Baú do Tesouro 1 – Bergelmir (1)", m2_c1_d: "Perto da Prisão Subterrânea, atrás de Hreid.",
-                m2_c2_t: "Baú do Tesouro 2 – Bergelmir (2)", m2_c2_d: "Na orla do penhasco atrás dos edifícios da cidade.",
-                m2_w1_t: "✨ Baú de Skin de Arma 1 – Colônia de Aranhas", m2_w1_d: "Suba na estrutura perto da colônia de aranhas em um local aberto.",
-                m2_c3_t: "Baú do Tesouro 3 – Bergelmir (3)", m2_c3_d: "No topo do portão do castelo (escalável a partir da cidade).",
-                m2_c4_t: "Baú do Tesouro 4 – Bergelmir (4)", m2_c4_d: "Passando o Portão de Bergelmir à esquerda; plane sob a ponte.",
-                m2_c5_t: "Baú do Tesouro 5 – Acampamento Orc", m2_c5_d: "No topo da torre atrás de Farba.",
-                m2_c6_t: "Baú do Tesouro 6 – Terra Selvagem", m2_c6_d: "No final do litoral.",
-                m2_w2_t: "✨ Baú de Skin de Arma 2 – Terra Selvagem", m2_w2_d: "Perto do baú 6 no litoral.",
-                m2_c7_t: "Baú do Tesouro 7 – Jardim de Idunn", m2_c7_d: "Topo do maior pilar, ao lado do cogumelo gigante.",
-                m2_c8_t: "Baú do Tesouro 8 – Campo de Batalha Primitivo", m2_c8_d: "No topo do penhasco.",
-                m2_c9_t: "Baú do Tesouro 9 – Cânion do Vazio", m2_c9_d: "Abaixo do penhasco.",
-                m2_w3_t: "✨ Baú de Skin de Arma 3 – Toca dos Gigantes com Presas", m2_w3_d: "Verifique o local e salte com a montaria.",
-                m2_c10_t: "Baú do Tesouro 10 – Fortaleza Gelada de Tyr", m2_c10_d: "Na rocha preta dentro da área de surgimento de Tyr.",
-                m2_w4_t: "✨ Baú de Skin de Arma 4 – Ninho das Harpias", m2_w4_d: "Suba o penhasco superior dentro do Ninho das Harpias.",
-                m2_w5_t: "✨ Baú de Skin de Arma 5 – Toca do Dragão Malígno", m2_w5_d: "No alto; suba a parede de rocha ou desça de cima.",
-
-                // MAP 3
-                m3_title: "⚒️ CAPÍTULO III: NIDAVELLIR",
-                m3_c1_t: "Baú do Tesouro 1 – Svartalfheim", m3_c1_d: "Na cidade, subindo a escada à direita após retornar.",
-                m3_c2_t: "Baú do Tesouro 2 – Floresta Congelada", m3_c2_d: "Abaixo do penhasco; cruze a ponte e siga a borda esquerda.",
-                m3_c3_t: "Baú do Tesouro 3 – Planícies de Nevasca (1)", m3_c3_d: "Dentro do edifício com escadas, lado norte.",
-                m3_c4_t: "Baú do Tesouro 4 – Planícies de Nevasca (2)", m3_c4_d: "Ao lado do navio quebrado descendo o penhasco.",
-                m3_c5_t: "Baú do Tesouro 5 – Forte dos Saqueadores", m3_c5_d: "Nos arredores do forte perto das barricadas de madeira.",
-                m3_w1_t: "✨ Baú de Skin de Arma 1 – Forte dos Saqueadores", m3_w1_d: "No pátio da casa no lado esquerdo (colina sul).",
-                m3_c6_t: "Baú do Tesouro 6 – Planícies Gritantes", m3_c6_d: "Sob o cipó da árvore grande perto do penhasco oeste da Forja de Andvari.",
-                m3_w2_t: "✨ Baú de Skin de Arma 2 – Forja de Andvari", m3_w2_d: "Atrás da rocha perto da base de conquista, a sudoeste da Forja.",
-                m3_c7_t: "Baú do Tesouro 7 – Crista Congelada", m3_c7_d: "Topo da montanha de rocha gigante (caminho íngreme).",
-                m3_w3_t: "✨ Baú de Skin de Arma 3 – Local do Ataque Goblin", m3_w3_d: "Rocha grande no meio do lago, lado leste.",
-                m3_c8_t: "Baú do Tesouro 8 – Penhascos Uivantes", m3_c8_d: "Em frente ao penhasco atrás do Lago de Gelo.",
-                m3_c9_t: "Baú do Tesouro 9 – Acampamento Dvergr", m3_c9_d: "Em cima da escultura; suba para coletar.",
-                m3_w4_t: "✨ Baú de Skin de Arma 4 – Acampamento Dvergr", m3_w4_d: "Vale além da colina rochosa, nordeste.",
-                m3_w5_t: "✨ Baú de Skin de Arma 5 – Tumbas Reais Anãs", m3_w5_d: "Na rocha ao norte das Tumbas Reais.",
-                m3_c10_t: "Baú do Tesouro 10 – Campos do Trovão", m3_c10_d: "Penhasco a nordeste dos Campos do Trovão de Thor; suba o penhasco direito e mova-se para a esquerda.",
-
-                // MAP 4
-                m4_title: "FAIRY CAPÍTULO IV: ALFHEIM",
-                m4_c1_t: "Baú do Tesouro 1 – Gimle", m4_c1_d: "Facilmente visível ao norte da cidade de Gimle.",
-                m4_c2_t: "Baú do Tesouro 2 – Cânion Sombrio", m4_c2_d: "Ao nível do solo ao longo das paredes do cânion.",
-                m4_c3_t: "Baú do Tesouro 3 – Emboscada das Sombras", m4_c3_d: "Em frente à estrutura no lado oeste.",
-                m4_w1_t: "✨ Baú de Skin de Arma 1 – Emboscada das Sombras", m4_w1_d: "Plataforma elevada com vista para as ruínas.",
-                m4_c4_t: "Baú do Tesouro 4 – Bosques Infernais", m4_c4_d: "Parte inferior do muro, fácil de coletar.",
-                m4_c5_t: "Baú do Tesouro 5 – Descenso de Odin", m4_c5_d: "Debixo do edifício a sudoeste do Descenso de Odin.",
-                m4_c6_t: "Baú do Tesouro 6 – Planícies do Vazio", m4_c6_d: "Perto da árvore grande ao sul das Planícies do Vazio.",
-                m4_c7_t: "Baú do Tesouro 7 – Alturas da Lua Sombria", m4_c7_d: "Debaixo da estrutura no lado sul.",
-                m4_w2_t: "✨ Baú de Skin de Arma 2 – Alturas da Lua Sombria", m4_w2_d: "Atrás da árvore de cogumelo seco, lado sul.",
-                m4_c8_t: "Baú do Tesouro 8 – Portal de Muspelheim", m4_c8_d: "Em uma árvore grande perto do portal.",
-                m4_c9_t: "Baú do Tesouro 9 – Acampamento Tritão", m4_c9_d: "Centro do lago em área aberta.",
-                m4_w3_t: "✨ Baú de Skin de Arma 3 – Acampamento Tritão", m4_w3_d: "Topo da torre de vigia a leste do lago.",
-                m4_c10_t: "Baú do Tesouro 10 – Portal de Nidavellir", m4_c10_d: "Entre as raízes da árvore perto do portal.",
-                m4_w4_t: "✨ Baú de Skin de Arma 4 – Bacia da Árvore do Mundo", m4_w4_d: "Atrás da árvore no lado sul da bacia.",
-                m4_w5_t: "✨ Baú de Skin de Arma 5 – Ravina Corrompida", m4_w5_d: "Entre duas árvores grandes passando a área dos lobos.",
-
-                // MAP 5
-                m5_title: "🔥 CAPÍTULO V: MUSPELHEIM",
-                m5_c1_t: "Baú do Tesouro 1 – Trono de Lava de Surtr (1)", m5_c1_d: "Ao norte da residência de Surtr.",
-                m5_w1_t: "✨ Baú de Skin de Arma 1 – Trono de Lava de Surtr (2)", m5_w1_d: "Na plataforma de rocha diretamente acima do caminho de entrada.",
-                m5_w2_t: "✨ Baú de Skin de Arma 2 – Trono de Lava de Surtr (3)", m5_w2_d: "Voe sem interrupção do penhasco direito sobre a lava.",
-                m5_c2_t: "Baú do Tesouro 2 – Oskopnir", m5_c2_d: "Área traseira da cidade, escondido atrás de um muro.",
-                m5_c3_t: "Baú do Tesouro 3 – Portal de Alfheim (1)", m5_c3_d: "Em frente à estrutura do estábulo (sem monstros).",
-                m5_c4_t: "Baú do Tesouro 4 – Portal de Alfheim (2)", m5_c4_d: "Em uma pequena colina a uma curta distância ao norte.",
-                m5_w3_t: "✨ Baú de Skin de Arma 3 – Portal de Alfheim (3)", m5_w3_d: "Sobre a formação rochosa de basalto próxima.",
-                m5_c5_t: "Baú do Tesouro 5 – Cânion da Madeira Sangrenta", m5_c5_d: "Atrás da maior árvore inclinada na colina.",
-                m5_w4_t: "✨ Baú de Skin de Arma 4 – Ravina Oculta", m5_w4_d: "Atrás da cachoeira, ao lado do ponto de chegada.",
-                m5_c6_t: "Baú do Tesouro 6 – Terras Malas dos Dragões", m5_c6_d: "Na torre a noroeste.",
-                m5_c7_t: "Baú do Tesouro 7 – Lote dos Perdedores", m5_c7_d: "No final do penhasco à direita.",
-                m5_c8_t: "Baú do Tesouro 8 – Arena Decrépita", m5_c8_d: "Na colina ao norte da área de surgimento do Chefe Audumla.",
-                m5_w5_t: "✨ Baú de Skin de Arma 5 – Cidadela de Surtr", m5_w5_d: "No pico da torre de obsidiana com vista para o mar de lava.",
-                m5_c9_t: "Baú do Tesouro 9 – Abismo do Esplendor", m5_c9_d: "No topo da torre.",
-                m5_c10_t: "Baú do Tesouro 10 – Acampamento Orc de Chama", m5_c10_d: "Mova-se devagar para evitar tomar dano de lava."
-            }
-        };
-
-        // Función para ejecutar el cambio de idioma dinámicamente
-        function changeLanguage(lang) {
-            currentLang = lang;
-
-            // 1. Traducir elementos marcados con data-key
-            $('[data-key]').each(function () {
-                const key = $(this).data('key');
-                if (i18n[lang] && i18n[lang][key]) {
-                    $(this).text(i18n[lang][key]);
-                }
-            });
-        }
-
-
-        // Si usas una variable para el idioma inicial, cámbiala a 'es'
-        let currentLang = 'es';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Función para activar el idioma por defecto al cargar la página
-            setLanguage(currentLang);
-        });
-
-        function setLanguage(lang) {
-            // Lógica para cambiar clases activas
-            document.querySelectorAll('.content-block').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
-
-            document.getElementById(`content-${lang}`)?.classList.add('active');
-            document.querySelector(`[data-lang="${lang}"]`)?.classList.add('active');
-        }
-
-        function changeLanguage(lang) {
-            currentLang = lang;
-
-            // 1. Traducir todos los elementos con [data-key] (Tabs, Títulos, etc)
-            $('[data-key]').each(function () {
-                const key = $(this).data('key');
-                if (i18n[lang][key]) {
-                    $(this).text(i18n[lang][key]);
-                }
-            });
-
-            // 2. Traducir específicamente los textos de la tabla de Almacén
-            $('#th-icon').text(i18n[lang].th_icon);
-            $('#th-item').text(i18n[lang].th_item);
-            $('#th-stock').text(i18n[lang].th_stock);
-
-            // 3. Actualizar los textos de DataTables
-            if ($.fn.DataTable.isDataTable('#tablaReapers')) {
-                const table = $('#tablaReapers').DataTable();
-
-                // Actualizamos la configuración de lenguaje del objeto DataTable
-                table.context[0].oLanguage.sSearch = i18n[lang].search_label;
-                table.context[0].oLanguage.sInfo = i18n[lang].info_table;
-                table.context[0].oLanguage.sZeroRecords = i18n[lang].zero_records;
-
-                // Redibujar para aplicar cambios visuales en el buscador
-                $('.dataTables_filter label').contents().filter(function () {
-                    return this.nodeType === 3;
-                }).first().replaceWith(i18n[lang].search_label);
-            }
-        }
-
-        function verSeccion(id, btn) {
-            reproducirSonido();
-
-            // 1. Cambiar visibilidad de secciones
-            $('.content-section').removeClass('active');
-            $(`#sec-${id}`).addClass('active');
-
-            // 2. Cambiar estado del botón
-            $('.btn-tab').removeClass('active');
-            if (btn) {
-                $(btn).addClass('active');
-            } else {
-                $(`.btn-tab[onclick*="'${id}'"]`).addClass('active');
-            }
-
-            // 3. COMENTAR O ELIMINAR ESTA LÍNEA PARA NO CAMBIAR LA URL:
-            // window.history.pushState({ seccion: id }, "", id);
-        }
-
-        // --- TU FUNCIÓN CARGAR DATOS ORIGINAL (ALMACÉN)[cite: 4] ---
-        function cargarDatos() {
-            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=2029872222&single=true&output=csv';
-            Papa.parse(csvUrl, {
-                download: true,
-                complete: function (results) {
-                    const rows = results.data;
-                    let html = '';
-                    const headerRowIdx = rows.findIndex(r => r.some(c => c && c.includes('Artículo')));
-                    if (headerRowIdx !== -1) {
-                        const headers = rows[headerRowIdx];
-                        const colItem = headers.findIndex(h => h.includes('Artículo'));
-                        const colStock = headers.findIndex(h => h.includes('Existencia'));
-                        rows.slice(headerRowIdx + 1).forEach(row => {
-                            const nombre = row[colItem] ? row[colItem].trim() : '';
-                            const stock = row[colStock] ? row[colStock].trim() : '0';
-                            const imgPath = row[32] ? row[32].trim() : '';
-                            if (nombre && nombre !== "" && !nombre.includes('Total de puntos')) {
-                                html += `<tr><td class="text-center"><img src="${imgPath}" class="item-icon mx-auto" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td><td class="font-semibold text-slate-100">${nombre}</td><td class="text-right stock-number">${stock}</td></tr>`;
-                            }
-                        });
-                    }
-                    $('#cuerpoTabla').html(html);
-                    $('#tablaReapers').DataTable({
-                        destroy: true, pageLength: 50, order: [[2, 'desc']],
-                        language: { search: "BUSCA EL ITEM AQUÍ:", info: "Mostrando _TOTAL_ artículos", zeroRecords: "No se han encontrado suministros", paginate: { next: "Siguiente", previous: "Anterior" } }
-                    });
-                }
-            });
-        }
-
-        // --- FUNCIÓN REPARTO CORREGIDA ---
-        function cargarReparto() {
-            const urlReparto = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
-
-            Papa.parse(urlReparto, {
-                download: true,
-                complete: function (results) {
-                    let hD = '', hAdmin = '', hAH = '';
-
-                    results.data.slice(4).forEach(r => {
-
-                        // Función para decidir si es LINK o ARCHIVO LOCAL
-                        const obtenerSrc = (valorCelda) => {
-                            if (!valorCelda) return 'https://valhalla-rising.com/favicon.ico';
-                            let limpio = valorCelda.trim();
-                            // Si empieza con http, es un link directo. Si no, busca en tu carpeta local.
-                            if (limpio.startsWith('http')) {
-                                return limpio;
-                            } else {
-                                return `./resource/${limpio}`;
-                            }
-                        };
-
-                        // --- COLUMNA DISCORD (Imagen de Columna A -> r[0]) ---
-                        if (r[3] && r[3].trim() !== "") {
-                            let srcA = obtenerSrc(r[0]);
-                            hD += `<tr>
-                        <td><img src="${srcA}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';"></td>
-                        <td>${r[3]}</td>
-                        <td class="pts-orange">${r[5]}</td>
-                    </tr>`;
-                        }
-
-                        // --- COLUMNA ADMINISTRACIÓN ---
-                        if (r[6] && r[6].trim() !== "") {
-                            hAdmin += `<tr>
-                        <td>${r[6]}</td>
-                        <td class="pts-orange">${r[8]}</td>
-                    </tr>`;
-                        }
-
-                        // --- COLUMNA ACTION HOUSE (Imagen de Columna B -> r[1]) ---
-                        if (r[10] && r[10].trim() !== "") {
-                            let srcB = obtenerSrc(r[1]);
-                            hAH += `
-                    <tr>
-                        <td class="text-center">
-                            <img src="${srcB}" class="img-mini" onerror="this.src='https://valhalla-rising.com/favicon.ico';">
-                        </td>
-                        <td class="text-white">${r[10]}</td>
-                        <td class="text-center text-gray-400">${r[11]}</td>
-                        <td class="pts-orange text-right">${r[12] || '0'}</td>
-                    </tr>`;
-                        }
-                    });
-
-                    $('#listaDiscord').html(hD);
-                    $('#listaAdmin').html(hAdmin);
-                    $('#listaAH').html(hAH);
-                }
-            });
-        }
-
-        // --- FUNCIÓN ACTIVIDAD (RANKING) ---
-        function cargarActividad() {
-            const urlActividad = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=801467735&single=true&output=csv';
-
-            Papa.parse(urlActividad, {
-                download: true,
-                complete: function (results) {
-                    const data = results.data;
-                    let lista = [];
-
-                    // i=4 porque saltamos los encabezados del excel
-                    for (let i = 0; i < data.length; i++) {
-                        const nick = data[i][8];
-                        const avg = data[i][6];
-
-                        // Saltar encabezados o filas vacías
-                        if (
-                            !nick ||
-                            !avg ||
-                            nick.trim() === "" ||
-                            nick.toLowerCase().includes("nick")
-                        ) {
-                            continue;
-                        }
-
-                        const valNum = parseFloat(
-                            avg.replace('%', '').replace(',', '.').trim()
-                        ) || 0;
-
-                        lista.push({ nick, avg, valNum });
-                    }
-
-                    // Ordenar de mayor a menor actividad
-                    lista.sort((a, b) => b.valNum - a.valNum);
-
-                    let html = '';
-                    lista.forEach((u, i) => {
-                        const color = u.valNum >= 50 ? 'pct-high' : 'pct-low';
-                        html += `
-                                <div class="ranking-row">
-                                    <div style="font-family:Cinzel,serif;color:#c5a059;width:40px;">#${i + 1}</div>
-                                    <div style="flex-grow:1;font-weight:bold;text-transform:uppercase;">${u.nick}</div>
-                                    <div class="${color}" style="padding:4px 12px;border-radius:4px;font-weight:900;min-width:85px;text-align:center;">${u.avg}</div>
-                                </div>`;
-                    });
-                    $('#listaActividad').html(html);
-                }
-            });
-        }
-
-        // --- FUNCIÓN DEUDORES CORREGIDA ---
-        function cargarDeudores() {
-            const urlPuntos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqkTpsU-nFe_DmHlwG28zHEtZU_RkhD6VxNZGX4XdC2Di6JPSBrTXTF6pKeIP737mHOL6eZwqJuW6/pub?gid=854086504&single=true&output=csv';
-
-            Papa.parse(urlPuntos, {
-                download: true,
-                complete: function (results) {
-                    const data = results.data;
-                    let deudores = [];
-                    let positivos = [];
-
-                    // Empezamos en la fila donde están los datos reales
-                    for (let i = 0; i < data.length; i++) {
-
-                        // ANTES: nombre en [12] (M) y puntos en [13] (N)
-                        // AHORA: Si moviste todo 2 columnas, prueba con [14] y [15]
-                        // Si el nombre está en la columna O y los puntos en P:
-                        const nombre = data[i][14];
-                        const puntosStr = data[i][15];
-
-                        if (nombre && puntosStr) {
-                            const puntosVal = parseInt(puntosStr.replace('.', '').trim()) || 0;
-                            if (puntosVal < 0) {
-                                deudores.push({ nombre, puntos: puntosVal });
-                            } else if (puntosVal > 0) {
-                                positivos.push({ nombre, puntos: puntosVal });
-                            }
-                        }
-                    }
-
-                    // Ordenar: Positivos de mayor a menor, Deudores de más negativo a menos
-                    positivos.sort((a, b) => b.puntos - a.puntos);
-                    deudores.sort((a, b) => a.puntos - b.puntos);
-
-                    // Generar HTML Positivos (Verde)
-                    let htmlPos = '';
-                    positivos.forEach(p => {
-                        htmlPos += `
-                        <div class="ranking-row" style="border-left: 4px solid #22c55e; margin-bottom: 5px; background: rgba(34, 197, 94, 0.05); padding: 8px 15px;">
-                            <div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${p.nombre}</div>
-                            <div class="pct-high" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">
-                                ${p.puntos} PTS
-                            </div>
-                        </div>`;
-                    });
-
-                    // Generar HTML Deudores (Rojo)
-                    let htmlDeu = '';
-                    deudores.forEach(d => {
-                        htmlDeu += `
-                        <div class="ranking-row" style="border-left: 4px solid #ef4444; margin-bottom: 5px; background: rgba(239, 68, 68, 0.05); padding: 8px 15px;">
-                            <div style="flex-grow:1; font-weight:bold; text-transform:uppercase; font-size: 0.85rem;">${d.nombre}</div>
-                            <div class="pct-low" style="padding:2px 8px; border-radius:4px; font-weight:900; min-width:70px; text-align:center; font-size: 0.85rem;">
-                                ${d.puntos} PTS
-                            </div>
-                        </div>`;
-                    });
-
-                    $('#listaPositivos').html(htmlPos || '<p class="text-center text-slate-500 py-4 text-xs">No hay saldos positivos.</p>');
-                    $('#listaDeudores').html(htmlDeu || '<p class="text-center text-slate-500 py-4 text-xs">No hay deudores.</p>');
-                }
-            });
-        }
-
-
-        $(document).ready(function () {
-            // Carga de datos
-            cargarDatos();
-            cargarReparto();
-            cargarActividad();
-            cargarDeudores();
-
-            // Limpia cualquier subruta (/reparto, etc.) para que vuelva al dominio principal/raíz
-            if (window.location.pathname !== '/' && !window.location.pathname.endsWith('.html')) {
-                window.history.replaceState({}, document.title, window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1));
-            }
-
-            // Mostrar directamente la sección principal por defecto sin modificar la URL
-            verSeccion('cofres');
-        });
-        const audioClick = new Audio('iCreateWindow.wav');
-        audioClick.volume = 0.1; // Ajusta aquí el volumen general (0.5 es un buen equilibrio)
-
-        function reproducirSonido() {
-            // Solo se ejecuta si el ancho de pantalla es de 768px o más (Escritorio)
-            if (window.innerWidth >= 768) {
-                // Clonamos el audio para que cada clic sea independiente
-                const sonidoClonado = audioClick.cloneNode();
-                sonidoClonado.volume = audioClick.volume;
-
-                sonidoClonado.play().catch(e => {
-                    console.log("Interacción requerida o error de carga:", e);
-                });
-
-                // Limpiar el clon de la memoria después de sonar
-                setTimeout(() => {
-                    sonidoClonado.remove();
-                }, 500);
-            }
-            // Si es menor a 768px (Mobile), la función no hace nada
-        }
-
-        function openMapTab(event, mapId) {
-            // Ocultar todos los contenidos de mapas dentro de la sección de cofres
-            const contents = document.querySelectorAll('.map-tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Quitar la clase 'active' de todos los botones de mapa
-            const buttons = document.querySelectorAll('.map-tab-btn');
-            buttons.forEach(button => button.classList.remove('active'));
-
-            // Mostrar el contenido actual y marcar el botón presionado como activo
-            document.getElementById(mapId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        function showSection(sectionId) {
-            // 1. Ocultar todas las secciones que tengan la clase 'tab-content'
-            const sections = document.querySelectorAll('.tab-content');
-            sections.forEach(sec => {
-                sec.classList.add('hidden');
-            });
-
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            }
-        }
-    </script>
+    }
+
+    // Navegación por mapa (MAP 1 a MAP 5)
+    function openMapTab(evt, mapName) {
+        $('.map-tab-content').removeClass('active');
+        $('.map-tab-btn').removeClass('active');
+        $(`#${mapName}`).addClass('active');
+        $(evt.currentTarget).addClass('active');
+    }
+
+    // Navegación principal
+    function verSeccion(id, btn) {
+        $('.section-container').hide();
+        $(`#${id}`).show();
+        $('.nav-btn').removeClass('active');
+        if (btn) $(btn).addClass('active');
+    }
+</script>
 </body>
 
 </html>
