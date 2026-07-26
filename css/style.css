@@ -622,7 +622,7 @@ table.dataTable thead th {
     position: fixed;
     z-index: 9;
     top: 75%;
-    right: 40px;
+    right: 0;
     transform: translateY(-50%);
     pointer-events: none;
     display: flex;
@@ -638,7 +638,7 @@ table.dataTable thead th {
 }
 
 .floating-character {
-    width: 500px;
+    width: 410px;
     /* Ajusta el tamaño a tu gusto */
     height: auto;
     /* Aplicamos la animación */
