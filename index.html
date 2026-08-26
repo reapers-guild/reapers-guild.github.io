@@ -40,7 +40,7 @@
 
         <div class="title">
             <span class="serif">REAPERS</span><br>
-            <span class="bold">REGISTRO OFICIAL DE SUMINISTROS</span>
+            <span class="bold" data-key="loading_text">BUSCA TODOS LOS COFRES AQUÍ</span>
         </div>
 
         <div class="nuage plan_3"></div>
@@ -61,11 +61,7 @@
     <!-- =====================================================
      NAVEGACIÓN TABS
 ===================================================== -->
-    <nav class="tabs-nav">
-        <button onclick="verSeccion('cofres-section', this)" class="nav-btn active">
-            Guía de Cofres
-        </button>
-    </nav>
+
 
     <!-- =====================================================
      CONTENIDO PRINCIPAL
@@ -1090,6 +1086,7 @@
         // Mantenemos las traducciones exactamente igual a como las tienes definidas
         const i18n = {
             es: {
+                loading_text:"BUSCA TODOS LOS COFRES AQUÍ",
                 map_text: "MAPA COMPLETO CON TODOS LOS PUNTOS SEÑALADOS",
                 link_here: "AQUÍ",
                 btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
@@ -1111,6 +1108,7 @@
                 m1_w5_t: "✨ Cofre de Skin de Arma 5 – Campamento del Culto (2)", m1_w5_d: "Cerca del límite final del campamento."
             },
             en: {
+                loading_text: "FIND ALL CHESTS HERE",
                 btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
                 map_text: "COMPLETE MAP WITH ALL POINTS MARKED",
                 link_here: "HERE",
@@ -1132,6 +1130,7 @@
                 m1_w5_t: "✨ Weapon Skin Chest 5 – Cultist Compound (2)", m1_w5_d: "Nearby final compound boundary."
             },
             pt: {
+                loading_text: "ENCONTRE TODOS OS BAÚS AQUI",
                 btn_map1: "MAPA 1", btn_map2: "MAPA 2", btn_map3: "MAPA 3", btn_map4: "MAPA 4", btn_map5: "MAPA 5",
                 map_text: "MAPA COMPLETO COM TODOS OS PONTOS MARCADOS",
                 link_here: "AQUI",
