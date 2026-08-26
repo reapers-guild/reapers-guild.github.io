@@ -19,7 +19,19 @@
         font-size: 62px !important;
     }
 }
-
+/* Imagen de la isla ocupando todo el fondo */
+.map-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('watermarked_img_12212878766410800720.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.65) contrast(1.1); /* Oscurece un poco para resaltar el texto */
+    z-index: 1;
+}
 .text-reapers {
     font-family: 'Cinzel', serif;
     /* Fuente estilo épico */
