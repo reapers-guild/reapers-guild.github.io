@@ -19,7 +19,6 @@
         font-size: 62px !important;
     }
 }
-/* Imagen de la isla ocupando todo el fondo */
 .map-bg {
     position: absolute;
     top: 0;
@@ -29,8 +28,8 @@
     background-image: url('https://raw.githubusercontent.com/reapers-guild/reapers-guild.github.io/refs/heads/main/css/Gemini_Generated_Image_pu2cm2pu2cm2pu2c.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.65) contrast(1.1); /* Oscurece un poco para resaltar el texto */
-    z-index: 1;
+    filter: brightness(0.65) contrast(1.1);
+    z-index: 2;
 }
 .text-reapers {
     font-family: 'Cinzel', serif;
