@@ -19,18 +19,6 @@
         font-size: 62px !important;
     }
 }
-.map-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://raw.githubusercontent.com/reapers-guild/reapers-guild.github.io/refs/heads/main/css/Gemini_Generated_Image_pu2cm2pu2cm2pu2c.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.55) contrast(1.1);
-    z-index: 2;
-}
 .text-reapers {
     font-family: 'Cinzel', serif;
     /* Fuente estilo épico */
