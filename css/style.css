@@ -852,6 +852,7 @@ table.dataTable thead th {
 /* --- NUBES OSCURAS --- */
 .ciel .nuage {
     position: absolute;
+    bottom: 0;
     left: 0;
     width: 300%;
     height: 120%;
