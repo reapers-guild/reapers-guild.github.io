@@ -32,8 +32,7 @@
         <img src="https://i.imgur.com/6VB6b6J.png" alt="Personaje Levitando" class="floating-character">
     </div>
 
-    <section id="loading-screen" class="ciel stay">
-        <div class="map-bg"></div>
+    <section class="ciel stay">
         <div class="stars-container">
             <div class="star-layer"></div>
         </div>
@@ -1169,8 +1168,8 @@
             setTimeout(function () {
                 $('.ciel').removeClass('stay').addClass('away');
                 $('.speed-line').css('animation-duration', '0.01s');
-                setTimeout(function () { $('.ciel').addClass('pantalla-lista'); }, 21111000);
-            }, 21111000);
+                setTimeout(function () { $('.ciel').addClass('pantalla-lista'); }, 2000);
+            }, 2000);
 
             // Aseguramos que cargue en español por defecto
             let userLang = (navigator.language || navigator.userLanguage).substring(0, 2);
