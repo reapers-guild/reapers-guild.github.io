@@ -1173,7 +1173,14 @@
             }, 2000);
 
             // Aseguramos que cargue en español por defecto
-            switchLanguage('es');
+            let userLang = (navigator.language || navigator.userLanguage).substring(0, 2);
+            let defaultLang = ['es', 'en', 'pt'].includes(userLang) ? userLang : 'es';
+
+            // Buscar el botón correspondiente al idioma detectado
+            let targetBtn = $(`.lang-btn[onclick*="'${defaultLang}'"]`);
+
+            // Ejecutar la función pasándole el idioma y el elemento botón
+            switchLanguage(defaultLang, targetBtn);
         });
 
         // FUNCIÓN ÚNICA Y CORREGIDA PARA CAMBIAR IDIOMA
