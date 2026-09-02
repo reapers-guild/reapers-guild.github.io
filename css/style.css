@@ -4,6 +4,23 @@
 
 @media (max-width: 767px) {
 
+   /* Permite scroll horizontal en cada tarjeta de cofre */
+div[style*="display: grid"] > div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fuerza a la imagen a tener un tamaño real fijo en móviles */
+.img-quest {
+    min-width: 600px !important; /* O el ancho nativo que prefieras para ver bien el mapa */
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    display: block;
+}
+
+   
+
    /* Contenedor principal de las 3 imágenes */
 .map-images-wrapper {
     display: flex;
