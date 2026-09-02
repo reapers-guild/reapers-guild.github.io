@@ -1,6 +1,36 @@
 /* =====================================================
    VARIABLES / BASE / COMPONENTES
 ===================================================== */
+/* Oculto por defecto en escritorio */
+.scroll-indicator-mobile {
+    display: none;
+}
+
+/* Solo se muestra en pantallas móviles (hasta 767px) */
+@media (max-width: 767px) {
+    .scroll-indicator-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: rgba(197, 160, 89, 0.15);
+        border: 1px solid rgba(197, 160, 89, 0.4);
+        color: #f8d58a;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        margin: 10px 0 15px 0;
+        text-align: center;
+        font-weight: 500;
+        animation: pulseHint 2s infinite;
+    }
+
+    /* Animación suave para llamar la atención */
+    @keyframes pulseHint {
+        0%, 100% { opacity: 0.85; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.02); }
+    }
+}
 
 @media (max-width: 767px) {
 
