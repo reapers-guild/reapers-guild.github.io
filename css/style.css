@@ -12,7 +12,7 @@ div[style*="display: grid"] > div {
 
 /* Fuerza a la imagen a tener un tamaño real fijo en móviles */
 .img-quest {
-    min-width: 600px !important; /* O el ancho nativo que prefieras para ver bien el mapa */
+    min-width: 1090px !important; /* O el ancho nativo que prefieras para ver bien el mapa */
     width: auto !important;
     max-width: none !important;
     height: auto !important;
