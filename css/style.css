@@ -27,49 +27,64 @@
 
     /* Animación suave para llamar la atención */
     @keyframes pulseHint {
-        0%, 100% { opacity: 0.85; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.02); }
+
+        0%,
+        100% {
+            opacity: 0.85;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.02);
+        }
     }
 }
 
 @media (max-width: 767px) {
 
-   /* Permite scroll horizontal en cada tarjeta de cofre */
-div[style*="display: grid"] > div {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
+    /* Permite scroll horizontal en cada tarjeta de cofre */
+    div[style*="display: grid"]>div {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-/* Fuerza a la imagen a tener un tamaño real fijo en móviles */
-.img-quest {
-    min-width: 1090px !important; /* O el ancho nativo que prefieras para ver bien el mapa */
-    width: auto !important;
-    max-width: none !important;
-    height: auto !important;
-    display: block;
-}
+    /* Fuerza a la imagen a tener un tamaño real fijo en móviles */
+    .img-quest {
+        min-width: 1090px !important;
+        /* O el ancho nativo que prefieras para ver bien el mapa */
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        display: block;
+    }
 
-   
 
-   /* Contenedor principal de las 3 imágenes */
-.map-images-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-    width: 100%;
-}
 
-/* Cada una de las 3 imágenes */
-.map-images-wrapper img {
-    flex: 0 0 auto; /* Evita que las imágenes se reduzcan */
-    min-width: 320px; /* Ancho mínimo para mantener buena visibilidad en móvil */
-    height: auto;
-}
-   #scrollToTopBtn {
-    bottom: 20px !important;
-    left: 20px !important;
-}
+    /* Contenedor principal de las 3 imágenes */
+    .map-images-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Scroll suave en iOS */
+        width: 100%;
+    }
+
+    /* Cada una de las 3 imágenes */
+    .map-images-wrapper img {
+        flex: 0 0 auto;
+        /* Evita que las imágenes se reduzcan */
+        min-width: 320px;
+        /* Ancho mínimo para mantener buena visibilidad en móvil */
+        height: auto;
+    }
+
+    #scrollToTopBtn {
+        bottom: 20px !important;
+        left: 20px !important;
+    }
+
     #rocket-png {
         width: 420px !important;
     }
@@ -82,6 +97,7 @@ div[style*="display: grid"] > div {
         font-size: 62px !important;
     }
 }
+
 .text-reapers {
     font-family: 'Cinzel', serif;
     /* Fuente estilo épico */
@@ -1258,4 +1274,100 @@ table.dataTable thead th {
     color: #0f172a;
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(197, 160, 89, 0.4);
+}
+
+/* =====================================================
+   ESTILOS PARA LA PESTAÑA: PUNTOS CP POR ESTADÍSTICA
+===================================================== */
+
+.stats-cp-wrapper {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 24px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.stats-main-title {
+    font-family: 'Cinzel', serif;
+    color: #c5a059;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.stats-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.stats-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.attack-card .stats-card-title {
+    color: #f87171;
+    /* Rojo suave para ataque */
+}
+
+.defense-card .stats-card-title {
+    color: #60a5fa;
+    /* Azul suave para defensa */
+}
+
+.other-card .stats-card-title {
+    color: #4ade80;
+    /* Verde suave para otros */
+}
+
+.stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.stats-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+.stat-label {
+    color: #cbd5e1;
+}
+
+.stat-value {
+    color: #f8d58a;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    background: rgba(197, 160, 89, 0.15);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.stats-note {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 16px;
+    line-height: 1.4;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
 }
