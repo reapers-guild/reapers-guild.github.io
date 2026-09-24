@@ -78,8 +78,140 @@
                 <button class="map-tab-btn" onclick="openMapTab(event, 'map3')" data-key="btn_map3">MAP 3</button>
                 <button class="map-tab-btn" onclick="openMapTab(event, 'map4')" data-key="btn_map4">MAP 4</button>
                 <button class="map-tab-btn" onclick="openMapTab(event, 'map5')" data-key="btn_map5">MAP 5</button>
+                <button class="map-tab-btn" onclick="openMapTab(event, 'stats-cp')" data-key="btn_stats">PUNTOS CP POR
+                    ESTADÍSTICA</button>
             </div>
+            <!-- Contenido Pestaña 6: PUNTOS CP POR ESTADÍSTICA -->
+            <div id="stats-cp" class="map-tab-content">
+                <div class="stats-cp-wrapper">
+                    <h2 class="stats-main-title">📊 GUÍA DE CP POR ESTADÍSTICAS (REFERENCIA 2026)</h2>
 
+                    <!-- SECCIÓN 1: ATAQUE -->
+                    <div class="stats-card attack-card">
+                        <h3 class="stats-card-title">⚔️ Ataque</h3>
+                        <ul class="stats-list">
+                            <li><span class="stat-label">Ataque</span> <span class="stat-value">40 CP</span></li>
+                            <li><span class="stat-label">Velocidad de ataque</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Velocidad de lanzamiento de habilidad</span> <span
+                                    class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Precisión / Accuracy</span> <span class="stat-value">30
+                                    CP</span></li>
+                            <li><span class="stat-label">Precisión cuerpo a cuerpo / mágica / a distancia</span> <span
+                                    class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Probabilidad de crítico</span> <span class="stat-value">20
+                                    CP</span></li>
+                            <li><span class="stat-label">Daño crítico</span> <span class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Probabilidad de doble ataque</span> <span class="stat-value">30
+                                    CP</span></li>
+                            <li><span class="stat-label">Daño normal</span> <span class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Daño de habilidad</span> <span class="stat-value">20 CP</span>
+                            </li>
+                            <li><span class="stat-label">Todo el daño</span> <span class="stat-value">30 CP</span></li>
+                            <li><span class="stat-label">Daño cuerpo a cuerpo / mágico / a distancia</span> <span
+                                    class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Todo el daño PvP</span> <span class="stat-value">10 CP</span>
+                            </li>
+                            <li><span class="stat-label">Daño PvP cuerpo a cuerpo / mágico / a distancia</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Daño adicional a jefes</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Daño adicional a monstruos/clase específica</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Daño a todos los monstruos</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Precisión de estados alterados</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Reducción de enfriamiento</span> <span class="stat-value">20
+                                    CP</span></li>
+                            <li><span class="stat-label">Precisión de impacto</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Precisión de derribo/empuje</span> <span class="stat-value">5
+                                    CP</span></li>
+                        </ul>
+                        <p class="stats-note">💡 <i>Los valores antiguos publicados en 2024 eran ligeramente diferentes
+                                en varias de estas estadísticas, por lo que para una cuenta actual conviene usar la
+                                tabla de 2026 como referencia.</i></p>
+                    </div>
+
+                    <!-- SECCIÓN 2: DEFENSA -->
+                    <div class="stats-card defense-card">
+                        <h3 class="stats-card-title">🛡️ Defensa</h3>
+                        <ul class="stats-list">
+                            <li><span class="stat-label">Defensa</span> <span class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Evasión</span> <span class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Evasión cuerpo a cuerpo / mágica / a distancia</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Resistencia crítica</span> <span class="stat-value">5 CP</span>
+                            </li>
+                            <li><span class="stat-label">Resistencia doble ataque</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Reducción absoluta de todo daño recibido</span> <span
+                                    class="stat-value">40 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño normal recibido</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño de habilidad recibido</span> <span
+                                    class="stat-value">20 CP</span></li>
+                            <li><span class="stat-label">Reducción de todo daño recibido</span> <span
+                                    class="stat-value">30 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño cuerpo a cuerpo / mágico / a distancia
+                                    recibido</span> <span class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño crítico recibido</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Reducción de todo daño PvP recibido</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño PvP por tipo</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño de jefe recibido</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Reducción de daño de monstruos/clase recibida</span> <span
+                                    class="stat-value">5 CP</span></li>
+                            <li><span class="stat-label">Resistencia a estados alterados</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Resistencia a aturdimiento/congelación/petrificación</span>
+                                <span class="stat-value">5 CP</span>
+                            </li>
+                            <li><span class="stat-label">Resistencia a transformación/silencio/inmovilización</span>
+                                <span class="stat-value">5 CP</span>
+                            </li>
+                            <li><span class="stat-label">Reducción de duración de estados alterados</span> <span
+                                    class="stat-value">10 CP</span></li>
+                            <li><span class="stat-label">Reducción de duración de
+                                    aturdimiento/congelación/petrificación</span> <span class="stat-value">5 CP</span>
+                            </li>
+                            <li><span class="stat-label">Resistencia a impacto</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Resistencia a empuje/derribo</span> <span class="stat-value">5
+                                    CP</span></li>
+                            <li><span class="stat-label">Resistencia a reducción de defensa</span> <span
+                                    class="stat-value">5 CP</span></li>
+                        </ul>
+                        <p class="stats-note">💡 <i>La tabla de 2024 confirma, entre otros, Defensa = 20, Evasión = 20,
+                                resistencia crítica = 5 y reducción absoluta de daño = 40 CP por punto.</i></p>
+                    </div>
+
+                    <!-- SECCIÓN 3: OTROS -->
+                    <div class="stats-card other-card">
+                        <h3 class="stats-card-title">❤️ Otros</h3>
+                        <ul class="stats-list">
+                            <li><span class="stat-label">HP máximo</span> <span class="stat-value">0.3 CP</span></li>
+                            <li><span class="stat-label">MP máximo</span> <span class="stat-value">0.3 CP</span></li>
+                            <li><span class="stat-label">Velocidad de movimiento</span> <span class="stat-value">2
+                                    CP</span></li>
+                            <li><span class="stat-label">Regeneración natural de HP</span> <span class="stat-value">5
+                                    CP</span></li>
+                            <li><span class="stat-label">Regeneración natural de MP</span> <span class="stat-value">10
+                                    CP</span></li>
+                            <li><span class="stat-label">Recuperación de pociones</span> <span class="stat-value">5
+                                    CP</span></li>
+                            <li><span class="stat-label">Experiencia adicional</span> <span class="stat-value">1
+                                    CP</span></li>
+                            <li><span class="stat-label">Oro adicional</span> <span class="stat-value">1 CP</span></li>
+                            <li><span class="stat-label">Curación</span> <span class="stat-value">5 CP</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <!-- Contenido MAP 1 -->
             <div id="map1" class="map-tab-content active">
                 <div
@@ -1315,6 +1447,72 @@
                 map_text: "MAPA COMPLETO CON TODOS LOS PUNTOS SEÑALADOS",
                 link_here: "AQUÍ",
                 btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
+
+                // --- NUEVAS CLAVES AGREGADAS ---
+                btn_stats: "PUNTOS CP POR ESTADÍSTICA",
+                stats_main_title: "📊 GUÍA DE CP POR ESTADÍSTICAS (REFERENCIA 2026)",
+                stats_title_attack: "⚔️ Ataque",
+                stats_title_defense: "🛡️ Defensa",
+                stats_title_other: "❤️ Otros",
+
+                stat_attack: "Ataque",
+                stat_attack_speed: "Velocidad de ataque",
+                stat_cast_speed: "Velocidad de lanzamiento de habilidad",
+                stat_accuracy: "Precisión / Accuracy",
+                stat_melee_magic_ranged_acc: "Precisión cuerpo a cuerpo / mágica / a distancia",
+                stat_crit_rate: "Probabilidad de crítico",
+                stat_crit_damage: "Daño crítico",
+                stat_double_attack_rate: "Probabilidad de doble ataque",
+                stat_normal_damage: "Daño normal",
+                stat_skill_damage: "Daño de habilidad",
+                stat_all_damage: "Todo el daño",
+                stat_type_damage: "Daño cuerpo a cuerpo / mágico / a distancia",
+                stat_all_pvp_damage: "Todo el daño PvP",
+                stat_type_pvp_damage: "Daño PvP cuerpo a cuerpo / mágico / a distancia",
+                stat_boss_damage: "Daño adicional a jefes",
+                stat_spec_monster_damage: "Daño adicional a monstruos/clase específica",
+                stat_all_monster_damage: "Daño a todos los monstruos",
+                stat_status_accuracy: "Precisión de estados alterados",
+                stat_cooldown_reduction: "Reducción de enfriamiento",
+                stat_impact_accuracy: "Precisión de impacto",
+                stat_air_knockback_acc: "Precisión de derribo/empuje",
+                stat_note_attack: "💡 Los valores antiguos publicados en 2024 eran ligeramente diferentes en varias de estas estadísticas, por lo que para una cuenta actual conviene usar la tabla de 2026 como referencia.",
+
+                stat_defense: "Defensa",
+                stat_evasion: "Evasión",
+                stat_type_evasion: "Evasión cuerpo a cuerpo / mágica / a distancia",
+                stat_crit_res: "Resistencia crítica",
+                stat_double_attack_res: "Resistencia doble ataque",
+                stat_abs_damage_red: "Reducción absoluta de todo daño recibido",
+                stat_normal_damage_red: "Reducción de daño normal recibido",
+                stat_skill_damage_red: "Reducción de daño de habilidad recibido",
+                stat_all_damage_red: "Reducción de todo daño recibido",
+                stat_type_damage_red: "Reducción de daño cuerpo a cuerpo / mágico / a distancia recibido",
+                stat_crit_damage_red: "Reducción de daño crítico recibido",
+                stat_pvp_damage_red: "Reducción de todo daño PvP recibido",
+                stat_pvp_type_damage_red: "Reducción de daño PvP por tipo",
+                stat_boss_damage_red: "Reducción de daño de jefe recibido",
+                stat_monster_damage_red: "Reducción de daño de monstruos/clase recibida",
+                stat_status_res: "Resistencia a estados alterados",
+                stat_crowd_control_res: "Resistencia a aturdimiento/congelación/petrificación",
+                stat_debuff_res: "Resistencia a transformación/silencio/inmovilización",
+                stat_status_duration_red: "Reducción de duración de estados alterados",
+                stat_cc_duration_red: "Reducción de duración de aturdimiento/congelación/petrificación",
+                stat_impact_res: "Resistencia a impacto",
+                stat_air_knockback_res: "Resistencia a empuje/derribo",
+                stat_def_reduction_res: "Resistencia a reducción de defensa",
+                stat_note_defense: "💡 La tabla de 2024 confirma, entre otros, Defensa = 20, Evasión = 20, resistencia crítica = 5 y reducción absoluta de daño = 40 CP por punto.",
+
+                stat_max_hp: "HP máximo",
+                stat_max_mp: "MP máximo",
+                stat_move_speed: "Velocidad de movimiento",
+                stat_hp_regen: "Regeneración natural de HP",
+                stat_mp_regen: "Regeneración natural de MP",
+                stat_potion_recovery: "Recuperación de pociones",
+                stat_exp_bonus: "Experiencia adicional",
+                stat_gold_bonus: "Oro adicional",
+                stat_healing: "Curación",
+
                 m1_title: "🌿 CAPÍTULO I: MIDGARD",
                 m1_c1_t: "Cofre del Tesoro 1 – Granja de Egil", m1_c1_d: "Justo debajo del árbol inmediatamente detrás del punto de llegada.",
                 m1_w1_t: "✨ Cofre de Skin de Arma 1 – Pastizal del Molino", m1_w1_d: "Parte norte del pastizal del molino al salir de la granja de Egil.",
@@ -1337,6 +1535,72 @@
                 btn_map1: "MAP 1", btn_map2: "MAP 2", btn_map3: "MAP 3", btn_map4: "MAP 4", btn_map5: "MAP 5",
                 map_text: "COMPLETE MAP WITH ALL POINTS MARKED",
                 link_here: "HERE",
+
+                // --- NUEVAS CLAVES AGREGADAS ---
+                btn_stats: "CP POINTS PER STAT",
+                stats_main_title: "📊 CP STATS GUIDE (2026 REFERENCE)",
+                stats_title_attack: "⚔️ Attack",
+                stats_title_defense: "🛡️ Defense",
+                stats_title_other: "❤️ Others",
+
+                stat_attack: "Attack",
+                stat_attack_speed: "Attack Speed",
+                stat_cast_speed: "Skill Casting Speed",
+                stat_accuracy: "Accuracy",
+                stat_melee_magic_ranged_acc: "Melee / Magic / Ranged Accuracy",
+                stat_crit_rate: "Critical Chance",
+                stat_crit_damage: "Critical Damage",
+                stat_double_attack_rate: "Double Attack Chance",
+                stat_normal_damage: "Normal Damage",
+                stat_skill_damage: "Skill Damage",
+                stat_all_damage: "All Damage",
+                stat_type_damage: "Melee / Magic / Ranged Damage",
+                stat_all_pvp_damage: "All PvP Damage",
+                stat_type_pvp_damage: "Melee / Magic / Ranged PvP Damage",
+                stat_boss_damage: "Additional Boss Damage",
+                stat_spec_monster_damage: "Additional Monster / Specific Class Damage",
+                stat_all_monster_damage: "Damage to All Monsters",
+                stat_status_accuracy: "Status Effect Accuracy",
+                stat_cooldown_reduction: "Cooldown Reduction",
+                stat_impact_accuracy: "Impact Accuracy",
+                stat_air_knockback_acc: "Knockdown / Push Accuracy",
+                stat_note_attack: "💡 Older values published in 2024 were slightly different for several stats, so for current accounts it is recommended to use the 2026 table as reference.",
+
+                stat_defense: "Defense",
+                stat_evasion: "Evasion",
+                stat_type_evasion: "Melee / Magic / Ranged Evasion",
+                stat_crit_res: "Critical Resistance",
+                stat_double_attack_res: "Double Attack Resistance",
+                stat_abs_damage_red: "Absolute Damage Reduction",
+                stat_normal_damage_red: "Normal Damage Reduction",
+                stat_skill_damage_red: "Skill Damage Reduction",
+                stat_all_damage_red: "All Damage Reduction",
+                stat_type_damage_red: "Melee / Magic / Ranged Damage Reduction Received",
+                stat_crit_damage_red: "Critical Damage Reduction Received",
+                stat_pvp_damage_red: "All PvP Damage Reduction Received",
+                stat_pvp_type_damage_red: "PvP Damage Reduction by Type Received",
+                stat_boss_damage_red: "Boss Damage Reduction Received",
+                stat_monster_damage_red: "Monster / Class Damage Reduction Received",
+                stat_status_res: "Status Effect Resistance",
+                stat_crowd_control_res: "Stun / Freeze / Petrification Resistance",
+                stat_debuff_res: "Transform / Silence / Immobilize Resistance",
+                stat_status_duration_red: "Status Effect Duration Reduction",
+                stat_cc_duration_red: "Stun / Freeze / Petrification Duration Reduction",
+                stat_impact_res: "Impact Resistance",
+                stat_air_knockback_res: "Push / Knockdown Resistance",
+                stat_def_reduction_res: "Defense Reduction Resistance",
+                stat_note_defense: "💡 The 2024 table confirms Defense = 20, Evasion = 20, Crit Resistance = 5, and Absolute Damage Reduction = 40 CP per point.",
+
+                stat_max_hp: "Max HP",
+                stat_max_mp: "Max MP",
+                stat_move_speed: "Movement Speed",
+                stat_hp_regen: "Natural HP Regeneration",
+                stat_mp_regen: "Natural MP Regeneration",
+                stat_potion_recovery: "Potion Recovery",
+                stat_exp_bonus: "Bonus EXP",
+                stat_gold_bonus: "Bonus Gold",
+                stat_healing: "Healing",
+
                 m1_title: "🌿 CHAPTER I: MIDGARD",
                 m1_c1_t: "Treasure Chest 1 – Egil's Farm", m1_c1_d: "Right under the tree immediately behind your arrival location.",
                 m1_w1_t: "✨ Weapon Skin Chest 1 – Windmill Pasture", m1_w1_d: "Northern part of Windmill Pasture after leaving Egil's Farm.",
@@ -1359,6 +1623,72 @@
                 btn_map1: "MAPA 1", btn_map2: "MAPA 2", btn_map3: "MAPA 3", btn_map4: "MAPA 4", btn_map5: "MAPA 5",
                 map_text: "MAPA COMPLETO COM TODOS OS PONTOS MARCADOS",
                 link_here: "AQUI",
+
+                // --- NUEVAS CLAVES AGREGADAS ---
+                btn_stats: "PONTOS CP POR ESTATÍSTICA",
+                stats_main_title: "📊 GUIA DE CP POR ESTATÍSTICAS (REFERÊNCIA 2026)",
+                stats_title_attack: "⚔️ Ataque",
+                stats_title_defense: "🛡️ Defesa",
+                stats_title_other: "❤️ Outros",
+
+                stat_attack: "Ataque",
+                stat_attack_speed: "Velocidade de Ataque",
+                stat_cast_speed: "Velocidade de Conjuração de Habilidade",
+                stat_accuracy: "Precisão",
+                stat_melee_magic_ranged_acc: "Precisão Corpo a Corpo / Mágica / À Distância",
+                stat_crit_rate: "Chance de Acerto Crítico",
+                stat_crit_damage: "Dano Crítico",
+                stat_double_attack_rate: "Chance de Ataque Duplo",
+                stat_normal_damage: "Dano Normal",
+                stat_skill_damage: "Dano de Habilidade",
+                stat_all_damage: "Todo o Dano",
+                stat_type_damage: "Dano Corpo a Corpo / Mágico / À Distância",
+                stat_all_pvp_damage: "Todo o Dano PvP",
+                stat_type_pvp_damage: "Dano PvP Corpo a Corpo / Mágico / À Distância",
+                stat_boss_damage: "Dano Adicional a Chefes",
+                stat_spec_monster_damage: "Dano Adicional a Monstros / Classe Específica",
+                stat_all_monster_damage: "Dano a Todos os Monstros",
+                stat_status_accuracy: "Precisão de Efeitos Alterados",
+                stat_cooldown_reduction: "Redução de Recarga (Cooldown)",
+                stat_impact_accuracy: "Precisão de Impacto",
+                stat_air_knockback_acc: "Precisão de Derrubada / Empurrão",
+                stat_note_attack: "💡 Os valores antigos publicados em 2024 eram ligeiramente diferentes, portanto recomenda-se usar a tabela de 2026 como referência.",
+
+                stat_defense: "Defesa",
+                stat_evasion: "Evasão",
+                stat_type_evasion: "Evasão Corpo a Corpo / Mágica / À Distância",
+                stat_crit_res: "Resistência a Crítico",
+                stat_double_attack_res: "Resistência a Ataque Duplo",
+                stat_abs_damage_red: "Redução Absoluta de Todo o Dano Recebido",
+                stat_normal_damage_red: "Redução de Dano Normal Recebido",
+                stat_skill_damage_red: "Redução de Dano de Habilidade Recebido",
+                stat_all_damage_red: "Redução de Todo o Dano Recebido",
+                stat_type_damage_red: "Redução de Dano Corpo a Corpo / Mágico / À Distância Recebido",
+                stat_crit_damage_red: "Redução de Dano Crítico Recebido",
+                stat_pvp_damage_red: "Redução de Todo o Dano PvP Recebido",
+                stat_pvp_type_damage_red: "Redução de Dano PvP por Tipo",
+                stat_boss_damage_red: "Redução de Dano de Chefe Recebido",
+                stat_monster_damage_red: "Redução de Dano de Monstros / Classe Recebido",
+                stat_status_res: "Resistência a Efeitos Alterados",
+                stat_crowd_control_res: "Resistência a Atordoamento / Congelamento / Petrificação",
+                stat_debuff_res: "Resistência a Transformaçao / Silêncio / Imobilização",
+                stat_status_duration_red: "Redução de Duração de Efeitos Alterados",
+                stat_cc_duration_red: "Redução de Duração de Atordoamento / Congelamento / Petrificação",
+                stat_impact_res: "Resistência a Impacto",
+                stat_air_knockback_res: "Resistência a Empurrão / Derrubada",
+                stat_def_reduction_res: "Resistência a Redução de Defesa",
+                stat_note_defense: "💡 A tabela de 2024 confirma Defesa = 20, Evasão = 20, Resistência a Crítico = 5 e Redução Absoluta de Dano = 40 CP por ponto.",
+
+                stat_max_hp: "HP Máximo",
+                stat_max_mp: "MP Máximo",
+                stat_move_speed: "Velocidade de Movimento",
+                stat_hp_regen: "Regeneração Natural de HP",
+                stat_mp_regen: "Regeneração Natural de MP",
+                stat_potion_recovery: "Recuperação de Poções",
+                stat_exp_bonus: "Bônus de EXP",
+                stat_gold_bonus: "Bônus de Ouro",
+                stat_healing: "Cura",
+
                 m1_title: "🌿 CAPÍTULO I: MIDGARD",
                 m1_c1_t: "Baú do Tesouro 1 – Fazenda de Egil", m1_c1_d: "Logo abaixo da árvore imediatamente atrás do ponto de chegada.",
                 m1_w1_t: "✨ Baú de Skin de Arma 1 – Pasto do Moinho", m1_w1_d: "Parte norte do pasto do moinho ao sair da fazenda de Egil.",
