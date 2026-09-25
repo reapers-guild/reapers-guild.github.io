@@ -9,10 +9,10 @@
 /* Solo se muestra en pantallas móviles (hasta 767px) */
 @media (max-width: 767px) {
    .main-container {
-    margin: 80px auto 40px;
+    margin: 80px auto 40px !important;
 }
    .stats-list {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr) !important;
 }
     .scroll-indicator-mobile {
         display: flex;
