@@ -1358,7 +1358,7 @@ table.dataTable thead th {
     font-weight: bold;
     font-family: 'Cinzel', serif;
     background: rgba(197, 160, 89, 0.15);
-    padding: 2px 8px;
+    padding: 5px 25px 0px 25px;
     border-radius: 3px;
     border: 1px solid rgba(197, 160, 89, 0.3);
 }
